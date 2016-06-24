@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;code&quot;]">
+  <body class="index" data-languages="[&quot;Code Snippets&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,7 +101,7 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="code">code</a>
+              <a href="#" data-language-name="Code Snippets">Code Snippets</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -110,7 +110,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='http://www.powerlinks.com'>Contact Us</a></li>
+            <li><a href='http://www.powerlinks.com'>Powerlinks Home</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -120,173 +120,9 @@
 
 <p>Welcome to the Powerlinks Media documentation portal. This is where you&rsquo;ll find important information regarding specs, standards, and best practices.</p>
 
-<h1 id="authentication">Authentication</h1>
-
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-
-<blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-<h1 id="kittens">Kittens</h1>
-
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all kittens.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-
           <h1 id="creative-specs">Creative Specs</h1>
 
-<p>Pleas find specifications by creative type below.</p>
+<p>Please find specifications by creative type below.</p>
 
 <h2 id="search-content">Search/Content</h2>
 
@@ -561,7 +397,16 @@ Remember — a happy kitten is an authenticated kitten!
 
 <p><img src="images/creative3.png"></p>
 
-          
+          <h1 id="ad-server">Ad Server</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The Powerlinks Ad Server (PLA) brings the capability to deliver native adverts directly onto Publisher websites through a wide array of formats while linking seamlessly into other Powerlinks technologies such as the Exchange and DSP, indexer and optimisation toolkit, completing Powerlinks’ end to end suite of Advertising Technologies. The PLA version 3 will bring about a number of enhancements. Central to this is the direct integration into the Powerlinks Exchange which brings advanced targeting and optimisation. However the underlying changes to the framework on which PLA runs along with improvements in the efficiency of the design, build and testing of the application are what this document will cover in detail.</p>
+
+<h2 id="system-overview">System Overview</h2>
+
+<p>The PLA system has two distinct roles in the Ad Serving process, 1. Determine the best placements through which to display adverts on any given web page while implementing the various Powerlinks Ad Serving Formats, and 2. Allow for and perform the rendering of adverts of all supported templates through all popular display mechanisms e.g. iFrame and Google Page Tags (GPT). The process of determining the placement locations will be different per format and therefore the logic for each should be self-contained on both the server and client sides. The platform should be built accordingly to accommodate formats to act independently as well as the addition of new formats as and when required. The decisioning to determine which Adverts to be displayed will be achieved in the Powerlinks DSP and therefore the PLA must communicate with the Powerlinks Exchange through relevant version of the OpenRTB protocol, currently version 2.3.1. The PLA system must take incoming data and convert this into a valid OpenRTB Bid Request, converting the OpenRTB Bid Response into the correlating template output to be rendered.</p>
+
           <h1 id="reporting-api">Reporting API</h1>
 
 <h2 id="query-string">Query string</h2>
@@ -885,8 +730,6 @@ Remember — a happy kitten is an authenticated kitten!
 
 <p>The ApiKey is used to authenticate an external application.</p>
 
-<h3 id="acquiring-api-keys">Acquiring API keys</h3>
-
 <p>There will be an API in the dashboard which will be used to retrieve the API key.</p>
 
 <blockquote>
@@ -909,7 +752,7 @@ NB This is not definitive yet
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="code">code</a>
+                <a href="#" data-language-name="Code Snippets">Code Snippets</a>
           </div>
       </div>
     </div>
