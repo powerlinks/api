@@ -4,10 +4,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Powerlinks Media Documentation</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;code&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -101,9 +101,7 @@
     <div class="tocify-wrapper">
       <img src="images/logo.png" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="code">code</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -112,8 +110,7 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='http://www.powerlinks.com'>Contact Us</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -121,11 +118,7 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>Welcome to the Powerlinks Media documentation portal. This is where you&rsquo;ll find important information regarding specs, standards, and best practices.</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -143,6 +136,10 @@
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
 </code></pre>
 
 <blockquote>
@@ -174,6 +171,11 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
 </code></pre>
 
 <blockquote>
@@ -242,6 +244,11 @@ Remember — a happy kitten is an authenticated kitten!
 <pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
+<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -277,70 +284,632 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
+          <h1 id="creative-specs">Creative Specs</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<p>Pleas find specifications by creative type below.</p>
 
-<p>The Kittn API uses the following error codes:</p>
+<h2 id="search-content">Search/Content</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Asset</th>
+            <th>Requirements</th>
+            <th>Scope</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Image - Rectangle</td>
+            <td>1.7 : 1 ratio, 1020 x 700 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Image - Square</td>
+            <td>1 : 1 ratio, 600 x 600 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Image - Logo</td>
+            <td>1 : 1 ratio, 200 x 200 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Title (Long)</td>
+            <td>Max. 75 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Title (Short)</td>
+            <td>Max. 25 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Description (Long)</td>
+            <td>Max. 150 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Description (Short)</td>
+            <td>Max. 60 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Brand Name</td>
+            <td>Max. 30 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Display URL</td>
+            <td>Max. 30 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Call to Action Text</td>
+            <td>Max. 20 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Click (Tracking) URL</td>
+            <td>Unlimited</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Impression Tracking Pixel</td>
+            <td>Unlimited</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Javascript Impression Tracker</td>
+            <td>Unlimited</td>
+            <td>Optional</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><img src="images/creative1.png"></p>
+
+<h2 id="app-download">App Download</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Asset</th>
+            <th>Requirements</th>
+            <th>Scope</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Image - Rectangle</td>
+            <td>1.7 : 1 ratio, 1020 x 700 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Image - Square</td>
+            <td>1 : 1 ratio, 600 x 600 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Image - Logo</td>
+            <td>1 : 1 ratio, 200 x 200 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Title (Long)</td>
+            <td>Max. 75 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Title (Short)</td>
+            <td>Max. 25 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Description (Long)</td>
+            <td>Max. 150 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Description (Short)</td>
+            <td>Max. 60 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Brand Name</td>
+            <td>Max. 30 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Display URL</td>
+            <td>Max. 30 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>Max. 15 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Call to Action Text</td>
+            <td>Max. 20 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Rating</td>
+            <td>Max. 5 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Downloads</td>
+            <td>Max. 10 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Click (Tracking) URL</td>
+            <td>Unlimited</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Impression Tracking Pixel</td>
+            <td>Unlimited</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Javascript Impression Tracker</td>
+            <td>Unlimited</td>
+            <td>Optional</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><img src="images/creative2.png"></p>
+
+<h2 id="e-commerce">E-Commerce</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Asset</th>
+            <th>Requirements</th>
+            <th>Scope</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Image - Rectangle</td>
+            <td>1.7 : 1 ratio, 1020 x 700 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Image - Square</td>
+            <td>1 : 1 ratio, 600 x 600 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Image - Logo</td>
+            <td>1 : 1 ratio, 200 x 200 pixels or larger</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Title (Long)</td>
+            <td>Max. 75 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Title (Short)</td>
+            <td>Max. 25 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Description (Long)</td>
+            <td>Max. 150 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Description (Short)</td>
+            <td>Max. 60 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Brand Name</td>
+            <td>Max. 30 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Display URL</td>
+            <td>Max. 30 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>Max. 15 characters</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Call to Action Text</td>
+            <td>Max. 20 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Rating</td>
+            <td>Max. 5 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Downloads</td>
+            <td>Max. 10 characters</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Click (Tracking) URL</td>
+            <td>Unlimited</td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>Impression Tracking Pixel</td>
+            <td>Unlimited</td>
+            <td>Optional</td>
+        </tr>
+        <tr>
+            <td>Javascript Impression Tracker</td>
+            <td>Unlimited</td>
+            <td>Optional</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><img src="images/creative3.png"></p>
+
+          
+          <h1 id="reporting-api">Reporting API</h1>
+
+<h2 id="query-string">Query string</h2>
+
+<p>The route for the reporting is <code class="prettyprint">GET /report</code></p>
+
+<h3 id="list-of-parameters">List of parameters</h3>
 
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter name</th>
+<th>Format</th>
+<th>Options Available</th>
+<th>Required</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>range</td>
+<td>string</td>
+<td>GET /report/options/range</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>from</td>
+<td>date</td>
+<td>YYYY-MM-DD</td>
+<td>No</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>to</td>
+<td>date</td>
+<td>YYYY-MM-DD</td>
+<td>No</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>interval</td>
+<td>string</td>
+<td>GET /report/options/interval</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>metrics</td>
+<td>array</td>
+<td>GET /report/options/metrics</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td>dimensions</td>
+<td>array</td>
+<td>GET /report/options/dimensions</td>
+<td>Yes</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td>filters</td>
+<td>array</td>
+<td>GET /report/options/filters</td>
+<td>No</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>options</td>
+<td>array</td>
+<td>GET /report/options/options</td>
+<td>No</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>limit</td>
+<td>int</td>
+<td>(default: 10)</td>
+<td>No</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>offset</td>
+<td>int</td>
+<td>(default: 0)</td>
+<td>No</td>
 </tr>
 </tbody></table>
+
+<h3 id="range">Range</h3>
+
+<p><code class="prettyprint">GET report/options/range</code></p>
+
+<blockquote>
+<p>Range - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"today"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"yesterday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yesterday"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_7_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last 7 Days"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_48_hours"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last 48 Hours"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"month_to_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Month to Date"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Month"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="from">From</h3>
+
+<p>Format YYYY-MM-DD. Only required for range: &ldquo;custom&rdquo;</p>
+
+<p>To</p>
+
+<p>Format YYYY-MM-DD. Only required for range: &ldquo;custom&rdquo;</p>
+
+<h3 id="interval">Interval</h3>
+
+<p><code class="prettyprint">GET /report/options/interval</code></p>
+
+<blockquote>
+<p>Interval - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"cumulative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cumulative"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Day"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Month"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="metrics">Metrics</h3>
+
+<p><code class="prettyprint">GET /report/options/metrics</code></p>
+
+<blockquote>
+<p>Metrics - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impressions"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clicks"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ctr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gross"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gross"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Spend"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mediaspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Media Spend"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer Platform Fee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerrevenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Platform Fee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Net"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPM"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="dimensions">Dimensions</h3>
+
+<p><code class="prettyprint">GET /report/options/dimensions</code></p>
+
+<blockquote>
+<p>Dimensions - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"seller_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyer_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Source"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device Type"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="filters">Filters</h3>
+
+<p><code class="prettyprint">GET /report/options/filters</code></p>
+
+<blockquote>
+<p>Filter - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"seller_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyer_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Source"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>To list the option for each filter you can use the following API:</p>
+
+<p><code class="prettyprint">GET /report/options/filters/{filter}/values</code></p>
+
+<p>This API return paginated content. In order to use the pagination you can use two optional parameters: &ldquo;limit&rdquo; and &ldquo;offset&rdquo;.</p>
+
+<p>i.e. country</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"GBR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"USA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"DEU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Germany"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"FRA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"AFG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Afghanistan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ALB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albania"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"DZA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algeria"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ASM"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Samoa"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"AND"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andorra"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"AGO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angola"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="options">Options</h3>
+
+<p><code class="prettyprint">GET /report/options/options</code></p>
+
+<blockquote>
+<p>Options - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"showall"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sql"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="accounts">Accounts</h3>
+
+<p>This parameter is valid just if you are an admin. Accounts allows an array of values in this format:</p>
+
+<h3 id="query-string-structure">Query string structure</h3>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Syntax</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>range=today</td>
+</tr>
+<tr>
+<td>from</td>
+<td>[ range=custom&amp; ] from=2015-06-12 [ &amp;to=2015-06-30 ]</td>
+</tr>
+<tr>
+<td>to</td>
+<td>[ range=custom&amp;from=2015-06-12&amp; ] to=2015-06-30</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>interval=cumulative</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td>metrics=impressions,clicks [ ,{metrics},&hellip; ]</td>
+</tr>
+<tr>
+<td>dimensions</td>
+<td>dimensions=inventory_id,campaign_id [ ,{dimensions},&hellip; ]</td>
+</tr>
+<tr>
+<td>filters</td>
+<td>filters=country:GBR,USA,ITA;device_id:1,2,3 [ ;{keyword}:{value},{value};&hellip; ]</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>accounts=e661785d-4a04-450b-a050-23426a58d3e5,95f8e7ec-9aa7-11e5-8994-feff819cdc9f [ ,{uuid},&hellip; ]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="se">\</span>
+    -H <span class="s2">"ApiKey: xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4="</span> <span class="se">\</span>
+    <span class="s2">"http://reporting.api.powerlinks.com/report?range=yesterday&amp;interval=cumulative&amp;metrics=impressions,clicks&amp;dimensions=inventory_id"</span>
+</code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impressions"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clicks"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"inventory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"recordset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="mi">132336</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="mi">386</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"inventory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="api-key">API Key</h2>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>The ApiKey is used to authenticate an external application.</p>
+
+<h3 id="acquiring-api-keys">Acquiring API keys</h3>
+
+<p>There will be an API in the dashboard which will be used to retrieve the API key.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST -d <span class="s2">"username=USERNAME&amp;password=PASSWORD"</span> https://dashboard.powerlinks.com/apikey/login
+</code></pre>
+
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="nv">xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4</span><span class="o">=</span>
+NB This is not definitive yet
+</code></pre>
+
+<h3 id="using-api-keys">Using API keys</h3>
+
+<p>The API Key will be added as a custom header &ldquo;ApiKey&rdquo; inside the HTTP request for each request to reporting API routes.</p>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="code">code</a>
           </div>
       </div>
     </div>
