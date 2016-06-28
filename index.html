@@ -120,6 +120,203 @@
 
 <p>Welcome to the Powerlinks Media documentation portal. This is where you&rsquo;ll find important information regarding specs, standards, and best practices.</p>
 
+          <h1 id="open-rtb-2-3">Open RTB 2.3</h1>
+
+<p>Powerlinks Media is fully compliant with the Open RTB 2.3 specifications. Below you&rsquo;ll find information regarding the RTB specifications and how it pertains to Powerlinks Media.</p>
+
+<h2 id="supported-objects">Supported Objects</h2>
+
+<table><thead>
+<tr>
+<th>Object Name</th>
+<th>Supported</th>
+<th>Required</th>
+<th>Highly Recommended</th>
+<th>Optional</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Bid Request</td>
+<td>Yes</td>
+<td>id, imp</td>
+<td>site, app, device, user</td>
+<td>test, at, tmax, wseat, allimps, cur, bcat, badv, regs, ext</td>
+</tr>
+<tr>
+<td>Imp</td>
+<td>Yes</td>
+<td>id</td>
+<td>none</td>
+<td>banner, video, native, displaymanager, displaymanagerver, instl, tagid, bidfloor, bidfloorcur, secure, iframebuster, pmp</td>
+</tr>
+<tr>
+<td>Banner</td>
+<td>Yes</td>
+<td>none</td>
+<td>w, h</td>
+<td>wmax, hmax, wmin, hmin, id, btype, battr, pos, mimes, topframe, expdir, api</td>
+</tr>
+<tr>
+<td>Video</td>
+<td>Yes</td>
+<td>mimes</td>
+<td>minduration, maxduration, protocols, w, h, startdelay</td>
+<td>linearity, sequence, battr, maxextended, minbitrate, maxbitrate, boxingallowed, playbackmethod, delivery, pos, companionad, api, companiontype</td>
+</tr>
+<tr>
+<td>Native</td>
+<td>Yes</td>
+<td>request</td>
+<td>ver</td>
+<td>api, battr</td>
+</tr>
+<tr>
+<td>Site</td>
+<td>Yes</td>
+<td>none</td>
+<td>id</td>
+<td>name, domain, cat, sectioncat, pagecat, page, ref, search, mobile, privacypolicy, publisher, content, keywords</td>
+</tr>
+<tr>
+<td>App</td>
+<td>Yes</td>
+<td>none</td>
+<td>id</td>
+<td>name, bundle, domain, storeurl, cat, sectioncat, pagecat, ver, privacypolicy, paid, publisher, content, keywords</td>
+</tr>
+<tr>
+<td>Publisher</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>id, name, cat, domain</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>id, episode, title, series, season, producer, url, cat, videoquality, context, contentrating, userrating, qagmediarating, keywords, livestream, sourcerelationship, len, language, embeddable</td>
+</tr>
+<tr>
+<td>Producer</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>id, name, cat, domain</td>
+</tr>
+<tr>
+<td>Device</td>
+<td>Yes</td>
+<td>none</td>
+<td>ua, geo, dnt, lmt, ip</td>
+<td>ipv6, devicetype, make, model, os, osv, hwv, h, w, ppi, pxratio,js, flashver, language, carrier, connectiontype, ifa, didsha1, didmd5, dpidsha1, dpidmd5, macsha1, macmd5</td>
+</tr>
+<tr>
+<td>Geo</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>lat, lon, type, country, region, regionfips104, metro, city, zip, utcoffset</td>
+</tr>
+<tr>
+<td>User</td>
+<td>Yes</td>
+<td>none</td>
+<td>id, buyerid</td>
+<td>yob, gender, keywords, customdata, geo, data</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>id, name, segment</td>
+</tr>
+<tr>
+<td>Segment</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>id, name, value</td>
+</tr>
+<tr>
+<td>Regs</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>coppa</td>
+</tr>
+<tr>
+<td>Pmp</td>
+<td>Yes</td>
+<td>none</td>
+<td>none</td>
+<td>private_auction, deals</td>
+</tr>
+<tr>
+<td>Deal</td>
+<td>Yes</td>
+<td>id</td>
+<td>none</td>
+<td>bidfloor, bidfloorcur, at, wseat, wadomain</td>
+</tr>
+</tbody></table>
+
+<aside>This is a test!</aside>
+
+<h3 id="bidrequest">BidRequest</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>test</td>
+<td>test</td>
+<td>test</td>
+<td>test</td>
+</tr>
+</tbody></table>
+
+<h3 id="imp">Imp</h3>
+
+<h3 id="banner">Banner</h3>
+
+<h3 id="video">Video</h3>
+
+<h3 id="native">Native</h3>
+
+<h3 id="site">Site</h3>
+
+<h3 id="app">App</h3>
+
+<h3 id="publisher">Publisher</h3>
+
+<h3 id="content">Content</h3>
+
+<h3 id="producer">Producer</h3>
+
+<h3 id="device">Device</h3>
+
+<h3 id="geo">Geo</h3>
+
+<h3 id="user">User</h3>
+
+<h3 id="data">Data</h3>
+
+<h3 id="segment">Segment</h3>
+
+<h3 id="regs">Regs</h3>
+
+<h3 id="pmp">Pmp</h3>
+
+<h3 id="deal">Deal</h3>
+
           <h1 id="creative-specs">Creative Specs</h1>
 
 <p>Please find specifications by creative type below.</p>
