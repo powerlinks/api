@@ -263,8 +263,6 @@
 </tr>
 </tbody></table>
 
-<aside>This is a test!</aside>
-
 <h3 id="bidrequest">BidRequest</h3>
 
 <table><thead>
@@ -276,46 +274,1404 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Unique ID of the bid request, provided by the exchange.</td>
+</tr>
+<tr>
+<td>imp</td>
+<td>object array</td>
+<td>none</td>
+<td>Array of Imp objects representing the impressions offered. At least 1 Imp object is required</td>
+</tr>
+<tr>
+<td>site</td>
+<td>object</td>
+<td>none</td>
+<td>Details via a Site object about the publisher’s website. Only applicable and recommended for websites</td>
+</tr>
+<tr>
+<td>app</td>
+<td>object</td>
+<td>none</td>
+<td>Details via an App object about the publisher’s app (i.e., non-browser applications). Only applicable and recommended for apps.</td>
+</tr>
+<tr>
+<td>device</td>
+<td>object</td>
+<td>none</td>
+<td>Details via a Device object about the user’s device to which the impression will be delivered.</td>
+</tr>
+<tr>
+<td>user</td>
+<td>object</td>
+<td>none</td>
+<td>Details via a User object about the human user of the device; the advertising audience.</td>
+</tr>
+<tr>
 <td>test</td>
-<td>test</td>
-<td>test</td>
-<td>test</td>
+<td>integer</td>
+<td>0</td>
+<td>Indicator of test mode in which auctions are not billable, where 0 = live mode, 1 = test mode</td>
+</tr>
+<tr>
+<td>at</td>
+<td>integer</td>
+<td>2</td>
+<td>Auction type, where 1 = First Price, 2 = Second Price Plus. Exchange-specific auction types can be defined using values greater than 500.</td>
+</tr>
+<tr>
+<td>tmax</td>
+<td>integer</td>
+<td>none</td>
+<td>Maximum time in milliseconds to submit a bid to avoid timeout. This value is commonly communicated offline.</td>
+</tr>
+<tr>
+<td>wseat</td>
+<td>string array</td>
+<td>none</td>
+<td>Whitelist of buyer seats allowed to bid on this impression. Seat IDs must be communicated between bidders and the exchange a priori. Omission implies no seat restrictions.</td>
+</tr>
+<tr>
+<td>allimps</td>
+<td>integer</td>
+<td>0</td>
+<td>Flag to indicate if Exchange can verify that the impressions offered represent all of the impressions available in context (e.g., all on the web page, all video spots such as pre/mid/post roll) to support road blocking. 0 = no or unknown, 1 = yes, the impressions offered represent all that are available.</td>
+</tr>
+<tr>
+<td>cur</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of allowed currencies for bids on this bid request using ISO-4217 alpha codes. Recommended only if the exchange accepts multiple currencies.</td>
+</tr>
+<tr>
+<td>bcat</td>
+<td>string array</td>
+<td>none</td>
+<td>Blocked advertiser categories using the IAB content categories.</td>
+</tr>
+<tr>
+<td>badv</td>
+<td>string array</td>
+<td>none</td>
+<td>Block list of advertisers by their domains (e.g., “ford.com”)</td>
+</tr>
+<tr>
+<td>reqs</td>
+<td>object</td>
+<td>none</td>
+<td>A Regs object (Section 3.2.16) that specifies any industry, legal, or governmental regulations in force for this request.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
 </tr>
 </tbody></table>
 
 <h3 id="imp">Imp</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>A unique identifier for this impression within the context of  the bid request (typically, starts with 1 and increments.</td>
+</tr>
+<tr>
+<td>banner</td>
+<td>object</td>
+<td>none</td>
+<td>A Banner object; required if this impression is offered as a banner ad opportunity.</td>
+</tr>
+<tr>
+<td>video</td>
+<td>object</td>
+<td>none</td>
+<td>A Video object (Section 3.2.4); required if this impression is offered as a video ad opportunity</td>
+</tr>
+<tr>
+<td>native</td>
+<td>object</td>
+<td>none</td>
+<td>A Native object (Section 3.2.5); required if this impression is offered as a native ad opportunity.</td>
+</tr>
+<tr>
+<td>displaymanager</td>
+<td>string</td>
+<td>none</td>
+<td>Name of ad mediation partner, SDK technology, or player responsible for rendering ad (typically video or mobile). Used by some ad servers to customize ad code by partner. Recommended for video and/or apps.</td>
+</tr>
+<tr>
+<td>displaymanagerver</td>
+<td>string</td>
+<td>none</td>
+<td>Version of ad mediation partner, SDK technology, or player responsible for rendering ad (typically video or mobile). Used by some ad servers to customize ad code by partner. Recommended for video and/or apps.</td>
+</tr>
+<tr>
+<td>instl</td>
+<td>integer</td>
+<td>0</td>
+<td>1 = the ad is interstitial or full screen, 0 = not interstitial.</td>
+</tr>
+<tr>
+<td>tagid</td>
+<td>string</td>
+<td>none</td>
+<td>Identifier for specific ad placement or ad tag that was used to initiate the auction. This can be useful for debugging of any issues, or for optimization by the buyer.</td>
+</tr>
+<tr>
+<td>bidfloor</td>
+<td>float</td>
+<td>0</td>
+<td>Minimum bid for this impression expressed in CPM.</td>
+</tr>
+<tr>
+<td>bidfloorcur</td>
+<td>string</td>
+<td>USD</td>
+<td>Currency specified using ISO-4217 alpha codes. This may be different from bid currency returned by bidder if this is allowed by the exchange.</td>
+</tr>
+<tr>
+<td>secure</td>
+<td>integer</td>
+<td>none</td>
+<td>Flag to indicate if the impression requires secure HTTPS URL creative assets and markup, where 0 = non-secure, 1 = secure. If omitted, the secure state is unknown, but non-secure HTTP support can be assumed.</td>
+</tr>
+<tr>
+<td>iframebuster</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of exchange-specific names of supported iframe busters.</td>
+</tr>
+<tr>
+<td>pmp</td>
+<td>string array</td>
+<td>none</td>
+<td>A Pmp object containing any private marketplace deals in effect for this impression.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>string array</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="banner">Banner</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>w</td>
+<td>integer</td>
+<td>none</td>
+<td>Width of the impression in pixels. If neither wmin nor wmax are specified, this value is an exact width requirement. Otherwise it is a preferred width.</td>
+</tr>
+<tr>
+<td>h</td>
+<td>integer</td>
+<td>none</td>
+<td>Height of the impression in pixels. If neither hmin nor hmax are specified, this value is an exact height requirement. Otherwise it is a preferred height.</td>
+</tr>
+<tr>
+<td>wmax</td>
+<td>integer</td>
+<td>none</td>
+<td>Maximum width of the impression in pixels. If included along with a w value then w should be interpreted as a recommended or preferred width.</td>
+</tr>
+<tr>
+<td>hmax</td>
+<td>integer</td>
+<td>none</td>
+<td>Maximum height of the impression in pixels. If included along with an h value then h should be interpreted as a recommended or preferred height.</td>
+</tr>
+<tr>
+<td>wmin</td>
+<td>integer</td>
+<td>none</td>
+<td>Minimum width of the impression in pixels. If included along with a w value then w should be interpreted as a recommended or preferred width.</td>
+</tr>
+<tr>
+<td>hmin</td>
+<td>integer</td>
+<td>none</td>
+<td>Minimum height of the impression in pixels. If included along with an h value then h should be interpreted as a recommended or preferred height.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Unique identifier for this banner object. Recommended when Banner objects are used with a Video object to represent an array of companion ads. Values usually start at 1 and increase with each object; should be unique within an impression.</td>
+</tr>
+<tr>
+<td>btype</td>
+<td>integer array</td>
+<td>none</td>
+<td>Blocked banner ad types.</td>
+</tr>
+<tr>
+<td>battr</td>
+<td>integer array</td>
+<td>none</td>
+<td>Blocked creative attributes.</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>integer</td>
+<td>none</td>
+<td>Ad position on screen.</td>
+</tr>
+<tr>
+<td>mimes</td>
+<td>string array</td>
+<td>none</td>
+<td>Content MIME types supported. Popular MIME types may include “application/x-shockwave-flash”, “image/jpg”, and “image/gif”.</td>
+</tr>
+<tr>
+<td>topframe</td>
+<td>integer</td>
+<td>none</td>
+<td>Indicates if the banner is in the top frame as opposed to an iframe, where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>expdir</td>
+<td>integer array</td>
+<td>none</td>
+<td>Directions in which the banner may expand.</td>
+</tr>
+<tr>
+<td>api</td>
+<td>integer array</td>
+<td>none</td>
+<td>List of supported API frameworks for this impression. If an API is not explicitly listed, it is assumed not to be supported</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
 
 <h3 id="video">Video</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mimes</td>
+<td>string array</td>
+<td>none</td>
+<td>Content MIME types supported. Popular MIME types may include “video/x-ms-wmv” for Windows Media and “video/x-flv” for Flash Video.</td>
+</tr>
+<tr>
+<td>minduration</td>
+<td>integer</td>
+<td>none</td>
+<td>Minimum video ad duration in seconds.</td>
+</tr>
+<tr>
+<td>maxduration</td>
+<td>integer</td>
+<td>none</td>
+<td>Maximum video ad duration in seconds.</td>
+</tr>
+<tr>
+<td>protocols</td>
+<td>integer array</td>
+<td>none</td>
+<td>Array of supported video bid response protocols. At least one supported protocol must be specified in either the protocol or protocols attribute.</td>
+</tr>
+<tr>
+<td>w</td>
+<td>integer</td>
+<td>none</td>
+<td>Width of video player in pixels.</td>
+</tr>
+<tr>
+<td>h</td>
+<td>integer</td>
+<td>none</td>
+<td>Height of video player in pixels.</td>
+</tr>
+<tr>
+<td>startdelay</td>
+<td>integer</td>
+<td>none</td>
+<td>Indicates the start delay in seconds for pre-roll, mid-roll, or post-roll ad placements. Refer to List 5.10 for additional generic values.</td>
+</tr>
+<tr>
+<td>linearity</td>
+<td>integer</td>
+<td>none</td>
+<td>Indicates if the impression must be linear, nonlinear, etc. If none specified, assume all are allowed.</td>
+</tr>
+<tr>
+<td>sequence</td>
+<td>integer</td>
+<td>none</td>
+<td>If multiple ad impressions are offered in the same bid request, the sequence number will allow for the coordinated delivery of multiple creatives.</td>
+</tr>
+<tr>
+<td>battr</td>
+<td>integer array</td>
+<td>none</td>
+<td>Blocked creative attributes.</td>
+</tr>
+<tr>
+<td>maxextended</td>
+<td>integer</td>
+<td>none</td>
+<td>Maximum extended video ad duration if extension is allowed. If blank or 0, extension is not allowed. If -1, extension is allowed, and there is no time limit imposed. If greater than 0, then the value represents the number of seconds of extended play supported beyond the maxduration value.</td>
+</tr>
+<tr>
+<td>minbitrate</td>
+<td>integer</td>
+<td>none</td>
+<td>Minimum bit rate in Kbps. Exchange may set this dynamically or universally across their set of publishers.</td>
+</tr>
+<tr>
+<td>maxbitrate</td>
+<td>integer</td>
+<td>none</td>
+<td>Maximum bit rate in Kbps. Exchange may set this dynamically or universally across their set of publishers.</td>
+</tr>
+<tr>
+<td>boxingallowed</td>
+<td>integer</td>
+<td>1</td>
+<td>Indicates if letter-boxing of 4:3 content into a 16:9 window is allowed, where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>playbackmethod</td>
+<td>integer array</td>
+<td>none</td>
+<td>Allowed playback methods. If none specified, assume all are allowed.</td>
+</tr>
+<tr>
+<td>delivery</td>
+<td>integer array</td>
+<td>none</td>
+<td>Supported delivery methods (e.g., streaming, progressive). If none specified, assume all are supported.</td>
+</tr>
+<tr>
+<td>pos</td>
+<td>integer</td>
+<td>none</td>
+<td>Ad position on screen.</td>
+</tr>
+<tr>
+<td>companionad</td>
+<td>Object array</td>
+<td>none</td>
+<td>Array of Banner objects if companion ads are available.</td>
+</tr>
+<tr>
+<td>api</td>
+<td>integer array</td>
+<td>none</td>
+<td>List of supported API frameworks for this impression. If an API is not explicitly listed, it is assumed not to be supported.</td>
+</tr>
+<tr>
+<td>companiontype</td>
+<td>integer array</td>
+<td>none</td>
+<td>List of supported API frameworks for this impression. If an API is not explicitly listed, it is assumed not to be supported.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="native">Native</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>request</td>
+<td>string</td>
+<td>none</td>
+<td>Request payload complying with the Native Ad Specification.</td>
+</tr>
+<tr>
+<td>ver</td>
+<td>string</td>
+<td>none</td>
+<td>Version of the Native Ad Specification to which request complies; highly recommended for efficient parsing.</td>
+</tr>
+<tr>
+<td>api</td>
+<td>integer array</td>
+<td>none</td>
+<td>List of supported API frameworks for this impression. If an API is not explicitly listed, it is assumed not to be supported.</td>
+</tr>
+<tr>
+<td>battr</td>
+<td>Integer array</td>
+<td>none</td>
+<td>Blocked creative attributes.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
 
 <h3 id="site">Site</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Exchange-specific site ID.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>none</td>
+<td>Site name (may be aliased at the publisher’s request).</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>none</td>
+<td>Domain of the site (e.g., “mysite.foo.com”).</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories of the site.</td>
+</tr>
+<tr>
+<td>sectioncat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories that describe the current section of the site.</td>
+</tr>
+<tr>
+<td>pagecat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories that describe the current page or view of the site.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>string</td>
+<td>none</td>
+<td>URL of the page where the impression will be shown.</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>string</td>
+<td>none</td>
+<td>Referrer URL that caused navigation to the current page.</td>
+</tr>
+<tr>
+<td>search</td>
+<td>string</td>
+<td>none</td>
+<td>Search string that caused navigation to the current page.</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>integer</td>
+<td>none</td>
+<td>Mobile-optimized signal, where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>privacypolicy</td>
+<td>integer</td>
+<td>none</td>
+<td>Indicates if the site has a privacy policy, where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>publisher</td>
+<td>object</td>
+<td>none</td>
+<td>Details about the Publisher (Section 3.2.8) of the site.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>object</td>
+<td>none</td>
+<td>Details about the Content (Section 3.2.9) within the site.</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>string</td>
+<td>none</td>
+<td>Comma separated list of keywords about the site.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="app">App</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Exchange-specific app ID.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>none</td>
+<td>App name (may be aliased at the publisher’s request).</td>
+</tr>
+<tr>
+<td>bundle</td>
+<td>string</td>
+<td>none</td>
+<td>Application bundle or package name (e.g., com.foo.mygame); intended to be a unique ID across exchanges.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>none</td>
+<td>Domain of the app (e.g., “mygame.foo.com”).</td>
+</tr>
+<tr>
+<td>storeurl</td>
+<td>string</td>
+<td>none</td>
+<td>App store URL for an installed app; for QAG 1.5 compliance.</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories of the app.</td>
+</tr>
+<tr>
+<td>sectioncat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories that describe the current section of the app.</td>
+</tr>
+<tr>
+<td>pagecat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories that describe the current page or view of the app.</td>
+</tr>
+<tr>
+<td>ver</td>
+<td>string</td>
+<td>none</td>
+<td>Application version.</td>
+</tr>
+<tr>
+<td>privacypolicy</td>
+<td>integer</td>
+<td>none</td>
+<td>Indicates if the app has a privacy policy, where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>paid</td>
+<td>integer</td>
+<td>none</td>
+<td>0 = app is free, 1 = the app is a paid version.</td>
+</tr>
+<tr>
+<td>publisher</td>
+<td>object</td>
+<td>none</td>
+<td>Details about the Publisher of the app.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>object</td>
+<td>none</td>
+<td>Details about the Content within the app.</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>string</td>
+<td>none</td>
+<td>Comma separated list of keywords about the app.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
 
 <h3 id="publisher">Publisher</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Exchange-specific publisher ID.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>none</td>
+<td>Publisher name (may be aliased at the publisher’s request).</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories that describe the publisher.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>none</td>
+<td>Highest level domain of the publisher (e.g., “publisher.com”).</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="content">Content</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>ID uniquely identifying the content.</td>
+</tr>
+<tr>
+<td>episode</td>
+<td>integer</td>
+<td>none</td>
+<td>Episode number (typically applies to video content).</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>none</td>
+<td>Content title. Video Examples: “Search Committee” (television), “A New Hope” (movie), or “Endgame” (made for web). Non-Video Example: “Why an Antarctic Glacier Is Melting So Quickly” (Time magazine article).</td>
+</tr>
+<tr>
+<td>series</td>
+<td>string</td>
+<td>none</td>
+<td>Content series. Video Examples: “The Office” (television), “Star Wars” (movie), or “Arby ‘N’ The Chief” (made for web). Non-Video Example: “Ecocentric” (Time Magazine blog).</td>
+</tr>
+<tr>
+<td>season</td>
+<td>string</td>
+<td>none</td>
+<td>Content season; typically for video content (e.g., “Season 3”).</td>
+</tr>
+<tr>
+<td>producer</td>
+<td>object</td>
+<td>none</td>
+<td>Details about the content Producer (Section 3.2.10).</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>none</td>
+<td>URL of the content, for buy-side contextualization or review.</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories that describe the content producer.</td>
+</tr>
+<tr>
+<td>videoquality</td>
+<td>integer</td>
+<td>none</td>
+<td>Video quality per IAB’s classification.</td>
+</tr>
+<tr>
+<td>context</td>
+<td>integer</td>
+<td>none</td>
+<td>Type of content (game, video, text, etc.).</td>
+</tr>
+<tr>
+<td>contentrating</td>
+<td>string</td>
+<td>none</td>
+<td>Content rating (e.g., MPAA).</td>
+</tr>
+<tr>
+<td>userrating</td>
+<td>string</td>
+<td>none</td>
+<td>User rating of the content (e.g., number of stars, likes, etc.).</td>
+</tr>
+<tr>
+<td>qagmediarating</td>
+<td>integer</td>
+<td>none</td>
+<td>Media rating per QAG guidelines.</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>string</td>
+<td>none</td>
+<td>Comma separated list of keywords describing the content.</td>
+</tr>
+<tr>
+<td>livestream</td>
+<td>integer</td>
+<td>none</td>
+<td>0 = not live, 1 = content is live (e.g., stream, live blog).</td>
+</tr>
+<tr>
+<td>sourcerelationship</td>
+<td>integer</td>
+<td>none</td>
+<td>0 = indirect, 1 = direct.</td>
+</tr>
+<tr>
+<td>len</td>
+<td>integer</td>
+<td>none</td>
+<td>Length of content in seconds; appropriate for video or audio.</td>
+</tr>
+<tr>
+<td>language</td>
+<td>string</td>
+<td>none</td>
+<td>Content language using ISO-639-1-alpha-2.</td>
+</tr>
+<tr>
+<td>embeddable</td>
+<td>integer</td>
+<td>none</td>
+<td>Indicator of whether or not the content is embeddable (e.g., an embeddable video player), where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
 
 <h3 id="producer">Producer</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Content producer or originator ID. Useful if content is syndicated and may be posted on a site using embed tags.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>none</td>
+<td>Content producer or originator name (e.g., “Warner Bros”).</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of IAB content categories that describe the content producer.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>none</td>
+<td>Highest level domain of the content producer (e.g., “producer.com”).</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="device">Device</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ua</td>
+<td>string</td>
+<td>none</td>
+<td>Browser user agent string.</td>
+</tr>
+<tr>
+<td>geo</td>
+<td>object</td>
+<td>none</td>
+<td>Location of the device assumed to be the user’s current location defined by a Geo object.</td>
+</tr>
+<tr>
+<td>dnt</td>
+<td>integer</td>
+<td>none</td>
+<td>Standard “Do Not Track” flag as set in the header by the browser, where 0 = tracking is unrestricted, 1 = do not track.</td>
+</tr>
+<tr>
+<td>lmt</td>
+<td>integer</td>
+<td>none</td>
+<td>“Limit Ad Tracking” signal commercially endorsed (e.g., iOS, Android), where 0 = tracking is unrestricted, 1 = tracking must be limited per commercial guidelines.</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>string</td>
+<td>none</td>
+<td>IPv4 address closest to device.</td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>string</td>
+<td>none</td>
+<td>IP address closest to device as IPv6.</td>
+</tr>
+<tr>
+<td>devicetype</td>
+<td>integer</td>
+<td>none</td>
+<td>The general type of device. make string Device make (e.g., “Apple”).</td>
+</tr>
+<tr>
+<td>model</td>
+<td>string</td>
+<td>none</td>
+<td>Device model (e.g., “iPhone”).</td>
+</tr>
+<tr>
+<td>os</td>
+<td>string</td>
+<td>none</td>
+<td>Device operating system (e.g., “iOS”).</td>
+</tr>
+<tr>
+<td>osv</td>
+<td>string</td>
+<td>none</td>
+<td>Device operating system version (e.g., “3.1.2”).</td>
+</tr>
+<tr>
+<td>hwv</td>
+<td>string</td>
+<td>none</td>
+<td>Hardware version of the device (e.g., “5S” for iPhone 5S).</td>
+</tr>
+<tr>
+<td>h</td>
+<td>integer</td>
+<td>none</td>
+<td>Physical height of the screen in pixels.</td>
+</tr>
+<tr>
+<td>w</td>
+<td>integer</td>
+<td>none</td>
+<td>Physical width of the screen in pixels.</td>
+</tr>
+<tr>
+<td>ppi</td>
+<td>integer</td>
+<td>none</td>
+<td>Screen size as pixels per linear inch.</td>
+</tr>
+<tr>
+<td>pxratio</td>
+<td>float</td>
+<td>none</td>
+<td>The ratio of physical pixels to device independent pixels.</td>
+</tr>
+<tr>
+<td>js</td>
+<td>integer</td>
+<td>none</td>
+<td>Support for JavaScript, where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>flashver</td>
+<td>string</td>
+<td>none</td>
+<td>Version of Flash supported by the browser.</td>
+</tr>
+<tr>
+<td>language</td>
+<td>string</td>
+<td>none</td>
+<td>Browser language using ISO-639-1-alpha-2.</td>
+</tr>
+<tr>
+<td>carrier</td>
+<td>string</td>
+<td>noen</td>
+<td>Carrier or ISP (e.g., “VERIZON”). “WIFI” is often used in mobile to indicate high bandwidth (e.g., video friendly vs. cellular).</td>
+</tr>
+<tr>
+<td>connectiontype</td>
+<td>integer</td>
+<td>none</td>
+<td>Network connection type.</td>
+</tr>
+<tr>
+<td>ifa</td>
+<td>string</td>
+<td>none</td>
+<td>ID sanctioned for advertiser use in the clear (i.e., not hashed).</td>
+</tr>
+<tr>
+<td>didsha1</td>
+<td>string</td>
+<td>none</td>
+<td>Hardware device ID (e.g., IMEI); hashed via SHA1.</td>
+</tr>
+<tr>
+<td>didmd5</td>
+<td>string</td>
+<td>none</td>
+<td>Hardware device ID (e.g., IMEI); hashed via MD5.</td>
+</tr>
+<tr>
+<td>dpidsha1</td>
+<td>string</td>
+<td>none</td>
+<td>Platform device ID (e.g., Android ID); hashed via SHA1.</td>
+</tr>
+<tr>
+<td>dpidmd5</td>
+<td>string</td>
+<td>none</td>
+<td>Platform device ID (e.g., Android ID); hashed via MD5.</td>
+</tr>
+<tr>
+<td>macsha1</td>
+<td>string</td>
+<td>none</td>
+<td>MAC address of the device; hashed via SHA1.</td>
+</tr>
+<tr>
+<td>macmd5</td>
+<td>string</td>
+<td>none</td>
+<td>MAC address of the device; hashed via MD5.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB</td>
+</tr>
+</tbody></table>
 
 <h3 id="geo">Geo</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lat</td>
+<td>float</td>
+<td>none</td>
+<td>Latitude from -90.0 to +90.0, where negative is south.</td>
+</tr>
+<tr>
+<td>lon</td>
+<td>float</td>
+<td>none</td>
+<td>Longitude from -180.0 to +180.0, where negative is west.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>integer</td>
+<td>none</td>
+<td>Source of location data; recommended when passing lat/lon.</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>none</td>
+<td>Country code using ISO-3166-1-alpha-3.</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>none</td>
+<td>Region code using ISO-3166-2; 2-letter state code if USA.</td>
+</tr>
+<tr>
+<td>regionfips104</td>
+<td>string</td>
+<td>none</td>
+<td>Region of a country using FIPS 10-4 notation. While OpenRTB supports this attribute, it has been withdrawn by NIST in 2008.</td>
+</tr>
+<tr>
+<td>metro</td>
+<td>string</td>
+<td>none</td>
+<td>Google metro code; similar to but not exactly Nielsen DMAs.</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>none</td>
+<td>City using United Nations Code for Trade &amp; Transport Locations.</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>none</td>
+<td>Zip or postal code.</td>
+</tr>
+<tr>
+<td>utcoffset</td>
+<td>integer</td>
+<td>none</td>
+<td>Local time as the number +/- of minutes from UTC.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="user">User</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Exchange-specific ID for the user. At least one of id or buyeruid is recommended.</td>
+</tr>
+<tr>
+<td>buyeruid</td>
+<td>string</td>
+<td>none</td>
+<td>Buyer-specific ID for the user as mapped by the exchange for the buyer. At least one of buyeruid or id is recommended.</td>
+</tr>
+<tr>
+<td>yob</td>
+<td>integer</td>
+<td>none</td>
+<td>Year of birth as a 4-digit integer.</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>string</td>
+<td>none</td>
+<td>Gender, where “M” = male, “F” = female, “O” = known to be other (i.e., omitted is unknown).</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>string</td>
+<td>none</td>
+<td>Comma separated list of keywords, interests, or intent.</td>
+</tr>
+<tr>
+<td>customdata</td>
+<td>string</td>
+<td>none</td>
+<td>Optional feature to pass bidder data that was set in the exchange’s cookie. The string must be in base85 cookie safe characters and be in any format. Proper JSON encoding must be used to include “escaped” quotation marks.</td>
+</tr>
+<tr>
+<td>geo</td>
+<td>object</td>
+<td>none</td>
+<td>Location of the user’s home base defined by a Geo object. This is not necessarily their current location.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>object array</td>
+<td>none</td>
+<td>Additional user data. Each Data object represents a different data source.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
 
 <h3 id="data">Data</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>Exchange-specific ID for the data provider.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>none</td>
+<td>Exchange-specific name for the data provider.</td>
+</tr>
+<tr>
+<td>segment</td>
+<td>object array</td>
+<td>none</td>
+<td>Array of Segment objects that contain the actual data values.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="segment">Segment</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>ID of the data segment specific to the data provider.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>none</td>
+<td>Name of the data segment specific to the data provider.</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>none</td>
+<td>String representation of the data segment value.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
 
 <h3 id="regs">Regs</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>coppa</td>
+<td>integer</td>
+<td>none</td>
+<td>Flag indicating if this request is subject to the COPPA regulations established by the USA FTC, where 0 = no, 1 = yes.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="pmp">Pmp</h3>
 
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>private_auction</td>
+<td>integer</td>
+<td>none</td>
+<td>Indicator of auction eligibility to seats named in the Direct Deals object, where 0 = all bids are accepted, 1 = bids are restricted to the deals specified and the terms thereof.</td>
+</tr>
+<tr>
+<td>deals</td>
+<td>object array</td>
+<td>none</td>
+<td>Array of Deal objects that convey the specific deals applicable to this impression.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB.</td>
+</tr>
+</tbody></table>
+
 <h3 id="deal">Deal</h3>
+
+<table><thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>none</td>
+<td>A unique identifier for the direct deal.</td>
+</tr>
+<tr>
+<td>bidfloor</td>
+<td>float</td>
+<td>0</td>
+<td>Minimum bid for this impression expressed in CPM.</td>
+</tr>
+<tr>
+<td>bidfloorcur</td>
+<td>string</td>
+<td>USD</td>
+<td>Currency specified using ISO-4217 alpha codes. This may be different from bid currency returned by bidder if this is allowed by the exchange.</td>
+</tr>
+<tr>
+<td>at</td>
+<td>integer</td>
+<td>none</td>
+<td>Optional override of the overall auction type of the bid request, where 1 = First Price, 2 = Second Price Plus, 3 = the value passed in bidfloor is the agreed upon deal price. Additional auction types can be defined by the exchange.</td>
+</tr>
+<tr>
+<td>wseat</td>
+<td>string array</td>
+<td>none</td>
+<td>Whitelist of buyer seats allowed to bid on this deal. Seat IDs must be communicated between bidders and the exchange a priori. Omission implies no seat restrictions.</td>
+</tr>
+<tr>
+<td>wadomain</td>
+<td>string array</td>
+<td>none</td>
+<td>Array of advertiser domains (e.g., advertiser.com) allowed to bid on this deal. Omission implies no advertiser restrictions.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>object</td>
+<td>none</td>
+<td>Placeholder for exchange-specific extensions to OpenRTB</td>
+</tr>
+</tbody></table>
 
           <h1 id="creative-specs">Creative Specs</h1>
 
