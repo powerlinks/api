@@ -2084,6 +2084,14 @@
 
 <p>Powerlinks Media is fully compliant with the Open RTB 2.3 specifications and its Native subprotocol. Below you&rsquo;ll find information regarding Powerlinks&rsquo;s bid request/response specifications and expectations for buy-side partners.</p>
 
+<h2 id="example-bid-request">Example Bid Request</h2>
+
+<p>Include an example bid request from a seller. Then include a table that shows what&rsquo;s required in the bid request, and then also what they should expect (and what&rsquo;s seller-specific). Always, expected + enhancements, SSP Specific (columns for table)</p>
+
+<p>enhancements - device data from browsecap, ias data from manuel
+extensions 
+mappings</p>
+
 <h2 id="supported-objects">Supported Objects</h2>
 
 <table><thead>
@@ -2340,7 +2348,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="native-object">Native Object</h3>
+<h3 id="native">Native</h3>
 
 <table><thead>
 <tr>
@@ -2395,7 +2403,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="asset-object">Asset Object</h3>
+<h3 id="asset">Asset</h3>
 
 <table><thead>
 <tr>
@@ -2464,7 +2472,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="title-object">Title Object</h3>
+<h3 id="title">Title</h3>
 
 <table><thead>
 <tr>
@@ -2491,7 +2499,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="image-object">Image Object</h3>
+<h3 id="image">Image</h3>
 
 <table><thead>
 <tr>
@@ -2532,7 +2540,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="data-object">Data Object</h3>
+<h3 id="data">Data</h3>
 
 <table><thead>
 <tr>
@@ -2566,7 +2574,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="video-object">Video Object</h3>
+<h3 id="video">Video</h3>
 
 <table><thead>
 <tr>
@@ -2586,7 +2594,7 @@
 </tr>
 </tbody></table>
 
-<h3 id="link-object">Link Object</h3>
+<h3 id="link">Link</h3>
 
 <table><thead>
 <tr>
@@ -2904,15 +2912,375 @@
 
 <p><img src="images/creative3.png"></p>
 
-          <h1 id="ad-server">Ad Server</h1>
+          <h1 id="in-feed-api">In-Feed API</h1>
 
-<h2 id="introduction">Introduction</h2>
+<p>The PowerLinks In-Feed API describes how your application can interact directly with the PowerLinks system to
+conduct a real-time query of In-Feed content.</p>
 
-<p>The Powerlinks Ad Server (PLA) brings the capability to deliver native adverts directly onto Publisher websites through a wide array of formats while linking seamlessly into other Powerlinks technologies such as the Exchange and DSP, indexer and optimisation toolkit, completing Powerlinks’ end to end suite of Advertising Technologies. The PLA version 3 will bring about a number of enhancements. Central to this is the direct integration into the Powerlinks Exchange which brings advanced targeting and optimisation. However the underlying changes to the framework on which PLA runs along with improvements in the efficiency of the design, build and testing of the application are what this document will cover in detail.</p>
+<p>The PowerLinks In-Feed API can be accessed either from a server, or from a browser. The response can be formatted
+as either XML or JSON, with XML being the default. In the case of accessing from a browser, both CORS and JSONP
+are supported. If a callback parameter is present, JSONP is assumed and the response will be wrapped in the callback
+parameter, formatted as JSON.</p>
 
-<h2 id="system-overview">System Overview</h2>
+<p>For more information, please consider the following resources:</p>
 
-<p>The PLA system has two distinct roles in the Ad Serving process, 1. Determine the best placements through which to display adverts on any given web page while implementing the various Powerlinks Ad Serving Formats, and 2. Allow for and perform the rendering of adverts of all supported templates through all popular display mechanisms e.g. iFrame and Google Page Tags (GPT). The process of determining the placement locations will be different per format and therefore the logic for each should be self-contained on both the server and client sides. The platform should be built accordingly to accommodate formats to act independently as well as the addition of new formats as and when required. The decisioning to determine which Adverts to be displayed will be achieved in the Powerlinks DSP and therefore the PLA must communicate with the Powerlinks Exchange through relevant version of the OpenRTB protocol, currently version 2.3.1. The PLA system must take incoming data and convert this into a valid OpenRTB Bid Request, converting the OpenRTB Bid Response into the correlating template output to be rendered.</p>
+<p>XML: http://www.w3.org/XML/</p>
+
+<p>JSON: http://wwww.json.org/</p>
+
+<p>JSONP: http://json-p.org/</p>
+
+<p>CORS: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS</p>
+
+<p>All currencies are in USD and all dates and times are relative to UTC.</p>
+
+<h2 id="request">Request</h2>
+
+<h3 id="overview">Overview</h3>
+
+<p>All requests made to the PowerLinks System should be done through a single entry point which supports a number
+of options to allow for the response to be made more contextual. The table below describes these.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>i</td>
+<td>integer</td>
+<td>Yes</td>
+<td>Your PowerLinks account ID</td>
+</tr>
+<tr>
+<td>c</td>
+<td>string</td>
+<td>Yes</td>
+<td>The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your Powerlinks account manager.</td>
+</tr>
+<tr>
+<td>ip</td>
+<td>string</td>
+<td>Yes</td>
+<td>IP (v.4) address of the end user, or the string ‘false’. NOTE: If this is a server-side implementation, please include the IPv4 address. If this is a client-side implementation, please provide a string value of ‘false’ for this parameter. This will tell us that we should be detecting the IP from the request headers.</td>
+</tr>
+<tr>
+<td>ua</td>
+<td>string</td>
+<td>Yes</td>
+<td>User agent of the end user</td>
+</tr>
+<tr>
+<td>rf</td>
+<td>string</td>
+<td>Yes</td>
+<td>URL-encoded HTTP referring URL</td>
+</tr>
+<tr>
+<td>q</td>
+<td>string</td>
+<td>No</td>
+<td>A query string to improve relevance</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>string</td>
+<td>No</td>
+<td>The Category IDs of the page on which the ad will display, separated by</td>
+</tr>
+<tr>
+<td>tmax</td>
+<td>integer</td>
+<td>No</td>
+<td>The maximum allowed title length</td>
+</tr>
+<tr>
+<td>dmax</td>
+<td>integer</td>
+<td>No</td>
+<td>The maximum allowed description length</td>
+</tr>
+<tr>
+<td>iw</td>
+<td>integer</td>
+<td>No</td>
+<td>Exact image width for returned image, in pixels. Default is 200</td>
+</tr>
+<tr>
+<td>ih</td>
+<td>integer</td>
+<td>No</td>
+<td>Exact image height for returned image, in pixels. Default is 200</td>
+</tr>
+<tr>
+<td>subid</td>
+<td>string</td>
+<td>No</td>
+<td>An ID specified by you for extended identification in reporting</td>
+</tr>
+<tr>
+<td>cid</td>
+<td>string</td>
+<td>No</td>
+<td>Cookie ID for user</td>
+</tr>
+<tr>
+<td>floor</td>
+<td>float</td>
+<td>No</td>
+<td>Floor price, in the format ’0.01’. No currency symbol is required.</td>
+</tr>
+<tr>
+<td>o</td>
+<td>string</td>
+<td>No</td>
+<td>The response format, XML or JSON. Default to XML</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>string</td>
+<td>No</td>
+<td>This is strictly for JSONP support. If this parameter is included, the response will be wrapped in the callback, and the format will be JSON, overriding the ‘o’ parameter if present.</td>
+</tr>
+<tr>
+<td>test</td>
+<td>integer</td>
+<td>No</td>
+<td>This can be set to a value of 1 in order to test. When testing, we will provide 100% fill rate with dummy, in-house content.</td>
+</tr>
+</tbody></table>
+
+<h3 id="making-the-request">Making the request</h3>
+
+<p>All requests should be made using the following method</p>
+
+<p><strong><em>Range Options</em></strong></p>
+
+<p><code class="prettyprint">GET http://adserver.powerlinks.com/infeed</code></p>
+
+<p><strong><em>Parameters</em></strong></p>
+
+<p>See above table</p>
+
+<p><strong><em>Example Request</em></strong></p>
+
+<p>GET</p>
+
+<p><code class="prettyprint">http://adserver.powerlinks.com/infeed?i=1&amp;c=1&amp;ip=1.1.1.1&amp;ua=Mozilla%2F5.0%20(Windows%20NT%206.3%3B%20WOW64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F39.0.2171.95%20Safari%2F537.36&amp;rf=http%3A%2F%2Fwww.examplepage.com%2Fsomepage&amp;q=keyword1+keyword2&amp;iw=300&amp;ih=250&amp;cid=uuid1234567890&amp;subid=1234567890</code></p>
+
+<h2 id="response">Response</h2>
+
+<h3 id="structure">Structure</h3>
+
+<p>Responses are returned in the format specified in the request (or XML if not specified). The data returned in the
+response are described in the following tables:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>The response status, success or error</td>
+</tr>
+<tr>
+<td>ad</td>
+<td>object</td>
+<td>The object containing the advert data in successful responses</td>
+</tr>
+</tbody></table>
+
+<h3 id="ad-object">Ad Object</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image</td>
+<td>string</td>
+<td>The main advert image URL</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>The advert title</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>The advert description. Optional.</td>
+</tr>
+<tr>
+<td>sponsor</td>
+<td>string</td>
+<td>The advertiser or client</td>
+</tr>
+<tr>
+<td>bid</td>
+<td>float</td>
+<td>The advert bid value</td>
+</tr>
+<tr>
+<td>click_url</td>
+<td>string</td>
+<td>The advert click through URL</td>
+</tr>
+<tr>
+<td>impression</td>
+<td>object</td>
+<td>The object containing impression information</td>
+</tr>
+</tbody></table>
+
+<h3 id="impression-object">Impression Object</h3>
+
+<p>This will contain <strong>either</strong> an &lt;image&gt; element, or a &lt;js&gt; element.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>image</td>
+<td>string</td>
+<td>A URL that should be used to create a 1x1 &lt;img&gt;\ element</td>
+</tr>
+<tr>
+<td>js</td>
+<td>string</td>
+<td>A URL that should be used to create a &lt;script&gt;\ element</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p><strong><em>Example Responses: XML - w/ impression image or impression JS</em></strong></p>
+</blockquote>
+<pre class="highlight xml"><code>    <span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+    <span class="nt">&lt;response&gt;</span>
+        <span class="nt">&lt;status&gt;</span>success<span class="nt">&lt;/status&gt;</span>
+        <span class="nt">&lt;ad&gt;</span>
+            <span class="nt">&lt;bid&gt;</span>0.21<span class="nt">&lt;/bid&gt;</span>
+            <span class="nt">&lt;title&gt;</span>Ad Title<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Ad Description<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;sponsor&gt;</span>Ad Sponsor<span class="nt">&lt;/sponsor&gt;</span>
+            <span class="nt">&lt;image&gt;</span>
+                <span class="cp">&lt;![CDATA[http://images.powerlinks.com/ad1-image.jpg]]&gt;</span>
+            <span class="nt">&lt;/image&gt;</span>
+            <span class="nt">&lt;click_url&gt;</span><span class="cp">&lt;![CDATA[http://click.powerlinks.com]]&gt;</span><span class="nt">&lt;/click_url&gt;</span>
+            <span class="nt">&lt;impression&gt;</span>
+                <span class="nt">&lt;image&gt;</span>
+                    <span class="cp">&lt;![CDATA[http://imp.powerlinks.com]]&gt;</span>
+                <span class="nt">&lt;/image&gt;</span>
+            <span class="nt">&lt;/impression&gt;</span>
+        <span class="nt">&lt;/ad&gt;</span>
+    <span class="nt">&lt;/response&gt;</span>
+
+    <span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+    <span class="nt">&lt;response&gt;</span>
+        <span class="nt">&lt;status&gt;</span>success<span class="nt">&lt;/status&gt;</span>
+        <span class="nt">&lt;ad&gt;</span>
+            <span class="nt">&lt;bid&gt;</span>0.21<span class="nt">&lt;/bid&gt;</span>
+            <span class="nt">&lt;title&gt;</span>Ad Title<span class="nt">&lt;/title&gt;</span>
+            <span class="nt">&lt;description&gt;</span>Ad Description<span class="nt">&lt;/description&gt;</span>
+            <span class="nt">&lt;sponsor&gt;</span>Ad Sponsor<span class="nt">&lt;/sponsor&gt;</span>
+            <span class="nt">&lt;image&gt;</span>
+                <span class="cp">&lt;![CDATA[http://images.powerlinks.com/ad1-image.jpg]]&gt;</span>
+            <span class="nt">&lt;/image&gt;</span>
+            <span class="nt">&lt;click_url&gt;</span><span class="cp">&lt;![CDATA[http://click.powerlinks.com]]&gt;</span><span class="nt">&lt;/click_url&gt;</span>
+            <span class="nt">&lt;impression&gt;</span>
+                <span class="nt">&lt;js&gt;</span>
+                    <span class="cp">&lt;![CDATA[http://imp.powerlinks.com]]&gt;</span>
+                <span class="nt">&lt;/js&gt;</span>
+            <span class="nt">&lt;/impression&gt;</span>
+        <span class="nt">&lt;/ad&gt;</span>
+    <span class="nt">&lt;/response&gt;</span>
+</code></pre>
+
+<blockquote>
+<p><strong><em>Example Responses: JSON - w/ impression image or impression JS</em></strong></p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ad"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.21"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ad Title"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ad Description"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sponsor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ad Sponsor"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://images.powerlinks.com/ad1-image.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"click_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://click.powerlinks.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"impression"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://imp.powerlinks.com"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ad"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"bid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.21"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ad Title"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ad Description"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sponsor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ad Sponsor"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://images.powerlinks.com/ad1-image.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"click_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://click.powerlinks.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"impression"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"js"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://imp.powerlinks.com"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p><strong><em>Example Responses: JSONP - w/ impression image or impression JS</em></strong></p>
+</blockquote>
+<pre class="highlight plaintext"><code>jQuery123({
+    "status": "success",
+    "ad": {
+        "bid": "0.21",
+        "title": "Ad Title",
+        "description": "Ad Description",
+        "sponsor": "Ad Sponsor",
+        "image": "http://images.powerlinks.com/ad1-image.jpg",
+        "click_url": "http://click.powerlinks.com",
+        "impression": {
+            "image": "http://imp.powerlinks.com"
+        }
+    }
+})
+
+jQuery123({
+    "status": "success",
+    "ad": {
+        "bid": "0.21",
+        "title": "Ad Title",
+        "description": "Ad Description",
+        "sponsor": "Ad Sponsor",
+        "image": "http://images.powerlinks.com/ad1-image.jpg",
+        "click_url": "http://click.powerlinks.com",
+        "impression": {
+            "js": "http://imp.powerlinks.com"
+        }
+    }
+})
+</code></pre>
+
+<h3 id="other-responses">Other Responses</h3>
+
+<p>Along with the advert data contained within the ‘ad’ block you’ll also receive a status message that can be used to quickly determine whether an advert was returned. Adverts will always accompany a success status. If no relevant advert was found the status will be error, and in most cases will be supplemented with a message describing the cause.</p>
 
           <h1 id="reporting-api">Reporting API</h1>
 
