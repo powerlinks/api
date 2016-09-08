@@ -3624,6 +3624,412 @@ NB This is not definitive yet
 
 <p>The API Key will be added as a custom header &ldquo;ApiKey&rdquo; inside the HTTP request for each request to reporting API routes.</p>
 
+          <h1 id="dashboard-api">Dashboard API</h1>
+
+<h3 id="current-version">Current version</h3>
+
+<p>http://54.152.17.93/</p>
+
+<h3 id="http-verbs">HTTP Verbs</h3>
+
+<p>The Powerlinks Dashboard API strives to use appropriate HTTP verbs to perform actions on our resources.</p>
+
+<table><thead>
+<tr>
+<th>verb</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GET</td>
+<td>use to retrieve a resources or collection</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>use to create a resource or perform a custom action</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>use to store an entity under a specific resource</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>use to update an entity or specific resource</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>delete an entity or specific resource</td>
+</tr>
+</tbody></table>
+
+<h3 id="cross-origin-resource-sharing">Cross Origin Resource Sharing</h3>
+
+<p>We support cross origin resource sharing (<a href="http://www.w3.org/TR/cors/">CORS</a>). All endpoints return the following header.</p>
+
+<p><code class="prettyprint">Access-Control-Allow-Origin: *</code><br>
+    <code class="prettyprint">Access-Control-Allow-Methods: GET,POST,OPTIONS,PUT,PATCH,DELETE</code> <br>
+    <code class="prettyprint">Access-Control-Allow-Headers: ApiKey,Content-Type,Keep-Alive,User-Agent,Cache-Control</code> <br></p>
+
+<h3 id="endpoints">Endpoints</h3>
+
+<table><thead>
+<tr>
+<th>verb</th>
+<th>route</th>
+<th>ApiKey</th>
+<th>parameters</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>POST</td>
+<td>/users</td>
+<td></td>
+<td>{&ldquo;email&rdquo;:STRING, &ldquo;password&rdquo;:STRING, &ldquo;firstName&rdquo;:STRING, &ldquo;lastName&rdquo;:STRING, &ldquo;name&rdquo;:STRING, &ldquo;address1&rdquo;:STRING, &ldquo;address2&rdquo;:STRING, &ldquo;city&rdquo;:STRING, &ldquo;state&rdquo;:STRING, &ldquo;country&rdquo;:STRING, &ldquo;zip&rdquo;:STRING, &ldquo;phone_number&rdquo;:STRING, &ldquo;website&rdquo;:STRING}</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/users/login</td>
+<td></td>
+<td>{&ldquo;email&rdquo;:STRING, &ldquo;password&rdquo;:STRING, &ldquo;company&rdquo;:STRING}</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/users/reset-password</td>
+<td></td>
+<td>{&ldquo;email&rdquo;:STRING}</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/users/confirm/{hash}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/users</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/users/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/users/company/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/users/switch-company</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/users</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/users/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/users/invite</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/companies</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/companies/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/companies</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/companies/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/suppliers</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/suppliers/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/suppliers</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/suppliers/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/campaigns</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/campaigns/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/campaigns/details</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/campaigns</td>
+<td>X</td>
+<td>{&ldquo;advertiser&rdquo;:INTEGER, &ldquo;name&rdquo;:STRING, &ldquo;internalId&rdquo;:STRING, &ldquo;startDate&rdquo;:DATE, &ldquo;endDate&rdquo;:DATE, &ldquo;budget&rdquo;:FLOAT, &ldquo;impressionCap&rdquo;:INTEGER, &ldquo;dailyBudget&rdquo;:FLOAT, &ldquo;dailyImpressionCap&rdquo;:INTEGER, &ldquo;billingType&rdquo;:INTEGER,  &ldquo;billingCategory&rdquo;:INTEGER, &ldquo;feeType&rdquo;:INTEGER, &ldquo;feeAmount&rdquo;:FLOAT, &ldquo;pacing&rdquo;:INTEGER, &ldquo;isActive&rdquo;:INTEGER}</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/campaigns/{id:[0-9]+}</td>
+<td>X</td>
+<td>{&ldquo;advertiser&rdquo;:INTEGER, &ldquo;name&rdquo;:STRING, &ldquo;internalId&rdquo;:STRING, &ldquo;startDate&rdquo;:DATE, &ldquo;endDate&rdquo;:DATE, &ldquo;budget&rdquo;:FLOAT, &ldquo;impressionCap&rdquo;:INTEGER, &ldquo;dailyBudget&rdquo;:FLOAT, &ldquo;dailyImpressionCap&rdquo;:INTEGER, &ldquo;billingType&rdquo;:INTEGER,  &ldquo;billingCategory&rdquo;:INTEGER, &ldquo;feeType&rdquo;:INTEGER, &ldquo;feeAmount&rdquo;:FLOAT, &ldquo;pacing&rdquo;:INTEGER, &ldquo;isActive&rdquo;:INTEGER}</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/line-items</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/line-items/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/line-items/details</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/line-items</td>
+<td>X</td>
+<td>{&ldquo;campaign&rdquo;:INTEGER, &ldquo;internalId&rdquo;:STRING, &ldquo;name&rdquo;:STRING, &ldquo;budget&rdquo;:FLOAT, &ldquo;impressionCap&rdquo;:INTEGER, &ldquo;dailyBudget&rdquo;:FLOAT, &ldquo;pacing&rdquo;:INTEGER, &ldquo;defaultBid&rdquo;:FLOAT, &ldquo;maxBid&rdquo;:FLOAT, &ldquo;cpcBid&rdquo;:FLOAT,  &ldquo;optimisation&rdquo;:INTEGER, &ldquo;startDate&rdquo;:DATE, &ldquo;endDate&rdquo;:DATE, &ldquo;targeting&rdquo;:ARRAY, &ldquo;creatives&rdquo;:ARRAY, &ldquo;isActive&rdquo;:INTEGER}</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/line-items/{id:[0-9]+}</td>
+<td>X</td>
+<td>{&ldquo;campaign&rdquo;:INTEGER, &ldquo;internalId&rdquo;:STRING, &ldquo;name&rdquo;:STRING, &ldquo;budget&rdquo;:FLOAT, &ldquo;impressionCap&rdquo;:INTEGER, &ldquo;dailyBudget&rdquo;:FLOAT, &ldquo;pacing&rdquo;:INTEGER &ldquo;defaultBid&rdquo;:FLOAT, &ldquo;maxBid&rdquo;:FLOAT, &ldquo;cpcBid&rdquo;:FLOAT,  &ldquo;optimisation&rdquo;:INTEGER, &ldquo;startDate&rdquo;:DATE, &ldquo;endDate&rdquo;:DATE, &ldquo;targeting&rdquo;:ARRAY, &ldquo;creatives&rdquo;:ARRAY, &ldquo;isActive&rdquo;:INTEGER}</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/creatives</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/creatives/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/creatives/details</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/creatives</td>
+<td>X</td>
+<td>{&ldquo;advertiser&rdquo;:INTEGER, &ldquo;name&rdquo;:STRING, &ldquo;type&rdquo;:INTEGER, &ldquo;link&rdquo;:OBJECT, &ldquo;titleAssets&rdquo;: ARRAY, &ldquo;dataAssets&rdquo;:ARRAY, &ldquo;imgAssets&rdquo;:ARRAY, &ldquo;impressionTrackers&rdquo;:ARRAY}</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/creatives/{id:[0-9]+}</td>
+<td>X</td>
+<td>{&ldquo;advertiser&rdquo;:INTEGER, &ldquo;name&rdquo;:STRING, &ldquo;type&rdquo;:INTEGER, &ldquo;link&rdquo;:OBJECT, &ldquo;titleAssets&rdquo;: ARRAY, &ldquo;dataAssets&rdquo;:ARRAY, &ldquo;imgAssets&rdquo;:ARRAY, &ldquo;impressionTrackers&rdquo;:ARRAY}</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/publishers</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/publishers/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/publishers/details</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/publishers</td>
+<td>X</td>
+<td>{&ldquo;name&rdquo;:STRING, &ldquo;domain&rdquo;:STRING, &ldquo;categories&rdquo;:ARRAY, &ldquo;ssps&rdquo;:ARRAY}</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/publishers/{id:[0-9]+}</td>
+<td>X</td>
+<td>{&ldquo;name&rdquo;:STRING, &ldquo;domain&rdquo;:STRING, &ldquo;categories&rdquo;:ARRAY, &ldquo;ssps&rdquo;:ARRAY}</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/tags</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/tags/{id:[0-9]+}</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/tags/details</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/tags</td>
+<td>X</td>
+<td>{&ldquo;publisher&rdquo;:INTEGER, &ldquo;name&rdquo;:STRING, &ldquo;adFormat&rdquo;:INTEGER, &ldquo;placement&rdquo;:INTEGER, &ldquo;contentType&rdquo;:INTEGER, &ldquo;contentSubtype&rdquo;:INTEGER, &ldquo;isNative&rdquo;:INTEGER, &ldquo;isDisplay&rdquo;:INTEGER, &ldquo;isSecure&rdquo;:INTEGER, &ldquo;bidFloor&rdquo;:FLOAT,  &ldquo;isCpc&rdquo;:INTEGER, &ldquo;isCpm&rdquo;:INTEGER, &ldquo;enableThirdParty&rdquo;:INTEGER, &ldquo;dealId&rdquo;:STRING, &ldquo;dealAuctionType&rdquo;:INTEGER, &ldquo;blockedCategories&rdquo;:ARRAY, &ldquo;blockedAdvertisers&rdquo;:ARRAY, &ldquo;fillNetworks&rdquo;:ARRAY}</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>/tags/{id:[0-9]+}</td>
+<td>X</td>
+<td>{&ldquo;publisher&rdquo;:INTEGER, &ldquo;name&rdquo;:STRING, &ldquo;adFormat&rdquo;:INTEGER, &ldquo;placement&rdquo;:INTEGER, &ldquo;contentType&rdquo;:INTEGER, &ldquo;contentSubtype&rdquo;:INTEGER, &ldquo;isNative&rdquo;:INTEGER, &ldquo;isDisplay&rdquo;:INTEGER, &ldquo;isSecure&rdquo;:INTEGER, &ldquo;bidFloor&rdquo;:FLOAT,  &ldquo;isCpc&rdquo;:INTEGER, &ldquo;isCpm&rdquo;:INTEGER, &ldquo;enableThirdParty&rdquo;:INTEGER, &ldquo;dealId&rdquo;:STRING, &ldquo;dealAuctionType&rdquo;:INTEGER, &ldquo;blockedCategories&rdquo;:ARRAY, &ldquo;blockedAdvertisers&rdquo;:ARRAY, &ldquo;fillNetworks&rdquo;:ARRAY}</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/billing-types</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/billing-categories</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/ad-formats</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/fee-types</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/pacings</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/placements</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/content-types</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/content-subtype</td>
+<td>X</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="apikey">ApiKey</h3>
+
+<p>The Powerlinks Dashboard API allows, and in some cases requires, requests to include an access token to authorize elevated client privileges. Pass the access token via the <code class="prettyprint">ApiKey</code> HTTP header.</p>
+
+<p><code class="prettyprint">curl -H &quot;ApiKey:j878g39yx378pa77djthzzpn&quot; https://dashboard.api.powerlinks.com/users</code></p>
+
+<p>Acquire an access token using the API <code class="prettyprint">/users/login</code>.</p>
+
+<p><code class="prettyprint">curl -XPOST https://dashboard.api.powerlinks.com/users/login -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;email&quot;:&quot;admin@powerlinks.com&quot;,&quot;password&quot;:&quot;password&quot;,&quot;company&quot;:&quot;1&quot;}&#39;</code></p>
+
+<p><code class="prettyprint">HTTP/1.1 200 OK
+    Content-Type: application/json;charset=utf-8
+    Content-Length: 119</code></p>
+
+<p><code class="prettyprint">{&quot;status&quot;:&quot;success&quot;,&quot;data&quot;:{&quot;apiKey&quot;:&quot;gJmil12lO5WgPDrCJlCJ23BPpJA7vep4Qr1zf89l5gY5z\/TGb2PA5muYF6Yrg5IPiuuu6fYw_Mo&quot;}}</code></p>
+
+<p>If elevated client privilege is required but missing, the API returns an authorization challenge in the response.</p>
+
+<p><code class="prettyprint">HTTP/1.1 401 Unauthorized
+    Content-Type: application/json;charset=utf-8
+    Content-Length: 42</code></p>
+
+<p><code class="prettyprint">{&quot;status&quot;:&quot;fail&quot;,&quot;message&quot;:&quot;Unauthorized&quot;}</code></p>
+
+<h3 id="response">Response</h3>
+
+<p>The JSON response has this form:</p>
+
+<p><code class="prettyprint">{
+      &quot;status&quot;: string(success|fail|error),
+      &quot;data&quot;: array|object,
+      &quot;message&quot;: string,
+      &quot;meta&quot;: array,
+      &quot;code&quot;: int
+    }</code></p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
