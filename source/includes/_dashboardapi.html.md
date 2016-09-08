@@ -50,8 +50,8 @@ PATCH | /suppliers/{id:[0-9]+} | X |
 GET | /campaigns | X |
 GET | /campaigns/{id:[0-9]+} | X |
 GET | /campaigns/details | X |
-POST | /campaigns | X | `{"advertiser":INTEGER, "name":STRING, "internalId":STRING, "startDate":DATE, "endDate":DATE, "budget":FLOAT, "impressionCap":INTEGER, "dailyBudget":FLOAT, "dailyImpressionCap":INTEGER, "billingType":INTEGER,  "billingCategory":INTEGER, "feeType":INTEGER, "feeAmount":FLOAT, "pacing":INTEGER, "isActive":INTEGER}
-PATCH | /campaigns/{id:[0-9]+} | X | {"advertiser":INTEGER, "name":STRING, "internalId":STRING, "startDate":DATE, "endDate":DATE, "budget":FLOAT, "impressionCap":INTEGER, "dailyBudget":FLOAT, "dailyImpressionCap":INTEGER, "billingType":INTEGER,  "billingCategory":INTEGER, "feeType":INTEGER, "feeAmount":FLOAT, "pacing":INTEGER, "isActive":INTEGER}`
+POST | /campaigns | X | {"advertiser":INTEGER, "name":STRING, "internalId":STRING, "startDate":DATE, "endDate":DATE, "budget":FLOAT, "impressionCap":INTEGER, "dailyBudget":FLOAT, "dailyImpressionCap":INTEGER, "billingType":INTEGER,  "billingCategory":INTEGER, "feeType":INTEGER, "feeAmount":FLOAT, "pacing":INTEGER, "isActive":INTEGER}
+PATCH | /campaigns/{id:[0-9]+} | X | {"advertiser":INTEGER, "name":STRING, "internalId":STRING, "startDate":DATE, "endDate":DATE, "budget":FLOAT, "impressionCap":INTEGER, "dailyBudget":FLOAT, "dailyImpressionCap":INTEGER, "billingType":INTEGER,  "billingCategory":INTEGER, "feeType":INTEGER, "feeAmount":FLOAT, "pacing":INTEGER, "isActive":INTEGER}
 GET | /line-items | X |
 GET | /line-items/{id:[0-9]+} | X |
 GET | /line-items/details | X |
