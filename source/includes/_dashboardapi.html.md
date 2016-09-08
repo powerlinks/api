@@ -85,25 +85,25 @@ GET | /content-subtype | X |
 
 The Powerlinks Dashboard API allows, and in some cases requires, requests to include an access token to authorize elevated client privileges. Pass the access token via the `ApiKey` HTTP header.
 
-    curl -H "ApiKey:j878g39yx378pa77djthzzpn" https://dashboard.api.powerlinks.com/users
+    `curl -H "ApiKey:j878g39yx378pa77djthzzpn" https://dashboard.api.powerlinks.com/users`
 
 Acquire an access token using the API `/users/login`.
 
-    curl -XPOST https://dashboard.api.powerlinks.com/users/login -H 'Content-Type: application/json' -d '{"email":"admin@powerlinks.com","password":"password","company":"1"}'
+    `curl -XPOST https://dashboard.api.powerlinks.com/users/login -H 'Content-Type: application/json' -d '{"email":"admin@powerlinks.com","password":"password","company":"1"}'`
 
-    HTTP/1.1 200 OK
+    `HTTP/1.1 200 OK
     Content-Type: application/json;charset=utf-8
-    Content-Length: 119
+    Content-Length: 119`
 
-    {"status":"success","data":{"apiKey":"gJmil12lO5WgPDrCJlCJ23BPpJA7vep4Qr1zf89l5gY5z\/TGb2PA5muYF6Yrg5IPiuuu6fYw_Mo"}}
+    `{"status":"success","data":{"apiKey":"gJmil12lO5WgPDrCJlCJ23BPpJA7vep4Qr1zf89l5gY5z\/TGb2PA5muYF6Yrg5IPiuuu6fYw_Mo"}}`
 
 If elevated client privilege is required but missing, the API returns an authorization challenge in the response.
 
-    HTTP/1.1 401 Unauthorized
+    `HTTP/1.1 401 Unauthorized
     Content-Type: application/json;charset=utf-8
-    Content-Length: 42
+    Content-Length: 42`
 
-    {"status":"fail","message":"Unauthorized"}
+    `{"status":"fail","message":"Unauthorized"}`
 
 ### Response
 
