@@ -1,19 +1,19 @@
 # Buy-Side Specifications
 
-Powerlinks Media is fully compliant with the Open RTB 2.3 specifications and its Native subprotocol. Below you'll find information regarding Powerlinks's bid request/response specifications and expectations for buy-side partners.
+PowerLinks Media is fully compliant with the Open RTB 2.3 specifications and its Native subprotocol. Below you'll find information regarding PowerLinks's bid request/response specifications and expectations for buy-side partners.
 
 ## Example Bid Request
 
 Include an example bid request from a seller. Then include a table that shows what's required in the bid request, and then also what they should expect (and what's seller-specific). Always, expected + enhancements, SSP Specific (columns for table)
 
 enhancements - device data from browsecap, ias data from manuel
-extensions 
+extensions
 mappings
 
 ## Supported Objects
 
 Object Name | Supported | Required | Expected
------------ | --------- | -------- | ------------------ 
+----------- | --------- | -------- | ------------------
 Bid Response | Yes | id | seatbid, bidid, cur, customdata, nbr, ext
 SeatBid | Yes | bid | seat, group, ext
 Bid  | Yes | id, impid, price | adid, nurl, adm, adomain, bundle, iurl, cid, crid, cat, attr, dealid, h, w, ext
@@ -87,7 +87,7 @@ Field Name | Scope | Type | Default | Description
 -----------| ----- | ---- | ------- | -----------
 id | required | integer | -  | Unique asset ID, assigned by exchange, must match one of the asset IDs in request
 required | optional | integer | 0 | Set to 1 if asset is required. (bidder requires it to be displayed).
-title | optional | object | - | Title object for title assets. 
+title | optional | object | - | Title object for title assets.
 img | optional | object | - | Image object for image assets.
 video | optional | object | - | Video object for video assets. Note that in-stream video ads are not part of Native. Native ads may contain a video as the ad creative itself.
 data | optional | object | - | Data object for ratings, prices etc.

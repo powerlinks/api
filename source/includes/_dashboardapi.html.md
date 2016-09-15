@@ -2,7 +2,7 @@
 
 ### HTTP Verbs
 
-The Powerlinks Dashboard API strives to use appropriate HTTP verbs to perform actions on our resources.
+The PowerLinks Dashboard API strives to use appropriate HTTP verbs to perform actions on our resources.
 
 verb   | description                                          
 -------| -----------------------------------------------------
@@ -79,7 +79,7 @@ GET | /content-subtype | X |
 
 ### ApiKey
 
-The Powerlinks Dashboard API allows, and in some cases requires, requests to include an access token to authorize elevated client privileges. Pass the access token via the `ApiKey` HTTP header.
+The PowerLinks Dashboard API allows, and in some cases requires, requests to include an access token to authorize elevated client privileges. Pass the access token via the `ApiKey` HTTP header.
 
 `shell
 curl -H "ApiKey:j878g39yx378pa77djthzzpn" https://dashboard.api.powerlinks.com/users

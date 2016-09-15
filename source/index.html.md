@@ -1,11 +1,11 @@
 ---
-title: Powerlinks Media Documentation
+title: PowerLinks Media Documentation
 
 language_tabs:
   - Code Snippets
 
 toc_footers:
-  - <a href='http://www.powerlinks.com'>Powerlinks Home</a>
+  - <a href='http://www.powerlinks.com'>PowerLinks Home</a>
 
 includes:
   - sellsidespecs
@@ -20,4 +20,4 @@ search: true
 
 # Introduction
 
-Welcome to the Powerlinks Media documentation portal. This is where you'll find important information regarding specs, standards, and best practices.
+Welcome to the PowerLinks Media documentation portal. This is where you'll find important information regarding specs, standards, and best practices.

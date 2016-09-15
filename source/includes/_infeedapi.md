@@ -30,7 +30,7 @@ of options to allow for the response to be made more contextual. The table below
 Parameter|Type|Required|Description
 ---------|----|--------|-----------
 i | integer | Yes | Your PowerLinks account ID
-c | string | Yes | The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your Powerlinks account manager.
+c | string | Yes | The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your PowerLinks account manager.
 ip | string | Yes | IP (v.4) address of the end user, or the string ‘false’. NOTE: If this is a server-side implementation, please include the IPv4 address. If this is a client-side implementation, please provide a string value of ‘false’ for this parameter. This will tell us that we should be detecting the IP from the request headers.
 ua | string | Yes | User agent of the end user
 rf | string | Yes | URL-encoded HTTP referring URL
@@ -120,7 +120,7 @@ js | string | A URL that should be used to create a \<script>\ element
             </impression>
         </ad>
     </response>
-    
+
     <?xml version="1.0" encoding="utf-8"?>
     <response>
         <status>success</status>
