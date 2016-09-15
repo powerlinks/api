@@ -1,9 +1,5 @@
 # Dashboard API
 
-### Current version
-
-    http://54.152.17.93/
-
 ### HTTP Verbs
 
 The Powerlinks Dashboard API strives to use appropriate HTTP verbs to perform actions on our resources.
@@ -85,9 +81,13 @@ GET | /content-subtype | X |
 
 The Powerlinks Dashboard API allows, and in some cases requires, requests to include an access token to authorize elevated client privileges. Pass the access token via the `ApiKey` HTTP header.
 
-    `curl -H "ApiKey:j878g39yx378pa77djthzzpn" https://dashboard.api.powerlinks.com/users`
+`shell
+curl -H "ApiKey:j878g39yx378pa77djthzzpn" https://dashboard.api.powerlinks.com/users
+`
 
 Acquire an access token using the API `/users/login`.
+
+
 
     `curl -XPOST https://dashboard.api.powerlinks.com/users/login -H 'Content-Type: application/json' -d '{"email":"admin@powerlinks.com","password":"password","company":"1"}'`
 
