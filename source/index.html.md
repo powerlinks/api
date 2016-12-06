@@ -14,6 +14,7 @@ includes:
   - infeedapi
   - reportingapi
   - dashboardapi
+  - dfp
 
 search: true
 ---
