@@ -6,10 +6,6 @@ PowerLinks Media is fully compliant with the Open RTB 2.3 specifications and its
 
 Include an example bid request from a seller. Then include a table that shows what's required in the bid request, and then also what they should expect (and what's seller-specific). Always, expected + enhancements, SSP Specific (columns for table)
 
-enhancements - device data from browsecap, ias data from manuel
-extensions
-mappings
-
 ## Supported Objects
 
 Object Name | Supported | Required | Expected
