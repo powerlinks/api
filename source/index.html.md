@@ -3,7 +3,6 @@ title: PowerLinks Media Documentation
 
 language_tabs:
   - Code Snippets
-  - Test Tab
 
 toc_footers:
   - <a href='http://www.powerlinks.com'>PowerLinks Home</a>
