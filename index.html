@@ -14,11 +14,11 @@
   background-color: #272822;
 }
 .highlight .err {
-  color: #151515;
-  background-color: #ac4142;
+  color: #272822;
+  background-color: #f92672;
 }
 .highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
-  color: #505050;
+  color: #75715e;
 }
 .highlight .cp {
   color: #f4bf75;
@@ -27,45 +27,45 @@
   color: #f4bf75;
 }
 .highlight .o, .highlight .ow {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .p, .highlight .pi {
-  color: #d0d0d0;
+  color: #f8f8f2;
 }
 .highlight .gi {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .gd {
-  color: #ac4142;
+  color: #f92672;
 }
 .highlight .gh {
-  color: #6a9fb5;
-  background-color: #151515;
+  color: #66d9ef;
+  background-color: #272822;
   font-weight: bold;
 }
 .highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #aa759f;
+  color: #ae81ff;
 }
 .highlight .kc {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kt {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .kd {
-  color: #d28445;
+  color: #fd971f;
 }
 .highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .sr {
-  color: #75b5aa;
+  color: #a1efe4;
 }
 .highlight .si {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .se {
-  color: #8f5536;
+  color: #cc6633;
 }
 .highlight .nn {
   color: #f4bf75;
@@ -77,13 +77,13 @@
   color: #f4bf75;
 }
 .highlight .na {
-  color: #6a9fb5;
+  color: #66d9ef;
 }
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #90a959;
+  color: #a6e22e;
 }
 .highlight .ss {
-  color: #90a959;
+  color: #a6e22e;
 }
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
@@ -95,11 +95,11 @@
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" />
+        <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
     <div class="tocify-wrapper">
-      <img src="images/logo.png" />
+      <img src="images/logo.png" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="Code Snippets">Code Snippets</a>
         </div>
@@ -2088,10 +2088,6 @@
 
 <p>Include an example bid request from a seller. Then include a table that shows what&rsquo;s required in the bid request, and then also what they should expect (and what&rsquo;s seller-specific). Always, expected + enhancements, SSP Specific (columns for table)</p>
 
-<p>enhancements - device data from browsecap, ias data from manuel
-extensions
-mappings</p>
-
 <h2 id="supported-objects">Supported Objects</h2>
 
 <table><thead>
@@ -3209,7 +3205,6 @@ response are described in the following tables:</p>
         <span class="nt">&lt;/ad&gt;</span>
     <span class="nt">&lt;/response&gt;</span>
 </code></pre>
-
 <blockquote>
 <p><strong><em>Example Responses: JSON - w/ impression image or impression JS</em></strong></p>
 </blockquote>
@@ -3243,7 +3238,6 @@ response are described in the following tables:</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
 <blockquote>
 <p><strong><em>Example Responses: JSONP - w/ impression image or impression JS</em></strong></p>
 </blockquote>
@@ -3277,352 +3271,9 @@ jQuery123({
     }
 })
 </code></pre>
-
 <h3 id="other-responses">Other Responses</h3>
 
 <p>Along with the advert data contained within the ‘ad’ block you’ll also receive a status message that can be used to quickly determine whether an advert was returned. Adverts will always accompany a success status. If no relevant advert was found the status will be error, and in most cases will be supplemented with a message describing the cause.</p>
-
-          <h1 id="reporting-api">Reporting API</h1>
-
-<h2 id="query-string">Query string</h2>
-
-<p>The route for the reporting is <code class="prettyprint">GET /report</code></p>
-
-<h3 id="list-of-parameters">List of parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter name</th>
-<th>Format</th>
-<th>Options Available</th>
-<th>Required</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>range</td>
-<td>string</td>
-<td>GET /report/options/range</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>from</td>
-<td>date</td>
-<td>YYYY-MM-DD</td>
-<td>No</td>
-</tr>
-<tr>
-<td>to</td>
-<td>date</td>
-<td>YYYY-MM-DD</td>
-<td>No</td>
-</tr>
-<tr>
-<td>interval</td>
-<td>string</td>
-<td>GET /report/options/interval</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>metrics</td>
-<td>array</td>
-<td>GET /report/options/metrics</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>dimensions</td>
-<td>array</td>
-<td>GET /report/options/dimensions</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>filters</td>
-<td>array</td>
-<td>GET /report/options/filters</td>
-<td>No</td>
-</tr>
-<tr>
-<td>options</td>
-<td>array</td>
-<td>GET /report/options/options</td>
-<td>No</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>int</td>
-<td>(default: 10)</td>
-<td>No</td>
-</tr>
-<tr>
-<td>offset</td>
-<td>int</td>
-<td>(default: 0)</td>
-<td>No</td>
-</tr>
-</tbody></table>
-
-<h3 id="range">Range</h3>
-
-<p><code class="prettyprint">GET report/options/range</code></p>
-
-<blockquote>
-<p>Range - Example Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"today"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"yesterday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yesterday"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"last_7_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last 7 Days"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"last_48_hours"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last 48 Hours"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"month_to_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Month to Date"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"last_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Month"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="from">From</h3>
-
-<p>Format YYYY-MM-DD. Only required for range: &ldquo;custom&rdquo;</p>
-
-<p>To</p>
-
-<p>Format YYYY-MM-DD. Only required for range: &ldquo;custom&rdquo;</p>
-
-<h3 id="interval">Interval</h3>
-
-<p><code class="prettyprint">GET /report/options/interval</code></p>
-
-<blockquote>
-<p>Interval - Example Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"cumulative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cumulative"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Day"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Month"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="metrics">Metrics</h3>
-
-<p><code class="prettyprint">GET /report/options/metrics</code></p>
-
-<blockquote>
-<p>Metrics - Example Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impressions"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clicks"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"ctr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTR"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"gross"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gross"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"totalspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Spend"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mediaspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Media Spend"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"buyerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer Platform Fee"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"sellerrevenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Revenue"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"sellerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Platform Fee"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Net"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"ecpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPC"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"ecpm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPM"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="dimensions">Dimensions</h3>
-
-<p><code class="prettyprint">GET /report/options/dimensions</code></p>
-
-<blockquote>
-<p>Dimensions - Example Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"seller_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"buyer_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Source"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device Type"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="filters">Filters</h3>
-
-<p><code class="prettyprint">GET /report/options/filters</code></p>
-
-<blockquote>
-<p>Filter - Example Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"seller_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"buyer_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Source"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"cid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>To list the option for each filter you can use the following API:</p>
-
-<p><code class="prettyprint">GET /report/options/filters/{filter}/values</code></p>
-
-<p>This API return paginated content. In order to use the pagination you can use two optional parameters: &ldquo;limit&rdquo; and &ldquo;offset&rdquo;.</p>
-
-<p>i.e. country</p>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"GBR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"USA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"DEU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Germany"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"FRA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"AFG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Afghanistan"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ALB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albania"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"DZA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algeria"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"ASM"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Samoa"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"AND"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andorra"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"AGO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angola"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"totalItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="options">Options</h3>
-
-<p><code class="prettyprint">GET /report/options/options</code></p>
-
-<blockquote>
-<p>Options - Example Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="s2">"showall"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"sql"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="accounts">Accounts</h3>
-
-<p>This parameter is valid just if you are an admin. Accounts allows an array of values in this format:</p>
-
-<h3 id="query-string-structure">Query string structure</h3>
-
-<table><thead>
-<tr>
-<th>Parameter name</th>
-<th>Syntax</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>range</td>
-<td>range=today</td>
-</tr>
-<tr>
-<td>from</td>
-<td>[ range=custom&amp; ] from=2015-06-12 [ &amp;to=2015-06-30 ]</td>
-</tr>
-<tr>
-<td>to</td>
-<td>[ range=custom&amp;from=2015-06-12&amp; ] to=2015-06-30</td>
-</tr>
-<tr>
-<td>interval</td>
-<td>interval=cumulative</td>
-</tr>
-<tr>
-<td>metrics</td>
-<td>metrics=impressions,clicks [ ,{metrics},&hellip; ]</td>
-</tr>
-<tr>
-<td>dimensions</td>
-<td>dimensions=inventory_id,campaign_id [ ,{dimensions},&hellip; ]</td>
-</tr>
-<tr>
-<td>filters</td>
-<td>filters=country:GBR,USA,ITA;device_id:1,2,3 [ ;{keyword}:{value},{value};&hellip; ]</td>
-</tr>
-<tr>
-<td>accounts</td>
-<td>accounts=e661785d-4a04-450b-a050-23426a58d3e5,95f8e7ec-9aa7-11e5-8994-feff819cdc9f [ ,{uuid},&hellip; ]</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Request</p>
-</blockquote>
-<pre class="highlight shell"><code>curl <span class="se">\</span>
-    -H <span class="s2">"ApiKey: xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4="</span> <span class="se">\</span>
-    <span class="s2">"http://reporting.api.powerlinks.com/report?range=yesterday&amp;interval=cumulative&amp;metrics=impressions,clicks&amp;dimensions=inventory_id"</span>
-</code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impressions"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clicks"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"inventory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nt">"recordset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="mi">132336</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="mi">386</span><span class="p">,</span><span class="w">
-                </span><span class="nt">"inventory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">],</span><span class="w">
-        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"totalItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h2 id="api-key">API Key</h2>
-
-<h3 id="introduction">Introduction</h3>
-
-<p>The ApiKey is used to authenticate an external application.</p>
-
-<p>There will be an API in the dashboard which will be used to retrieve the API key.</p>
-
-<blockquote>
-<p>Request</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X POST -d <span class="s2">"username=USERNAME&amp;password=PASSWORD"</span> https://dashboard.powerlinks.com/apikey/login
-</code></pre>
-
-<blockquote>
-<p>Response</p>
-</blockquote>
-<pre class="highlight shell"><code><span class="nv">xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4</span><span class="o">=</span>
-NB This is not definitive yet
-</code></pre>
-
-<h3 id="using-api-keys">Using API keys</h3>
-
-<p>The API Key will be added as a custom header &ldquo;ApiKey&rdquo; inside the HTTP request for each request to reporting API routes.</p>
 
           <h1 id="dashboard-api">Dashboard API</h1>
 
@@ -3643,10 +3294,6 @@ NB This is not definitive yet
 <tr>
 <td>POST</td>
 <td>use to create a resource or perform a custom action</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td>use to store an entity under a specific resource</td>
 </tr>
 <tr>
 <td>PATCH</td>
@@ -4027,6 +3674,114 @@ curl -H &quot;ApiKey:j878g39yx378pa77djthzzpn&quot; https://dashboard.api.powerl
       &quot;meta&quot;: array,
       &quot;code&quot;: int
     }</code></p>
+
+          <h1 id="dfp-support">DFP Support</h1>
+
+<h2 id="powerlinks-support-for-dfp-ad-servers">Powerlinks Support for DFP Ad Servers</h2>
+
+<h3 id="powerlinks-ad-tags-currently-come-in-three-varieties">Powerlinks ad tags currently come in three varieties:</h3>
+
+<p><strong><em>1) Fixed size tags such as a 300x250 or a 728x90</em></strong></p>
+
+<p>Typically these can support both native and banner demand, though this is configurable on a per tag basis. These tags build a standard sized ad inside a friendly iFrame of our own construction. These tags are self-styled, with all of the styling logic housed within our iFrame.</p>
+
+<p><strong><em>2) Responsive tags that responds to the width of its parent container</em></strong></p>
+
+<p>These tags build raw HTML on the page. They do not construct a friendly iFrame. These tags are self-styled, with all of the styling logic housed within our HTML.</p>
+
+<p><strong><em>3) Custom markup tags</em></strong></p>
+
+<p>These tags serve HTML markup that is customized to mimic the host page’s markup. These tags build raw HTML on the page. They do not construct a friendly iFrame. These tags typically rely on the host page to style the ad, and thus must reside on the host page in the correct location within the page’s markup in order to render correctly.</p>
+
+<h3 id="when-serving-powerlinks-tags-through-dfp-there-are-a-few-considerations">When serving PowerLinks tags through DFP, there are a few considerations.</h3>
+
+<p><strong><em>1) Safe Frames</em></strong></p>
+
+<p>There is an option in DFP to serve third party tags behind ‘Safe Frames’. We discourage this, as it serves our tag into an unfriendly iFrame. This hinders our, and our buyers’, ability to view the referring URL of the page in many cases. If Safe Frames must be used, the only tag option is #1, where we serve a fixed size tag such as 300x250. A responsive or custom markup tag can not be served into a Safe Frame.</p>
+
+<p><strong><em>2) 1x1 vs Larger size</em></strong></p>
+
+<p>If serving a fixed size Powerlinks tag, such as a 300x250, then utilizing a 300x250 DFP tag is preferred. PowerLinks does not need to break out of the 300x250 iframe to serve directly to the page. We are still able to, but there is no need. If this is the case, then the custom instructions below do not apply.</p>
+
+<p>However, for all other cases, including responsive tags and custom markup tags, it may be preferable to serve behind a 1x1 DFP tag. This is because we will need ‘break out’ of the DFP tag in order to sit directly on the host page. This is because for responsive tags, we need to respond to the width of the page’s column, and the friendly iFrame that houses our tag cannot automatically respond to our tag. Custom markup tags will not render correctly, because they will not inherit the requisite styling from the host page.</p>
+
+<p>When we break out of the friendly iFrame, we will leave behind an empty space where the DFP tag is. If we leave behind a 1x1 empty space, that likely isn’t a problem.</p>
+
+<p>If however we are served behind a 300x250, and then break out to create a responsive tag, we will leave behind a 300x250 blank space on the page.</p>
+
+<p>We are capable of collapsing the DFP tag, and we do by default, however this can result in a blank space that shows for some period of time, and then collapses. This may not be a desired behavior, as the blank space may be visible to the user for some period of time.</p>
+
+<h3 id="steps-to-create-a-dfp-tag-to-serve-a-powerlinks-responsive-or-custom-markup-tag">Steps to create a DFP tag to serve a Powerlinks responsive or custom markup tag:</h3>
+
+<p>This also applies to standard fixed size tags IF we are being served behind a 1x1 DFP tag.</p>
+
+<p><strong><em>1:</em></strong> Create an Ad Unit in the Inventory section.
+This ideally should be a 1x1.</p>
+
+<p><strong><em>2:</em></strong> Create a line item and target it to the Inventory created in step 1.</p>
+
+<p><strong><em>3:</em></strong> Create a third party creative and add it to the line item from step 2.</p>
+
+<p>&nbsp;&nbsp;&nbsp; <strong><em>3a:</em></strong> Make sure that the &lsquo;Serve into a SafeFrame&rsquo; option is unchecked.</p>
+
+<p>&nbsp;&nbsp;&nbsp; <strong><em>3b:</em></strong> Insert our tag into the Code Snippet field.</p>
+
+<p>&nbsp;&nbsp;&nbsp; <strong><em>3c:</em></strong> Our tag will include the following: <code class="prettyprint">eid=%%PATTERN:elementid%%</code> This must remain intact. The <code class="prettyprint">%%PATTERN:elementid%%</code> is something that DFP will recognize.</p>
+
+<p><strong><em>4:</em></strong> Go to the Generate tags link. Include the inventory in question. Click &#39;generate tags&rsquo;</p>
+
+<p><strong><em>5:</em></strong> Leave tag type as Google Publisher Tag</p>
+
+<p><strong><em>6:</em></strong> Leave settings in Step 2 as is</p>
+
+<p><strong><em>7:</em></strong> Grab tag results from Step 3. The following step is very important. Without this step, none of this will work:</p>
+
+<p><strong><em>8:</em></strong> The &#39;Document Header&rsquo; section will contain code similar to this:</p>
+
+<p><code class="prettyprint">
+&lt;script async=&#39;async&#39; src=&#39;https://www.googletagservices.com/tag/js/gpt.js&#39;&gt;&lt;/script&gt;
+</code></p>
+
+<p><code class="prettyprint">
+&lt;script&gt;
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+&lt;/script&gt;
+</code></p>
+
+<p><code class="prettyprint">
+&lt;script&gt;
+  googletag.cmd.push(function() {
+    googletag.defineSlot(&#39;/26566907/1x1test&#39;, [1, 1], &#39;div-gpt-ad-1473712237579-0&#39;).addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+&lt;/script&gt;
+</code></p>
+
+<p>In the second part, there is this line:</p>
+
+<p><code class="prettyprint">googletag.defineSlot(&#39;/26566907/1x1test&#39;, [1, 1], &#39;div-gpt-ad-1473712237579-0&#39;).addService(googletag.pubads());</code></p>
+
+<p>You must edit that snippet. You will take the bit of text that starts with &#39;div-gpt-ad&hellip;&rsquo;, and you will do the following:</p>
+
+<p><code class="prettyprint">
+googletag.defineSlot(&#39;/26566907/1x1test&#39;, [1, 1], &#39;div-gpt-ad-1473712237579-0&#39;).addService(googletag.pubads()).setTargeting(&#39;elementid&#39;,&#39;div-gpt-ad-1473712237579-0&#39;);
+</code></p>
+
+<p>So on that line, BEFORE the semi-colon, you will add:</p>
+
+<p><code class="prettyprint">setTargeting(&#39;elementid&#39;,&#39;div-gpt-ad-1473712237579-0&#39;)</code></p>
+
+<p>The value div-gpt-ad-1473712237579-0 must be the same as the value in the original unedited line. This is critical.</p>
+
+<p>The ‘Document Body’ section can remain as is.</p>
+
+<p>When the tag is implemented on the site, and the PowerLinks tag is served, we will use the element ID value that is passed to us to break out of the DFP friendly iframe to sit on the page. We will then collapse the DFP tag that we leave behind.</p>
+
+<p>A general note:</p>
+
+<p>When grabbing the tag from the Powerlinks Dashboard, be sure to select the ‘DFP’ version. This will include macros that DFP can recognize, including a cachebuster, referring URL, and the custom ‘elementid’ macro required for breaking out of the DFP friendly iFrame.</p>
 
       </div>
       <div class="dark-box">
