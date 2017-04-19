@@ -12,7 +12,6 @@ includes:
   - buysidespecs
   - creativespecs
   - infeedapi
-  - reportingapi
   - dashboardapi
   - dfp
 

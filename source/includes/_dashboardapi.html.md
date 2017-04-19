@@ -4,13 +4,12 @@
 
 The PowerLinks Dashboard API strives to use appropriate HTTP verbs to perform actions on our resources.
 
-verb   | description                                          
--------| -----------------------------------------------------
-GET 	 | use to retrieve a resources or collection            
-POST	 | use to create a resource or perform a custom action  
-PUT    | use to store an entity under a specific resource     
-PATCH  | use to update an entity or specific resource         
-DELETE | delete an entity or specific resource
+verb    | description                                          
+--------| -----------------------------------------------------
+GET     | use to retrieve a resources or collection            
+POST    | use to create a resource or perform a custom action  
+PATCH   | use to update an entity or specific resource         
+DELETE  | delete an entity or specific resource
 
 ### Cross Origin Resource Sharing
 
