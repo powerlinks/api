@@ -172,7 +172,7 @@ If elevated client privilege is required but missing, the API returns an authori
     
     {"status":"fail","message":"Unauthorized"}
 
-### Resource Details 
+### Resource Details
 
 All top level resources include a `GET /{resource name}/details` endpoint that can be accessed without an API Key. These endpoints return in-depth attribute details about the resource including the attribute type, whether it's required, 
 ranges of values accepted and whether the resourse can be filtered on or sorted by the attribute. Responses to these requests have been included below.
