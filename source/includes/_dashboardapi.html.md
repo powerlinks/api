@@ -13,10 +13,6 @@ API overview
 - [ApiKey](#apikey)
 - [Response](#response)
 
-### Current version
-
-    http://api.powerlinks.com/
-
 ### HTTP Verbs
     
 The Powerlinks Dashboard API strives to use appropriate HTTP verbs to perform actions on our [resources](#resources).
@@ -57,9 +53,6 @@ We support cross origin resource sharing ([CORS](http://www.w3.org/TR/cors/)). A
 | POST | /users/switch-company | Change the company that the API key defaults to | X |
 | PATCH | /users/{id:[0-9]+} | Update a user | X |
 | GET | /companies | Retrieve a list of companies | X |
-| GET | /companies/{id:[0-9]+} | Retrieve a specific company | X |
-| POST | /companies | Create a new company | X |
-| PATCH | /companies/{id:[0-9]+} | Update a company | X |
 | GET | /companies/{id:[0-9]+}/users | Retrieve a specific company | X |
 | POST | /companies/{id:[0-9]+}/users | Associate users with a company | X |
 | PATCH | /companies/{id:[0-9]+}/users | Update associated users | X |
@@ -155,15 +148,15 @@ We support cross origin resource sharing ([CORS](http://www.w3.org/TR/cors/)). A
 | GET | /conversion-tracker-tag-types | Retrieve conversion tracker tag type data | |
 | GET | /conversion-tracker-types | Retrieve conversion tracker type data | |
 
-### ApiKey
+### Api Key
 
 The Powerlinks Dashboard API allows, and in some cases requires, requests to include an access token to authorize elevated client privileges. Pass the access token via the `ApiKey` HTTP header.
 
-    curl -H "ApiKey:j878g39yx378pa77djthzzpn" https://dashboard.api.powerlinks.com/users
+    curl -H "ApiKey:j878g39yx378pa77djthzzpn" https://example.com/users
 
 Acquire an access token using the API `/users/login`.
 
-    curl -XPOST https://dashboard.api.powerlinks.com/users/login -H 'Content-Type: application/json' -d '{"email":"YOUR EMAIL","password":"YOUR PASSWORD"}'
+    curl -XPOST https://example.com/users/login -H 'Content-Type: application/json' -d '{"email":"YOUR EMAIL","password":"YOUR PASSWORD"}'
     
     HTTP/1.1 200 OK
     Content-Type: application/json;charset=utf-8
@@ -178,6 +171,11 @@ If elevated client privilege is required but missing, the API returns an authori
     Content-Length: 42
     
     {"status":"fail","message":"Unauthorized"}
+
+### Resource Details 
+
+All top level resources include a `GET /{resource name}/details` endpoint that can be accessed without an API Key. These endpoints return in-depth attribute details about the resource including the attribute type, whether it's required, 
+ranges of values accepted and whether the resourse can be filtered on or sorted by the attribute. Responses to these requests have been included below.
 
 ## Users
 
@@ -3869,8 +3867,263 @@ If elevated client privilege is required but missing, the API returns an authori
 }
 ```
 
+## Conversion Trackers
 
-### Response
+### Details 
+
+`GET /conversion-trackers/details`
+
+> Response 
+
+```json
+{
+	"advertiser": {
+		"type": "int",
+		"required": "true",
+		"positive": "true"
+	},
+	"name": {
+		"type": "string",
+		"required": "true",
+		"sortable": "true",
+		"filterable": "true",
+		"length": [1, 255]
+	},
+	"implementationType": {
+		"type": "int",
+		"required": "true",
+		"sortable": "false",
+		"filterable": "false",
+		"in": [
+			[1, 2]
+		]
+	},
+	"attributionType": {
+		"type": "int",
+		"required": "true",
+		"sortable": "false",
+		"filterable": "false",
+		"in": [
+			[1, 2]
+		]
+	},
+	"window": {
+		"type": "int",
+		"required": "true",
+		"sortable": "false",
+		"filterable": "false",
+		"between": [1, 365]
+	},
+	"aggregationType": {
+		"type": "int",
+		"required": "true",
+		"sortable": "false",
+		"filterable": "false",
+		"in": [
+			[1, 2]
+		]
+	},
+	"type": {
+		"type": "int",
+		"required": "true",
+		"sortable": "false",
+		"filterable": "false",
+		"in": [
+			[1, 2, 3, 4, 5, 6, 7, 8, 9]
+		]
+	},
+	"defaultValue": {
+		"type": "string",
+		"required": "false",
+		"sortable": "true",
+		"filterable": "true",
+		"length": [1, 255]
+	},
+	"marginPercentage": {
+		"type": "numeric",
+		"required": "false",
+		"sortable": "true",
+		"filterable": "true",
+		"between": [0, 100],
+		"positive": "true"
+	},
+	"marginValue": {
+		"type": "numeric",
+		"required": "false",
+		"sortable": "true",
+		"filterable": "true",
+		"positive": "true"
+	},
+	"totalOrderRevenue": {
+		"type": "numeric",
+		"required": "false",
+		"sortable": "true",
+		"filterable": "true",
+		"positive": "true"
+	}
+}
+```
+<DIV></DIV>
+
+### Add a Conversion Tracker
+
+`POST /conversion-trackers`
+
+> Example Request
+
+```json
+{
+        "advertiser": 1,
+        "name": "Example Conversion Tracker",
+        "implementationType": 1,
+        "window": 100,
+        "attributionType": 2,
+        "aggregationType": 2,
+        "type": 3,
+        "defaultValue": "some default",
+        "marginPercentage": 5,
+        "marginValue": 10,
+        "totalOrderRevenue": 100
+}
+```
+
+## Custom Site/App List
+
+#### Types
+
+| Type ID | Type Name |
+|---------|-----------|
+| 1 | Sites |
+| 2 | Apps |
+
+### Details 
+
+`GET /custom-lists/details`
+
+> Response 
+
+```json
+{
+  "status": "success",
+  "data": {
+    "name": {
+      "type": "string",
+      "required": "true",
+      "sortable": "true",
+      "filterable": "true",
+      "length": [
+        1,
+        255
+      ]
+    },
+    "type": {
+      "type": "int",
+      "required": "true",
+      "sortable": "true",
+      "filterable": "true",
+      "in": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "isActive": {
+      "type": "bool",
+      "required": "false",
+      "sortable": "true",
+      "filterable": "true"
+    },
+    "isArchived": {
+      "type": "bool",
+      "required": "false",
+      "sortable": "false",
+      "filterable": "false"
+    }
+  }
+}
+```
+
+### Add a List
+
+`POST /custom-lists`
+
+> Example Request
+
+```
+{
+        "name": "Example Site List",
+        "type": 1
+}
+```
+
+### Add items to a list
+
+`POST /custom-lists/{:id}/items`
+
+> Example Request
+
+```json
+{
+        "items": ["example1.com", "example2.com", "example3.com"],
+        "isActive": true
+}
+```
+
+## Sites & Apps
+
+#### Accepted Query Parameters
+
+| Parameter | Details | Example |
+|---------|-----------|---------|
+| sellers | Comma separated list of SSP IDs (UUIDs) | ssps=323de09a-79d7-11e6-bd6a-0ae0ff90b829 |
+| categories | Comma separated list of IAB categories | categories=IAB1,IAB2-3 |
+| tlds | Comma separated list of TLDd | tlds=com,co.uk |
+| score | Numeric value, the minimum IAS Traq score | score=700 |
+| type | Entity type. Site or App | type=2 |
+
+### Retrieve
+
+`GET /sites-apps?tlds=co.uk&limit=100&offset=0`
+
+> Example Response
+
+```json
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "example1.co.uk",
+      "type": "S",
+      "tld": "co.uk",
+      "sellers": [
+        "323de09a-79d7-11e6-bd6a-0ae0ff90b829",
+        "d983b9f0-8bf2-11e6-8521-8b154a4c005a",
+        "4cb810ae-5cab-4ea2-aa3d-d948f2703fa7",
+        "5f31a32d-3305-4a0f-9485-e2d4e2c809e8",
+        "d817f020-eec4-4436-aaf5-18dae5174356",
+        "1b5b97c0-e8bb-11e6-b607-b9b06c8db41b",
+        "d05ce011-3b54-45de-a0c6-658a419a2d04",
+        "b7a1fcce-0a53-4e85-8a7a-d4f5e971118e",
+        "7efd6bfa-67af-11e6-bd6a-0ae0ff90b829",
+        "34dab060-2dbd-11e6-a466-d91b16ae4453"
+      ],
+      "total": 2023234510
+    },
+    {
+      "id": "example2.co.uk",
+      "type": "S",
+      "tld": "co.uk",
+      "sellers": [
+        "d983b9f0-8bf2-11e6-8521-8b154a4c005a"
+      ],
+      "total": 220403244
+    }
+  ]
+}
+```
+
+## Response
 
 The JSON response has this form:
 ```json
