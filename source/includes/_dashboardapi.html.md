@@ -34,22 +34,28 @@ We support cross origin resource sharing ([CORS](http://www.w3.org/TR/cors/)). A
     Access-Control-Allow-Headers: ApiKey,Content-Type,Keep-Alive,User-Agent,Cache-Control
 
 
-##Authentication
+## Authentication
 
 
 * API Key
     - Parameter Name: **apiKey**, in: header. 
 
+Unless otherwise stated, authentication is require.
 
+## Resource Hierarchy
 
-##Default
+### Buyside
+ 
+Agency (Optional) -> Advertiser -> Order -> Line Item -> Creative 
 
-###POST /users/login
+# Endpoints 
+
+## POST /users/login
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //users/login \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -163,7 +169,7 @@ System.out.println(response.toString());
   "company": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -175,14 +181,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 512|Unknown|Fail|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -193,7 +199,7 @@ expires|integer|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **512**
 
@@ -208,12 +214,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /users/reset-password
+## POST /users/reset-password
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //users/reset-password \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -323,7 +329,7 @@ System.out.println(response.toString());
   "email": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -333,14 +339,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 512|Unknown|Fail|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -350,7 +356,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **512**
 
@@ -365,12 +371,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /users/update-password
+## POST /users/update-password
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //users/update-password \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -480,7 +486,7 @@ System.out.println(response.toString());
   "token": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -490,14 +496,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 512|Unknown|Fail|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -507,7 +513,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **512**
 
@@ -522,12 +528,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /users/switch-company
+## POST /users/switch-company
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //users/switch-company \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -637,7 +643,7 @@ System.out.println(response.toString());
   "company": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -647,14 +653,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 512|Unknown|Fail|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -664,7 +670,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **512**
 
@@ -680,12 +686,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users
+## GET /users
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users \
   -H 'Accept: */*'
 
@@ -783,13 +789,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -807,12 +813,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /users
+## POST /users
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //users \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -956,7 +962,7 @@ System.out.println(response.toString());
   ]
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -979,14 +985,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -998,7 +1004,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -1015,12 +1021,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users/{id}
+## GET /users/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/{id} \
   -H 'Accept: */*'
 
@@ -1116,7 +1122,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -1125,14 +1131,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -1148,12 +1154,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /users/{id}
+## PATCH /users/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //users/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -1297,7 +1303,7 @@ System.out.println(response.toString());
   ]
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -1321,7 +1327,7 @@ body|body|[Body](#schema+body)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -1329,7 +1335,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -1339,7 +1345,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -1356,12 +1362,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users/current
+## GET /users/current
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/current \
   -H 'Accept: */*'
 
@@ -1459,13 +1465,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -1483,12 +1489,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /users/current
+## PATCH /users/current
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //users/current \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -1632,7 +1638,7 @@ System.out.println(response.toString());
   ]
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -1655,7 +1661,7 @@ body|body|[Body](#schema+body)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -1663,7 +1669,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -1673,7 +1679,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -1690,12 +1696,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /agencies/{agencyId}/users
+## GET /agencies/{agencyId}/users
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //agencies/{agencyId}/users \
   -H 'Accept: */*'
 
@@ -1791,7 +1797,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -1800,14 +1806,14 @@ agencyId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -1822,12 +1828,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /advertisers/{advertiserId}/users
+## GET /advertisers/{advertiserId}/users
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //advertisers/{advertiserId}/users \
   -H 'Accept: */*'
 
@@ -1923,7 +1929,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -1932,14 +1938,14 @@ advertiserId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -1954,12 +1960,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /companies/{companyId}/users
+## GET /companies/{companyId}/users
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //companies/{companyId}/users \
   -H 'Accept: */*'
 
@@ -2055,7 +2061,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -2064,14 +2070,14 @@ companyId|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2086,12 +2092,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /users/details
+## GET /users/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/details \
   -H 'Accept: */*'
 
@@ -2189,13 +2195,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2212,12 +2218,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /companies
+## GET /companies
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //companies \
   -H 'Accept: */*'
 
@@ -2315,13 +2321,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2339,12 +2345,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /companies/{id}
+## GET /companies/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //companies/{id} \
   -H 'Accept: */*'
 
@@ -2440,7 +2446,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -2449,14 +2455,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2472,12 +2478,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users/{id}/companies
+## GET /users/{id}/companies
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/{id}/companies \
   -H 'Accept: */*'
 
@@ -2573,7 +2579,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -2582,14 +2588,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2605,12 +2611,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /roles
+## GET /roles
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //roles \
   -H 'Accept: */*'
 
@@ -2708,13 +2714,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2732,12 +2738,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users/{id}/role
+## GET /users/{id}/role
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/{id}/role \
   -H 'Accept: */*'
 
@@ -2833,7 +2839,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -2842,14 +2848,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2865,12 +2871,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users/roles
+## GET /users/roles
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/roles \
   -H 'Accept: */*'
 
@@ -2968,13 +2974,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -2992,12 +2998,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /companies/{companyId}/users/{userId}/roles
+## GET /companies/{companyId}/users/{userId}/roles
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //companies/{companyId}/users/{userId}/roles \
   -H 'Accept: */*'
 
@@ -3093,7 +3099,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -3103,14 +3109,14 @@ userId|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -3126,12 +3132,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /users/{userId}/add-role
+## PATCH /users/{userId}/add-role
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //users/{userId}/add-role \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -3243,7 +3249,7 @@ System.out.println(response.toString());
   "role": 1
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -3255,7 +3261,7 @@ body|body|[Body2](#schema+body2)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -3263,7 +3269,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -3273,7 +3279,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -3290,12 +3296,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /users/{userId}/remove-role
+## PATCH /users/{userId}/remove-role
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //users/{userId}/remove-role \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -3407,7 +3413,7 @@ System.out.println(response.toString());
   "role": 1
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -3419,7 +3425,7 @@ body|body|[Body2](#schema+body2)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -3427,7 +3433,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -3437,7 +3443,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -3454,12 +3460,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /orders
+## GET /orders
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //orders \
   -H 'Accept: */*'
 
@@ -3557,13 +3563,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -3581,12 +3587,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /orders
+## POST /orders
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //orders \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -3625,8 +3631,8 @@ const inputBody = '{
   "name": "string",
   "internalId": "string",
   "advertiser": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "budget": 1,
   "dailyBudget": 1,
   "impressionCap": 1,
@@ -3714,8 +3720,8 @@ System.out.println(response.toString());
   "name": "string",
   "internalId": "string",
   "advertiser": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "budget": 1,
   "dailyBudget": 1,
   "impressionCap": 1,
@@ -3732,7 +3738,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -3756,7 +3762,7 @@ body|body|object|true|No description
 » conversionTrackers|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -3775,14 +3781,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -3794,7 +3800,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -3811,12 +3817,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /orders/{id}
+## GET /orders/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //orders/{id} \
   -H 'Accept: */*'
 
@@ -3912,7 +3918,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -3921,14 +3927,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -3944,12 +3950,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /orders/{id}
+## PATCH /orders/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //orders/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -3988,8 +3994,8 @@ const inputBody = '{
   "name": "string",
   "internalId": "string",
   "advertiser": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "budget": 1,
   "dailyBudget": 1,
   "impressionCap": 1,
@@ -4077,8 +4083,8 @@ System.out.println(response.toString());
   "name": "string",
   "internalId": "string",
   "advertiser": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "budget": 1,
   "dailyBudget": 1,
   "impressionCap": 1,
@@ -4095,7 +4101,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -4120,7 +4126,7 @@ body|body|object|true|No description
 » conversionTrackers|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -4139,7 +4145,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -4147,7 +4153,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -4157,7 +4163,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -4174,12 +4180,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /orders/{id}
+## DELETE /orders/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //orders/{id} \
   -H 'Accept: */*'
 
@@ -4275,7 +4281,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -4284,14 +4290,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -4306,12 +4312,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /advertisers/{advertiserId}/orders
+## GET /advertisers/{advertiserId}/orders
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //advertisers/{advertiserId}/orders \
   -H 'Accept: */*'
 
@@ -4407,7 +4413,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -4416,14 +4422,14 @@ advertiserId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -4438,12 +4444,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /orders/{id}/clone
+## POST /orders/{id}/clone
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //orders/{id}/clone \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -4482,8 +4488,8 @@ const inputBody = '{
   "name": "string",
   "internalId": "string",
   "advertiser": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "budget": 1,
   "dailyBudget": 1,
   "impressionCap": 1,
@@ -4571,8 +4577,8 @@ System.out.println(response.toString());
   "name": "string",
   "internalId": "string",
   "advertiser": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "budget": 1,
   "dailyBudget": 1,
   "impressionCap": 1,
@@ -4589,7 +4595,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -4614,7 +4620,7 @@ body|body|object|false|No description
 » conversionTrackers|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -4633,7 +4639,7 @@ body|body|object|false|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -4641,7 +4647,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -4653,7 +4659,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -4670,12 +4676,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /orders/details
+## GET /orders/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //orders/details \
   -H 'Accept: */*'
 
@@ -4773,13 +4779,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -4796,12 +4802,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /line-items
+## GET /line-items
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //line-items \
   -H 'Accept: */*'
 
@@ -4899,13 +4905,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -4923,12 +4929,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /line-items
+## POST /line-items
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //line-items \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -4979,8 +4985,8 @@ const inputBody = '{
   "maxBid": 1,
   "cpcBid": 1,
   "optimisation": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "targeting": {
     "1": {
       "verb": "E",
@@ -4993,6 +4999,14 @@ const inputBody = '{
       "values": [
         "string"
       ]
+    },
+    "3": {
+      "verb": "E",
+      "values": []
+    },
+    "4": {
+      "verb": "E",
+      "values": []
     },
     "5": {
       "verb": "E",
@@ -5028,6 +5042,13 @@ const inputBody = '{
       "values": [
         "string"
       ]
+    },
+    "11": {
+      "verb": "ER",
+      "values": {
+        "start": "string",
+        "end": "string"
+      }
     },
     "12": {
       "verb": "E",
@@ -5067,6 +5088,10 @@ const inputBody = '{
       "values": [
         1
       ]
+    },
+    "19": {
+      "verb": "I",
+      "values": 1
     },
     "20": {
       "verb": "E",
@@ -5116,16 +5141,37 @@ const inputBody = '{
         "string"
       ]
     },
+    "28": {
+      "verb": "E",
+      "values": []
+    },
     "29": {
       "verb": "E",
       "values": [
         "string"
       ]
     },
+    "30": {
+      "values": []
+    },
+    "31": {
+      "verb": "ER",
+      "values": {
+        "start": 1,
+        "end": 1
+      }
+    },
+    "33": {},
+    "34": {},
     "35": {
+      "verb": "I",
       "values": [
         "string"
       ]
+    },
+    "36": {
+      "verb": "I",
+      "values": 1
     },
     "37": {
       "values": [
@@ -5223,8 +5269,8 @@ System.out.println(response.toString());
   "maxBid": 1,
   "cpcBid": 1,
   "optimisation": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "targeting": {
     "1": {
       "verb": "E",
@@ -5237,6 +5283,14 @@ System.out.println(response.toString());
       "values": [
         "string"
       ]
+    },
+    "3": {
+      "verb": "E",
+      "values": []
+    },
+    "4": {
+      "verb": "E",
+      "values": []
     },
     "5": {
       "verb": "E",
@@ -5272,6 +5326,13 @@ System.out.println(response.toString());
       "values": [
         "string"
       ]
+    },
+    "11": {
+      "verb": "ER",
+      "values": {
+        "start": "string",
+        "end": "string"
+      }
     },
     "12": {
       "verb": "E",
@@ -5311,6 +5372,10 @@ System.out.println(response.toString());
       "values": [
         1
       ]
+    },
+    "19": {
+      "verb": "I",
+      "values": 1
     },
     "20": {
       "verb": "E",
@@ -5360,16 +5425,37 @@ System.out.println(response.toString());
         "string"
       ]
     },
+    "28": {
+      "verb": "E",
+      "values": []
+    },
     "29": {
       "verb": "E",
       "values": [
         "string"
       ]
     },
+    "30": {
+      "values": []
+    },
+    "31": {
+      "verb": "ER",
+      "values": {
+        "start": 1,
+        "end": 1
+      }
+    },
+    "33": {},
+    "34": {},
     "35": {
+      "verb": "I",
       "values": [
         "string"
       ]
+    },
+    "36": {
+      "verb": "I",
+      "values": 1
     },
     "37": {
       "values": [
@@ -5384,7 +5470,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -5412,6 +5498,10 @@ body|body|object|true|No description
 »» 2|body|object|false|IAB categories from OpenRTB
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 3|body|object|false|No description
+»»» verb|body|string|true|No description
+»» 4|body|object|false|No description
+»»» verb|body|string|true|No description
 »» 5|body|object|false|ISO 3166-1 alpha-3
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
@@ -5429,6 +5519,11 @@ body|body|object|true|No description
 »» 10|body|object|false|IP address list
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 11|body|object|false|IP address range list
+»»» verb|body|string|true|No description
+»»» values|body|object|true|No description
+»»»» start|body|string|false|No description
+»»»» end|body|string|false|No description
 »» 12|body|object|false|Domain lists
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
@@ -5447,6 +5542,9 @@ body|body|object|true|No description
 »» 18|body|object|false|AppID lists
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
+»» 19|body|object|false|No description
+»»» verb|body|string|true|No description
+»»» values|body|integer|true|No description
 »» 20|body|object|false|Device type id as described in OpenRTB section 6.16
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
@@ -5471,11 +5569,25 @@ body|body|object|true|No description
 »» 27|body|object|false|Browser Language
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 28|body|object|false|No description
+»»» verb|body|string|true|No description
 »» 29|body|object|false|Segment keys
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 30|body|object|false|No description
+»» 31|body|object|false|Count in minutes from Sunday at midnight (0) to Saturday at 11:59 (10079) in range format [<start>,<end>], Calculation is against EST
+»»» verb|body|string|true|No description
+»»» values|body|object|true|No description
+»»»» start|body|integer|false|No description
+»»»» end|body|integer|false|No description
+»» 33|body|object|false|No description
+»» 34|body|object|false|No description
 »» 35|body|object|false|IAS segments
+»»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 36|body|object|false|No description
+»»» verb|body|string|true|No description
+»»» values|body|integer|true|No description
 »» 37|body|object|false|Banner size
 »»» values|body|[string]|false|No description
 » isActive|body|boolean|true|No description
@@ -5483,7 +5595,7 @@ body|body|object|true|No description
 » creatives|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -5516,7 +5628,16 @@ body|body|object|true|No description
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
+»»» verb|ER|
+»»» verb|IR|
 »»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
@@ -5538,17 +5659,28 @@ body|body|object|true|No description
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
+»»» verb|ER|
+»»» verb|IR|
+»»» verb|I|
+»»» verb|I|
+»»» values|1|
+»»» values|2|
+»»» values|3|
+»»» values|4|
+»»» values|5|
+»»» values|6|
+»»» values|7|
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -5560,7 +5692,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -5577,12 +5709,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /line-items/{id}
+## GET /line-items/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //line-items/{id} \
   -H 'Accept: */*'
 
@@ -5678,7 +5810,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -5687,14 +5819,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -5710,12 +5842,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /line-items/{id}
+## PATCH /line-items/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //line-items/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -5766,8 +5898,8 @@ const inputBody = '{
   "maxBid": 1,
   "cpcBid": 1,
   "optimisation": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "targeting": {
     "1": {
       "verb": "E",
@@ -5780,6 +5912,14 @@ const inputBody = '{
       "values": [
         "string"
       ]
+    },
+    "3": {
+      "verb": "E",
+      "values": []
+    },
+    "4": {
+      "verb": "E",
+      "values": []
     },
     "5": {
       "verb": "E",
@@ -5815,6 +5955,13 @@ const inputBody = '{
       "values": [
         "string"
       ]
+    },
+    "11": {
+      "verb": "ER",
+      "values": {
+        "start": "string",
+        "end": "string"
+      }
     },
     "12": {
       "verb": "E",
@@ -5854,6 +6001,10 @@ const inputBody = '{
       "values": [
         1
       ]
+    },
+    "19": {
+      "verb": "I",
+      "values": 1
     },
     "20": {
       "verb": "E",
@@ -5903,16 +6054,37 @@ const inputBody = '{
         "string"
       ]
     },
+    "28": {
+      "verb": "E",
+      "values": []
+    },
     "29": {
       "verb": "E",
       "values": [
         "string"
       ]
     },
+    "30": {
+      "values": []
+    },
+    "31": {
+      "verb": "ER",
+      "values": {
+        "start": 1,
+        "end": 1
+      }
+    },
+    "33": {},
+    "34": {},
     "35": {
+      "verb": "I",
       "values": [
         "string"
       ]
+    },
+    "36": {
+      "verb": "I",
+      "values": 1
     },
     "37": {
       "values": [
@@ -6010,8 +6182,8 @@ System.out.println(response.toString());
   "maxBid": 1,
   "cpcBid": 1,
   "optimisation": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "targeting": {
     "1": {
       "verb": "E",
@@ -6024,6 +6196,14 @@ System.out.println(response.toString());
       "values": [
         "string"
       ]
+    },
+    "3": {
+      "verb": "E",
+      "values": []
+    },
+    "4": {
+      "verb": "E",
+      "values": []
     },
     "5": {
       "verb": "E",
@@ -6059,6 +6239,13 @@ System.out.println(response.toString());
       "values": [
         "string"
       ]
+    },
+    "11": {
+      "verb": "ER",
+      "values": {
+        "start": "string",
+        "end": "string"
+      }
     },
     "12": {
       "verb": "E",
@@ -6098,6 +6285,10 @@ System.out.println(response.toString());
       "values": [
         1
       ]
+    },
+    "19": {
+      "verb": "I",
+      "values": 1
     },
     "20": {
       "verb": "E",
@@ -6147,16 +6338,37 @@ System.out.println(response.toString());
         "string"
       ]
     },
+    "28": {
+      "verb": "E",
+      "values": []
+    },
     "29": {
       "verb": "E",
       "values": [
         "string"
       ]
     },
+    "30": {
+      "values": []
+    },
+    "31": {
+      "verb": "ER",
+      "values": {
+        "start": 1,
+        "end": 1
+      }
+    },
+    "33": {},
+    "34": {},
     "35": {
+      "verb": "I",
       "values": [
         "string"
       ]
+    },
+    "36": {
+      "verb": "I",
+      "values": 1
     },
     "37": {
       "values": [
@@ -6171,7 +6383,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -6200,6 +6412,10 @@ body|body|object|true|No description
 »» 2|body|object|false|IAB categories from OpenRTB
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 3|body|object|false|No description
+»»» verb|body|string|true|No description
+»» 4|body|object|false|No description
+»»» verb|body|string|true|No description
 »» 5|body|object|false|ISO 3166-1 alpha-3
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
@@ -6217,6 +6433,11 @@ body|body|object|true|No description
 »» 10|body|object|false|IP address list
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 11|body|object|false|IP address range list
+»»» verb|body|string|true|No description
+»»» values|body|object|true|No description
+»»»» start|body|string|false|No description
+»»»» end|body|string|false|No description
 »» 12|body|object|false|Domain lists
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
@@ -6235,6 +6456,9 @@ body|body|object|true|No description
 »» 18|body|object|false|AppID lists
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
+»» 19|body|object|false|No description
+»»» verb|body|string|true|No description
+»»» values|body|integer|true|No description
 »» 20|body|object|false|Device type id as described in OpenRTB section 6.16
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
@@ -6259,11 +6483,25 @@ body|body|object|true|No description
 »» 27|body|object|false|Browser Language
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 28|body|object|false|No description
+»»» verb|body|string|true|No description
 »» 29|body|object|false|Segment keys
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 30|body|object|false|No description
+»» 31|body|object|false|Count in minutes from Sunday at midnight (0) to Saturday at 11:59 (10079) in range format [<start>,<end>], Calculation is against EST
+»»» verb|body|string|true|No description
+»»» values|body|object|true|No description
+»»»» start|body|integer|false|No description
+»»»» end|body|integer|false|No description
+»» 33|body|object|false|No description
+»» 34|body|object|false|No description
 »» 35|body|object|false|IAS segments
+»»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 36|body|object|false|No description
+»»» verb|body|string|true|No description
+»»» values|body|integer|true|No description
 »» 37|body|object|false|Banner size
 »»» values|body|[string]|false|No description
 » isActive|body|boolean|false|No description
@@ -6271,7 +6509,7 @@ body|body|object|true|No description
 » creatives|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -6304,7 +6542,16 @@ body|body|object|true|No description
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
+»»» verb|ER|
+»»» verb|IR|
 »»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
@@ -6326,10 +6573,21 @@ body|body|object|true|No description
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
+»»» verb|ER|
+»»» verb|IR|
+»»» verb|I|
+»»» verb|I|
+»»» values|1|
+»»» values|2|
+»»» values|3|
+»»» values|4|
+»»» values|5|
+»»» values|6|
+»»» values|7|
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -6337,7 +6595,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -6347,7 +6605,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -6364,12 +6622,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /line-items/{id}
+## DELETE /line-items/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //line-items/{id} \
   -H 'Accept: */*'
 
@@ -6465,7 +6723,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -6474,14 +6732,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -6496,12 +6754,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /orders/{campaignId}/line-items
+## GET /orders/{campaignId}/line-items
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //orders/{campaignId}/line-items \
   -H 'Accept: */*'
 
@@ -6597,7 +6855,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -6606,14 +6864,14 @@ campaignId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -6629,12 +6887,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /line-items/{id}/clone
+## POST /line-items/{id}/clone
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //line-items/{id}/clone \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -6685,8 +6943,8 @@ const inputBody = '{
   "maxBid": 1,
   "cpcBid": 1,
   "optimisation": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "targeting": {
     "1": {
       "verb": "E",
@@ -6699,6 +6957,14 @@ const inputBody = '{
       "values": [
         "string"
       ]
+    },
+    "3": {
+      "verb": "E",
+      "values": []
+    },
+    "4": {
+      "verb": "E",
+      "values": []
     },
     "5": {
       "verb": "E",
@@ -6734,6 +7000,13 @@ const inputBody = '{
       "values": [
         "string"
       ]
+    },
+    "11": {
+      "verb": "ER",
+      "values": {
+        "start": "string",
+        "end": "string"
+      }
     },
     "12": {
       "verb": "E",
@@ -6773,6 +7046,10 @@ const inputBody = '{
       "values": [
         1
       ]
+    },
+    "19": {
+      "verb": "I",
+      "values": 1
     },
     "20": {
       "verb": "E",
@@ -6822,16 +7099,37 @@ const inputBody = '{
         "string"
       ]
     },
+    "28": {
+      "verb": "E",
+      "values": []
+    },
     "29": {
       "verb": "E",
       "values": [
         "string"
       ]
     },
+    "30": {
+      "values": []
+    },
+    "31": {
+      "verb": "ER",
+      "values": {
+        "start": 1,
+        "end": 1
+      }
+    },
+    "33": {},
+    "34": {},
     "35": {
+      "verb": "I",
       "values": [
         "string"
       ]
+    },
+    "36": {
+      "verb": "I",
+      "values": 1
     },
     "37": {
       "values": [
@@ -6929,8 +7227,8 @@ System.out.println(response.toString());
   "maxBid": 1,
   "cpcBid": 1,
   "optimisation": 1,
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
   "targeting": {
     "1": {
       "verb": "E",
@@ -6943,6 +7241,14 @@ System.out.println(response.toString());
       "values": [
         "string"
       ]
+    },
+    "3": {
+      "verb": "E",
+      "values": []
+    },
+    "4": {
+      "verb": "E",
+      "values": []
     },
     "5": {
       "verb": "E",
@@ -6978,6 +7284,13 @@ System.out.println(response.toString());
       "values": [
         "string"
       ]
+    },
+    "11": {
+      "verb": "ER",
+      "values": {
+        "start": "string",
+        "end": "string"
+      }
     },
     "12": {
       "verb": "E",
@@ -7017,6 +7330,10 @@ System.out.println(response.toString());
       "values": [
         1
       ]
+    },
+    "19": {
+      "verb": "I",
+      "values": 1
     },
     "20": {
       "verb": "E",
@@ -7066,16 +7383,37 @@ System.out.println(response.toString());
         "string"
       ]
     },
+    "28": {
+      "verb": "E",
+      "values": []
+    },
     "29": {
       "verb": "E",
       "values": [
         "string"
       ]
     },
+    "30": {
+      "values": []
+    },
+    "31": {
+      "verb": "ER",
+      "values": {
+        "start": 1,
+        "end": 1
+      }
+    },
+    "33": {},
+    "34": {},
     "35": {
+      "verb": "I",
       "values": [
         "string"
       ]
+    },
+    "36": {
+      "verb": "I",
+      "values": 1
     },
     "37": {
       "values": [
@@ -7090,7 +7428,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -7119,6 +7457,10 @@ body|body|object|false|No description
 »» 2|body|object|false|IAB categories from OpenRTB
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 3|body|object|false|No description
+»»» verb|body|string|true|No description
+»» 4|body|object|false|No description
+»»» verb|body|string|true|No description
 »» 5|body|object|false|ISO 3166-1 alpha-3
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
@@ -7136,6 +7478,11 @@ body|body|object|false|No description
 »» 10|body|object|false|IP address list
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 11|body|object|false|IP address range list
+»»» verb|body|string|true|No description
+»»» values|body|object|true|No description
+»»»» start|body|string|false|No description
+»»»» end|body|string|false|No description
 »» 12|body|object|false|Domain lists
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
@@ -7154,6 +7501,9 @@ body|body|object|false|No description
 »» 18|body|object|false|AppID lists
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
+»» 19|body|object|false|No description
+»»» verb|body|string|true|No description
+»»» values|body|integer|true|No description
 »» 20|body|object|false|Device type id as described in OpenRTB section 6.16
 »»» verb|body|string|true|No description
 »»» values|body|[integer]|false|No description
@@ -7178,11 +7528,25 @@ body|body|object|false|No description
 »» 27|body|object|false|Browser Language
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 28|body|object|false|No description
+»»» verb|body|string|true|No description
 »» 29|body|object|false|Segment keys
 »»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 30|body|object|false|No description
+»» 31|body|object|false|Count in minutes from Sunday at midnight (0) to Saturday at 11:59 (10079) in range format [<start>,<end>], Calculation is against EST
+»»» verb|body|string|true|No description
+»»» values|body|object|true|No description
+»»»» start|body|integer|false|No description
+»»»» end|body|integer|false|No description
+»» 33|body|object|false|No description
+»» 34|body|object|false|No description
 »» 35|body|object|false|IAS segments
+»»» verb|body|string|true|No description
 »»» values|body|[string]|false|No description
+»» 36|body|object|false|No description
+»»» verb|body|string|true|No description
+»»» values|body|integer|true|No description
 »» 37|body|object|false|Banner size
 »»» values|body|[string]|false|No description
 » isActive|body|boolean|false|No description
@@ -7190,7 +7554,7 @@ body|body|object|false|No description
 » creatives|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -7223,7 +7587,16 @@ body|body|object|false|No description
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
+»»» verb|ER|
+»»» verb|IR|
 »»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
+»»» verb|E|
+»»» verb|I|
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
@@ -7245,10 +7618,21 @@ body|body|object|false|No description
 »»» verb|I|
 »»» verb|E|
 »»» verb|I|
+»»» verb|ER|
+»»» verb|IR|
+»»» verb|I|
+»»» verb|I|
+»»» values|1|
+»»» values|2|
+»»» values|3|
+»»» values|4|
+»»» values|5|
+»»» values|6|
+»»» values|7|
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -7256,7 +7640,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -7268,7 +7652,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -7285,12 +7669,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /line-items/details
+## GET /line-items/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //line-items/details \
   -H 'Accept: */*'
 
@@ -7388,13 +7772,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -7411,12 +7795,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /line-items/{id}/targetings/{targetingId}
+## GET /line-items/{id}/targetings/{targetingId}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //line-items/{id}/targetings/{targetingId} \
   -H 'Accept: */*'
 
@@ -7512,7 +7896,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -7522,14 +7906,14 @@ targetingId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -7545,12 +7929,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /creatives
+## GET /creatives
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //creatives \
   -H 'Accept: */*'
 
@@ -7648,13 +8032,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -7672,12 +8056,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /creatives
+## POST /creatives
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //creatives \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -7871,7 +8255,7 @@ System.out.println(response.toString());
   }
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -7892,7 +8276,7 @@ body|body|object|true|No description
 » categories|body|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -7901,14 +8285,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -7920,7 +8304,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -7937,12 +8321,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /creatives/{id}
+## GET /creatives/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //creatives/{id} \
   -H 'Accept: */*'
 
@@ -8038,7 +8422,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -8047,14 +8431,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -8070,12 +8454,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /creatives/{id}
+## PATCH /creatives/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //creatives/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -8267,7 +8651,7 @@ System.out.println(response.toString());
   }
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -8288,7 +8672,7 @@ body|body|object|true|No description
 » categories|body|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -8297,7 +8681,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -8305,7 +8689,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -8315,7 +8699,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -8332,12 +8716,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /creatives/{id}
+## DELETE /creatives/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //creatives/{id} \
   -H 'Accept: */*'
 
@@ -8433,7 +8817,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -8442,14 +8826,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -8464,12 +8848,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /line-items/{lineItemId}/creatives
+## GET /line-items/{lineItemId}/creatives
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //line-items/{lineItemId}/creatives \
   -H 'Accept: */*'
 
@@ -8565,7 +8949,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -8574,14 +8958,14 @@ lineItemId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -8597,12 +8981,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /advertisers/{advertiserId}/creatives
+## GET /advertisers/{advertiserId}/creatives
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //advertisers/{advertiserId}/creatives \
   -H 'Accept: */*'
 
@@ -8698,7 +9082,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -8707,14 +9091,14 @@ advertiserId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -8729,12 +9113,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /creatives/{id}/clone
+## POST /creatives/{id}/clone
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //creatives/{id}/clone \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -8928,7 +9312,7 @@ System.out.println(response.toString());
   }
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -8950,7 +9334,7 @@ body|body|object|false|No description
 » categories|body|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -8959,7 +9343,7 @@ body|body|object|false|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -8967,7 +9351,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -8979,7 +9363,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -8996,12 +9380,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /creatives/details/{id}
+## GET /creatives/details/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //creatives/details/{id} \
   -H 'Accept: */*'
 
@@ -9097,7 +9481,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -9106,14 +9490,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -9128,12 +9512,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /conversion-trackers
+## GET /conversion-trackers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-trackers \
   -H 'Accept: */*'
 
@@ -9231,13 +9615,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -9254,12 +9638,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /conversion-trackers
+## POST /conversion-trackers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //conversion-trackers \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -9391,7 +9775,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -9410,7 +9794,7 @@ body|body|object|true|No description
 » isArchived|body|boolean|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -9432,14 +9816,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -9451,7 +9835,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -9468,12 +9852,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /conversion-trackers/{id}
+## GET /conversion-trackers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-trackers/{id} \
   -H 'Accept: */*'
 
@@ -9569,7 +9953,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -9578,14 +9962,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -9601,12 +9985,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /conversion-trackers/{id}
+## PATCH /conversion-trackers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //conversion-trackers/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -9738,7 +10122,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -9758,7 +10142,7 @@ body|body|object|true|No description
 » isArchived|body|boolean|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -9780,7 +10164,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -9788,7 +10172,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -9798,7 +10182,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -9815,12 +10199,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /conversion-trackers/{id}
+## DELETE /conversion-trackers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //conversion-trackers/{id} \
   -H 'Accept: */*'
 
@@ -9916,7 +10300,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -9925,14 +10309,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -9947,12 +10331,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /orders/{campaignId}/conversion-trackers
+## GET /orders/{campaignId}/conversion-trackers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //orders/{campaignId}/conversion-trackers \
   -H 'Accept: */*'
 
@@ -10048,7 +10432,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -10057,14 +10441,14 @@ campaignId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -10080,12 +10464,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /advertisers/{advertiserId}/conversion-trackers
+## GET /advertisers/{advertiserId}/conversion-trackers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //advertisers/{advertiserId}/conversion-trackers \
   -H 'Accept: */*'
 
@@ -10181,7 +10565,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -10190,14 +10574,14 @@ advertiserId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -10213,12 +10597,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /conversion-trackers/details
+## GET /conversion-trackers/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-trackers/details \
   -H 'Accept: */*'
 
@@ -10316,13 +10700,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -10339,12 +10723,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /images
+## POST /images
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //images \
   -H 'Content-Type: application/octet-stream' \
   -H 'Accept: */*'
@@ -10451,7 +10835,7 @@ System.out.println(response.toString());
 string
 
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -10460,14 +10844,14 @@ body|body|string(binary)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -10479,7 +10863,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -10496,12 +10880,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /images/{id}
+## GET /images/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //images/{id} \
   -H 'Accept: */*'
 
@@ -10597,7 +10981,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -10606,14 +10990,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -10629,12 +11013,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /images/{id}
+## PATCH /images/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //images/{id} \
   -H 'Accept: */*'
 
@@ -10730,7 +11114,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -10739,7 +11123,7 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -10747,7 +11131,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -10757,7 +11141,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -10774,12 +11158,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /images/{id}
+## DELETE /images/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //images/{id} \
   -H 'Accept: */*'
 
@@ -10875,7 +11259,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -10884,14 +11268,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -10906,12 +11290,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /images/details
+## GET /images/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //images/details \
   -H 'Accept: */*'
 
@@ -11009,13 +11393,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -11032,12 +11416,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /agencies
+## GET /agencies
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //agencies \
   -H 'Accept: */*'
 
@@ -11135,13 +11519,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -11159,12 +11543,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /agencies
+## POST /agencies
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //agencies \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -11304,7 +11688,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -11325,14 +11709,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -11344,7 +11728,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -11361,12 +11745,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /agencies/{id}
+## GET /agencies/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //agencies/{id} \
   -H 'Accept: */*'
 
@@ -11462,7 +11846,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -11471,14 +11855,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -11494,12 +11878,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /agencies/{id}
+## PATCH /agencies/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //agencies/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -11639,7 +12023,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -11661,7 +12045,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -11669,7 +12053,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -11679,7 +12063,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -11696,12 +12080,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /agencies/{id}
+## DELETE /agencies/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //agencies/{id} \
   -H 'Accept: */*'
 
@@ -11797,7 +12181,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -11806,14 +12190,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -11828,12 +12212,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users/{id}/agencies
+## GET /users/{id}/agencies
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/{id}/agencies \
   -H 'Accept: */*'
 
@@ -11929,7 +12313,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -11938,14 +12322,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -11961,12 +12345,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /agencies/details
+## GET /agencies/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //agencies/details \
   -H 'Accept: */*'
 
@@ -12064,13 +12448,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -12087,12 +12471,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /advertisers
+## GET /advertisers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //advertisers \
   -H 'Accept: */*'
 
@@ -12190,13 +12574,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -12214,12 +12598,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /advertisers
+## POST /advertisers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //advertisers \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -12361,7 +12745,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -12383,7 +12767,7 @@ body|body|object|true|No description
 » users|body|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -12398,14 +12782,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -12417,7 +12801,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -12434,12 +12818,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /advertisers/{id}
+## GET /advertisers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //advertisers/{id} \
   -H 'Accept: */*'
 
@@ -12535,7 +12919,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -12544,14 +12928,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -12567,12 +12951,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /advertisers/{id}
+## PATCH /advertisers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //advertisers/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -12714,7 +13098,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -12737,7 +13121,7 @@ body|body|object|true|No description
 » users|body|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -12752,7 +13136,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -12760,7 +13144,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -12770,7 +13154,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -12787,12 +13171,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /advertisers/{id}
+## DELETE /advertisers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //advertisers/{id} \
   -H 'Accept: */*'
 
@@ -12888,7 +13272,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -12897,14 +13281,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -12919,12 +13303,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /agencies/{agencyId}/advertisers
+## GET /agencies/{agencyId}/advertisers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //agencies/{agencyId}/advertisers \
   -H 'Accept: */*'
 
@@ -13020,7 +13404,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -13029,14 +13413,14 @@ agencyId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -13052,12 +13436,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /users/{id}/advertisers
+## GET /users/{id}/advertisers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //users/{id}/advertisers \
   -H 'Accept: */*'
 
@@ -13153,7 +13537,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -13162,14 +13546,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -13185,12 +13569,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /advertisers/details
+## GET /advertisers/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //advertisers/details \
   -H 'Accept: */*'
 
@@ -13288,13 +13672,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -13311,12 +13695,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /publishers
+## GET /publishers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //publishers \
   -H 'Accept: */*'
 
@@ -13414,13 +13798,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -13438,12 +13822,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /publishers
+## POST /publishers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //publishers \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -13585,7 +13969,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -13608,14 +13992,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -13627,7 +14011,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -13644,12 +14028,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /publishers/{id}
+## GET /publishers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //publishers/{id} \
   -H 'Accept: */*'
 
@@ -13745,7 +14129,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -13754,14 +14138,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -13777,12 +14161,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /publishers/{id}
+## PATCH /publishers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //publishers/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -13924,7 +14308,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -13948,7 +14332,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -13956,7 +14340,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -13966,7 +14350,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -13983,12 +14367,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /publishers/{id}
+## DELETE /publishers/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //publishers/{id} \
   -H 'Accept: */*'
 
@@ -14084,7 +14468,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -14093,14 +14477,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -14115,12 +14499,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /publishers/details
+## GET /publishers/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //publishers/details \
   -H 'Accept: */*'
 
@@ -14218,13 +14602,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -14241,12 +14625,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /publishers/{publisherId}/sites
+## GET /publishers/{publisherId}/sites
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //publishers/{publisherId}/sites \
   -H 'Accept: */*'
 
@@ -14342,7 +14726,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -14351,14 +14735,14 @@ publisherId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -14374,12 +14758,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /publishers/{publisherId}/apps
+## GET /publishers/{publisherId}/apps
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //publishers/{publisherId}/apps \
   -H 'Accept: */*'
 
@@ -14475,7 +14859,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -14484,14 +14868,14 @@ publisherId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -14507,12 +14891,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /publishers/{publisherId}/tags
+## GET /publishers/{publisherId}/tags
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //publishers/{publisherId}/tags \
   -H 'Accept: */*'
 
@@ -14608,7 +14992,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -14617,14 +15001,14 @@ publisherId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -14640,12 +15024,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /ssps
+## GET /ssps
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //ssps \
   -H 'Accept: */*'
 
@@ -14743,13 +15127,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -14767,12 +15151,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /ssps
+## POST /ssps
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //ssps \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -14908,7 +15292,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -14930,14 +15314,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -14949,7 +15333,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -14966,12 +15350,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /ssps/{id}
+## GET /ssps/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //ssps/{id} \
   -H 'Accept: */*'
 
@@ -15067,7 +15451,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -15076,14 +15460,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -15099,12 +15483,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /ssps/{id}
+## PATCH /ssps/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //ssps/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -15240,7 +15624,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -15263,7 +15647,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -15271,7 +15655,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -15281,7 +15665,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -15298,12 +15682,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /ssps/{id}
+## DELETE /ssps/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //ssps/{id} \
   -H 'Accept: */*'
 
@@ -15399,7 +15783,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -15408,14 +15792,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -15430,12 +15814,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /ssps/details
+## GET /ssps/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //ssps/details \
   -H 'Accept: */*'
 
@@ -15533,13 +15917,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -15556,12 +15940,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /sites
+## POST /sites
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //sites \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -15673,7 +16057,7 @@ System.out.println(response.toString());
   "name": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -15684,14 +16068,14 @@ body|body|[Body3](#schema+body3)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -15703,7 +16087,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -15720,12 +16104,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /sites/{id}
+## PATCH /sites/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //sites/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -15837,7 +16221,7 @@ System.out.println(response.toString());
   "name": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -15849,7 +16233,7 @@ body|body|[Body4](#schema+body4)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -15857,7 +16241,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -15867,7 +16251,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -15884,12 +16268,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /sites/{id}
+## GET /sites/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //sites/{id} \
   -H 'Accept: */*'
 
@@ -15985,7 +16369,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -15994,14 +16378,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -16017,12 +16401,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /sites/details
+## GET /sites/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //sites/details \
   -H 'Accept: */*'
 
@@ -16120,13 +16504,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -16143,12 +16527,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###POST /apps
+## POST /apps
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //apps \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -16260,7 +16644,7 @@ System.out.println(response.toString());
   "name": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -16271,14 +16655,14 @@ body|body|[Body3](#schema+body3)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -16290,7 +16674,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -16307,12 +16691,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /apps/{id}
+## PATCH /apps/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //apps/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -16424,7 +16808,7 @@ System.out.println(response.toString());
   "name": "string"
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -16436,7 +16820,7 @@ body|body|[Body4](#schema+body4)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -16444,7 +16828,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -16454,7 +16838,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -16471,12 +16855,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /apps/{id}
+## GET /apps/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //apps/{id} \
   -H 'Accept: */*'
 
@@ -16572,7 +16956,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -16581,14 +16965,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -16604,12 +16988,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /apps/details
+## GET /apps/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //apps/details \
   -H 'Accept: */*'
 
@@ -16707,13 +17091,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -16730,12 +17114,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /tags
+## GET /tags
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //tags \
   -H 'Accept: */*'
 
@@ -16833,13 +17217,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -16857,12 +17241,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /tags
+## POST /tags
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //tags \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -17022,7 +17406,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -17049,7 +17433,7 @@ body|body|object|true|No description
 » fillNetworks|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -17095,14 +17479,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -17114,7 +17498,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -17131,12 +17515,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /tags/{id}
+## GET /tags/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //tags/{id} \
   -H 'Accept: */*'
 
@@ -17232,7 +17616,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -17241,14 +17625,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -17264,12 +17648,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /tags/{id}
+## PATCH /tags/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //tags/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -17429,7 +17813,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -17457,7 +17841,7 @@ body|body|object|true|No description
 » fillNetworks|body|[integer]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -17503,7 +17887,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -17511,7 +17895,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -17521,7 +17905,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -17538,12 +17922,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /tags/{id}
+## DELETE /tags/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //tags/{id} \
   -H 'Accept: */*'
 
@@ -17639,7 +18023,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -17648,14 +18032,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -17670,12 +18054,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /tags/details
+## GET /tags/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //tags/details \
   -H 'Accept: */*'
 
@@ -17773,13 +18157,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -17796,12 +18180,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /custom-lists
+## GET /custom-lists
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //custom-lists \
   -H 'Accept: */*'
 
@@ -17899,13 +18283,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -17923,12 +18307,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /custom-lists
+## POST /custom-lists
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //custom-lists \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -18044,7 +18428,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -18055,7 +18439,7 @@ body|body|[Body5](#schema+body5)|true|No description
 » isArchived|body|boolean|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -18064,14 +18448,14 @@ body|body|[Body5](#schema+body5)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -18083,7 +18467,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -18100,12 +18484,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /custom-lists/{id}
+## GET /custom-lists/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //custom-lists/{id} \
   -H 'Accept: */*'
 
@@ -18201,7 +18585,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -18210,14 +18594,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -18233,12 +18617,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /custom-lists/{id}
+## PATCH /custom-lists/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //custom-lists/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -18354,19 +18738,19 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
 id|path|integer|true|No description
-body|body|[Body6](#schema+body6)|true|No description
+body|body|object|true|No description
 » name|body|string|false|length 1-255
 » type|body|integer|false|No description
 » isActive|body|boolean|false|No description
 » isArchived|body|boolean|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -18375,7 +18759,7 @@ body|body|[Body6](#schema+body6)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -18383,7 +18767,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -18393,7 +18777,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -18410,12 +18794,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /custom-lists/{id}
+## DELETE /custom-lists/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //custom-lists/{id} \
   -H 'Accept: */*'
 
@@ -18511,7 +18895,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -18520,14 +18904,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -18542,12 +18926,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /custom-lists/details
+## GET /custom-lists/details
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //custom-lists/details \
   -H 'Accept: */*'
 
@@ -18645,13 +19029,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -18668,12 +19052,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /custom-lists/{customListId}/items
+## GET /custom-lists/{customListId}/items
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //custom-lists/{customListId}/items \
   -H 'Accept: */*'
 
@@ -18769,7 +19153,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -18778,14 +19162,14 @@ customListId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -18801,12 +19185,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /custom-lists/{customListId}/items
+## POST /custom-lists/{customListId}/items
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //custom-lists/{customListId}/items \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -18922,7 +19306,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -18934,7 +19318,7 @@ body|body|[Body5](#schema+body5)|true|No description
 » isArchived|body|boolean|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -18943,14 +19327,14 @@ body|body|[Body5](#schema+body5)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -18962,7 +19346,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -18979,189 +19363,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /custom-lists/{customListId}/items
+## POST /custom-lists/{customListId}/items/upload
 
 > Code samples
 
 ```shell
-##You can also use wget
-curl -X patch //custom-lists/{customListId}/items \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: */*'
-
-```
-
-```http
-PATCH //custom-lists/{customListId}/items HTTP/1.1
-Host: null
-Content-Type: application/json
-Accept: */*
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'*/*'
-
-};
-
-$.ajax({
-  url: '//custom-lists/{customListId}/items',
-  method: 'patch',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-```
-
-```javascript--nodejs
-const request = require('node-fetch');
-const inputBody = '{
-  "name": "string",
-  "type": 1,
-  "isActive": true,
-  "isArchived": true
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'*/*'
-
-};
-
-fetch('//custom-lists/{customListId}/items',
-{
-  method: 'PATCH',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => '*/*'
-}
-
-result = RestClient.patch '//custom-lists/{customListId}/items',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': '*/*'
-}
-
-r = requests.patch('//custom-lists/{customListId}/items', params={
-
-}, headers = headers)
-
-print r.json()
-```
-
-```java
-URL obj = new URL("//custom-lists/{customListId}/items");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PATCH");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-```
-
-> Body parameter
-
-```json
-{
-  "name": "string",
-  "type": 1,
-  "isActive": true,
-  "isArchived": true
-}
-```
-####Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-customListId|path|integer|true|No description
-body|body|[Body6](#schema+body6)|true|No description
-» name|body|string|false|length 1-255
-» type|body|integer|false|No description
-» isActive|body|boolean|false|No description
-» isArchived|body|boolean|false|No description
-
-
-#####Enumerated Values
-
-|Parameter|Value|
-|---|---|
-» type|1|
-» type|2|
-
-> Example responses
-
-####Responses
-
-Status|Meaning|Description|Schema
----|---|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
-404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
-
-####Response Schema
-
-Status Code **200**
-
-Name|Type|Required|Description
----|---|---|---|---|
-status|string|false|No description
-
-
-
-####Response Schema
-
-Status Code **400**
-
-Name|Type|Required|Description
----|---|---|---|---|
-data|object|false|No description
-» errors|[string]|false|No description
-status|string|false|No description
-
-
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-apiKey
-</aside>
-
-###POST /custom-lists/{customListId}/items/upload
-
-> Code samples
-
-```shell
-##You can also use wget
+# You can also use wget
 curl -X post //custom-lists/{customListId}/items/upload \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -19277,7 +19484,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -19289,7 +19496,7 @@ body|body|[Body5](#schema+body5)|true|No description
 » isArchived|body|boolean|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Parameter|Value|
 |---|---|
@@ -19298,14 +19505,14 @@ body|body|[Body5](#schema+body5)|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -19317,7 +19524,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -19334,501 +19541,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /custom-lists/{customListId}/items/upload
+## GET /scheduled-reports
 
 > Code samples
 
 ```shell
-##You can also use wget
-curl -X patch //custom-lists/{customListId}/items/upload \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: */*'
-
-```
-
-```http
-PATCH //custom-lists/{customListId}/items/upload HTTP/1.1
-Host: null
-Content-Type: application/json
-Accept: */*
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'*/*'
-
-};
-
-$.ajax({
-  url: '//custom-lists/{customListId}/items/upload',
-  method: 'patch',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-```
-
-```javascript--nodejs
-const request = require('node-fetch');
-const inputBody = '{
-  "name": "string",
-  "type": 1,
-  "isActive": true,
-  "isArchived": true
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'*/*'
-
-};
-
-fetch('//custom-lists/{customListId}/items/upload',
-{
-  method: 'PATCH',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => '*/*'
-}
-
-result = RestClient.patch '//custom-lists/{customListId}/items/upload',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': '*/*'
-}
-
-r = requests.patch('//custom-lists/{customListId}/items/upload', params={
-
-}, headers = headers)
-
-print r.json()
-```
-
-```java
-URL obj = new URL("//custom-lists/{customListId}/items/upload");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PATCH");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-```
-
-> Body parameter
-
-```json
-{
-  "name": "string",
-  "type": 1,
-  "isActive": true,
-  "isArchived": true
-}
-```
-####Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-customListId|path|integer|true|No description
-body|body|[Body6](#schema+body6)|true|No description
-» name|body|string|false|length 1-255
-» type|body|integer|false|No description
-» isActive|body|boolean|false|No description
-» isArchived|body|boolean|false|No description
-
-
-#####Enumerated Values
-
-|Parameter|Value|
-|---|---|
-» type|1|
-» type|2|
-
-> Example responses
-
-####Responses
-
-Status|Meaning|Description|Schema
----|---|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
-404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
-
-####Response Schema
-
-Status Code **200**
-
-Name|Type|Required|Description
----|---|---|---|---|
-status|string|false|No description
-
-
-
-####Response Schema
-
-Status Code **400**
-
-Name|Type|Required|Description
----|---|---|---|---|
-data|object|false|No description
-» errors|[string]|false|No description
-status|string|false|No description
-
-
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-apiKey
-</aside>
-
-###GET /custom-lists/{customListId}/items/{id}
-
-> Code samples
-
-```shell
-##You can also use wget
-curl -X get //custom-lists/{customListId}/items/{id} \
-  -H 'Accept: */*'
-
-```
-
-```http
-GET //custom-lists/{customListId}/items/{id} HTTP/1.1
-Host: null
-
-Accept: */*
-
-```
-
-```javascript
-var headers = {
-  'Accept':'*/*'
-
-};
-
-$.ajax({
-  url: '//custom-lists/{customListId}/items/{id}',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-```
-
-```javascript--nodejs
-const request = require('node-fetch');
-
-const headers = {
-  'Accept':'*/*'
-
-};
-
-fetch('//custom-lists/{customListId}/items/{id}',
-{
-  method: 'GET',
-
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => '*/*'
-}
-
-result = RestClient.get '//custom-lists/{customListId}/items/{id}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-```
-
-```python
-import requests
-headers = {
-  'Accept': '*/*'
-}
-
-r = requests.get('//custom-lists/{customListId}/items/{id}', params={
-
-}, headers = headers)
-
-print r.json()
-```
-
-```java
-URL obj = new URL("//custom-lists/{customListId}/items/{id}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-```
-
-####Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-customListId|path|integer|true|No description
-id|path|integer|true|No description
-
-
-> Example responses
-
-####Responses
-
-Status|Meaning|Description|Schema
----|---|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
-404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
-
-####Response Schema
-
-Status Code **200**
-
-Name|Type|Required|Description
----|---|---|---|---|
-data|object|false|No description
-status|string|false|No description
-
-
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-apiKey
-</aside>
-
-###PATCH /custom-lists/{customListId}/items/{id}
-
-> Code samples
-
-```shell
-##You can also use wget
-curl -X patch //custom-lists/{customListId}/items/{id} \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: */*'
-
-```
-
-```http
-PATCH //custom-lists/{customListId}/items/{id} HTTP/1.1
-Host: null
-Content-Type: application/json
-Accept: */*
-
-```
-
-```javascript
-var headers = {
-  'Content-Type':'application/json',
-  'Accept':'*/*'
-
-};
-
-$.ajax({
-  url: '//custom-lists/{customListId}/items/{id}',
-  method: 'patch',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-```
-
-```javascript--nodejs
-const request = require('node-fetch');
-const inputBody = '{
-  "name": "string",
-  "type": 1,
-  "isActive": true,
-  "isArchived": true
-}';
-const headers = {
-  'Content-Type':'application/json',
-  'Accept':'*/*'
-
-};
-
-fetch('//custom-lists/{customListId}/items/{id}',
-{
-  method: 'PATCH',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Accept' => '*/*'
-}
-
-result = RestClient.patch '//custom-lists/{customListId}/items/{id}',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-```
-
-```python
-import requests
-headers = {
-  'Content-Type': 'application/json',
-  'Accept': '*/*'
-}
-
-r = requests.patch('//custom-lists/{customListId}/items/{id}', params={
-
-}, headers = headers)
-
-print r.json()
-```
-
-```java
-URL obj = new URL("//custom-lists/{customListId}/items/{id}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("PATCH");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-```
-
-> Body parameter
-
-```json
-{
-  "name": "string",
-  "type": 1,
-  "isActive": true,
-  "isArchived": true
-}
-```
-####Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-customListId|path|integer|true|No description
-id|path|integer|true|No description
-body|body|[Body6](#schema+body6)|true|No description
-» name|body|string|false|length 1-255
-» type|body|integer|false|No description
-» isActive|body|boolean|false|No description
-» isArchived|body|boolean|false|No description
-
-
-#####Enumerated Values
-
-|Parameter|Value|
-|---|---|
-» type|1|
-» type|2|
-
-> Example responses
-
-####Responses
-
-Status|Meaning|Description|Schema
----|---|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
-404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
-
-####Response Schema
-
-Status Code **200**
-
-Name|Type|Required|Description
----|---|---|---|---|
-status|string|false|No description
-
-
-
-####Response Schema
-
-Status Code **400**
-
-Name|Type|Required|Description
----|---|---|---|---|
-data|object|false|No description
-» errors|[string]|false|No description
-status|string|false|No description
-
-
-
-<aside class="warning">
-To perform this operation, you must be authenticated by means of one of the following methods:
-apiKey
-</aside>
-
-###GET /scheduled-reports
-
-> Code samples
-
-```shell
-##You can also use wget
+# You can also use wget
 curl -X get //scheduled-reports \
   -H 'Accept: */*'
 
@@ -19926,13 +19644,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -19950,12 +19668,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###POST /scheduled-reports
+## POST /scheduled-reports
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X post //scheduled-reports \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -19993,8 +19711,10 @@ const request = require('node-fetch');
 const inputBody = '{
   "name": "string",
   "range": "string",
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
+  "from": "2017-09-26",
+  "to": "2017-09-26",
   "utc_offset": 1,
   "interval": "string",
   "emails": [
@@ -20079,8 +19799,10 @@ System.out.println(response.toString());
 {
   "name": "string",
   "range": "string",
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
+  "from": "2017-09-26",
+  "to": "2017-09-26",
   "utc_offset": 1,
   "interval": "string",
   "emails": [
@@ -20095,7 +19817,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -20104,6 +19826,8 @@ body|body|object|true|No description
 » range|body|string|true|length 1-255
 » startDate|body|string(date)|false|No description
 » endDate|body|string(date)|false|No description
+» from|body|string(date)|false|No description
+» to|body|string(date)|false|No description
 » utc_offset|body|integer|false|No description
 » interval|body|string|true|length 1-255
 » isArchived|body|boolean|false|No description
@@ -20114,14 +19838,14 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **201**
 
@@ -20133,7 +19857,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -20150,12 +19874,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /scheduled-reports/{id}
+## GET /scheduled-reports/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //scheduled-reports/{id} \
   -H 'Accept: */*'
 
@@ -20251,7 +19975,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -20260,14 +19984,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -20283,12 +20007,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###PATCH /scheduled-reports/{id}
+## PATCH /scheduled-reports/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X patch //scheduled-reports/{id} \
   -H 'Content-Type: application/json' \
   -H 'Accept: */*'
@@ -20326,8 +20050,10 @@ const request = require('node-fetch');
 const inputBody = '{
   "name": "string",
   "range": "string",
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
+  "from": "2017-09-26",
+  "to": "2017-09-26",
   "utc_offset": 1,
   "interval": "string",
   "emails": [
@@ -20412,8 +20138,10 @@ System.out.println(response.toString());
 {
   "name": "string",
   "range": "string",
-  "startDate": "2017-08-16",
-  "endDate": "2017-08-16",
+  "startDate": "2017-09-26",
+  "endDate": "2017-09-26",
+  "from": "2017-09-26",
+  "to": "2017-09-26",
   "utc_offset": 1,
   "interval": "string",
   "emails": [
@@ -20428,7 +20156,7 @@ System.out.println(response.toString());
   "isArchived": true
 }
 ```
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -20438,6 +20166,8 @@ body|body|object|true|No description
 » range|body|string|false|length 1-255
 » startDate|body|string(date)|false|No description
 » endDate|body|string(date)|false|No description
+» from|body|string(date)|false|No description
+» to|body|string(date)|false|No description
 » utc_offset|body|integer|false|No description
 » interval|body|string|false|length 1-255
 » isArchived|body|boolean|false|No description
@@ -20448,7 +20178,7 @@ body|body|object|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
@@ -20456,7 +20186,7 @@ Status|Meaning|Description|Schema
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -20466,7 +20196,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -20483,12 +20213,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###DELETE /scheduled-reports/{id}
+## DELETE /scheduled-reports/{id}
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X delete //scheduled-reports/{id} \
   -H 'Accept: */*'
 
@@ -20584,7 +20314,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -20593,14 +20323,14 @@ id|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -20615,12 +20345,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /billing-types
+## GET /billing-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //billing-types \
   -H 'Accept: */*'
 
@@ -20718,13 +20448,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -20741,12 +20471,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /billing-categories
+## GET /billing-categories
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //billing-categories \
   -H 'Accept: */*'
 
@@ -20844,13 +20574,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -20867,12 +20597,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /ad-formats
+## GET /ad-formats
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //ad-formats \
   -H 'Accept: */*'
 
@@ -20970,13 +20700,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -20993,12 +20723,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /fee-types
+## GET /fee-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //fee-types \
   -H 'Accept: */*'
 
@@ -21096,13 +20826,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -21119,12 +20849,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /pacings
+## GET /pacings
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //pacings \
   -H 'Accept: */*'
 
@@ -21222,13 +20952,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -21245,12 +20975,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /optimisations
+## GET /optimisations
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //optimisations \
   -H 'Accept: */*'
 
@@ -21348,13 +21078,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -21371,12 +21101,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /placements
+## GET /placements
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //placements \
   -H 'Accept: */*'
 
@@ -21474,13 +21204,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -21497,12 +21227,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /content-types
+## GET /content-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //content-types \
   -H 'Accept: */*'
 
@@ -21600,13 +21330,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -21623,12 +21353,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /content-subtypes
+## GET /content-subtypes
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //content-subtypes \
   -H 'Accept: */*'
 
@@ -21726,13 +21456,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -21749,12 +21479,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /categories
+## GET /categories
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //categories \
   -H 'Accept: */*'
 
@@ -21852,13 +21582,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -21875,12 +21605,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /ias-segments
+## GET /ias-segments
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //ias-segments \
   -H 'Accept: */*'
 
@@ -21978,13 +21708,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22001,12 +21731,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /ias-traq-options
+## GET /ias-traq-options
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //ias-traq-options \
   -H 'Accept: */*'
 
@@ -22104,13 +21834,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22127,12 +21857,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /ias-vtop-options
+## GET /ias-vtop-options
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //ias-vtop-options \
   -H 'Accept: */*'
 
@@ -22230,13 +21960,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22253,12 +21983,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /countries
+## GET /countries
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //countries \
   -H 'Accept: */*'
 
@@ -22356,13 +22086,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22379,12 +22109,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /countries/detected
+## GET /countries/detected
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //countries/detected \
   -H 'Accept: */*'
 
@@ -22482,13 +22212,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22505,12 +22235,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /countries/{id}/regions
+## GET /countries/{id}/regions
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //countries/{id}/regions \
   -H 'Accept: */*'
 
@@ -22606,7 +22336,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -22615,14 +22345,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22637,12 +22367,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /regions/{countrySubdivisionId}/cities
+## GET /regions/{countrySubdivisionId}/cities
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //regions/{countrySubdivisionId}/cities \
   -H 'Accept: */*'
 
@@ -22738,7 +22468,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -22747,14 +22477,14 @@ countrySubdivisionId|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22769,12 +22499,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /regions
+## GET /regions
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //regions \
   -H 'Accept: */*'
 
@@ -22872,13 +22602,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -22895,12 +22625,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /cities
+## GET /cities
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //cities \
   -H 'Accept: */*'
 
@@ -22998,13 +22728,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23021,12 +22751,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /languages
+## GET /languages
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //languages \
   -H 'Accept: */*'
 
@@ -23124,13 +22854,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23147,12 +22877,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /timezones
+## GET /timezones
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //timezones \
   -H 'Accept: */*'
 
@@ -23250,13 +22980,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23273,12 +23003,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /device-types
+## GET /device-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //device-types \
   -H 'Accept: */*'
 
@@ -23376,13 +23106,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23399,12 +23129,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /device-makes
+## GET /device-makes
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //device-makes \
   -H 'Accept: */*'
 
@@ -23502,13 +23232,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23525,12 +23255,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /device-makes/{makeId}/models
+## GET /device-makes/{makeId}/models
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //device-makes/{makeId}/models \
   -H 'Accept: */*'
 
@@ -23626,7 +23356,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -23635,14 +23365,14 @@ makeId|path|integer|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23657,12 +23387,12 @@ status|string|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /device-models
+## GET /device-models
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //device-models \
   -H 'Accept: */*'
 
@@ -23760,13 +23490,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23783,12 +23513,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /devices/platforms
+## GET /devices/platforms
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //devices/platforms \
   -H 'Accept: */*'
 
@@ -23886,13 +23616,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -23909,12 +23639,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /browsers
+## GET /browsers
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //browsers \
   -H 'Accept: */*'
 
@@ -24012,13 +23742,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24035,12 +23765,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /conversion-tracker-aggregation-types
+## GET /conversion-tracker-aggregation-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-tracker-aggregation-types \
   -H 'Accept: */*'
 
@@ -24138,13 +23868,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24161,12 +23891,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /conversion-tracker-attribution-types
+## GET /conversion-tracker-attribution-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-tracker-attribution-types \
   -H 'Accept: */*'
 
@@ -24264,13 +23994,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24287,12 +24017,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /conversion-tracker-implementation-types
+## GET /conversion-tracker-implementation-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-tracker-implementation-types \
   -H 'Accept: */*'
 
@@ -24390,13 +24120,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24413,12 +24143,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /conversion-tracker-tag-types
+## GET /conversion-tracker-tag-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-tracker-tag-types \
   -H 'Accept: */*'
 
@@ -24516,13 +24246,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24539,12 +24269,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /conversion-tracker-types
+## GET /conversion-tracker-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //conversion-tracker-types \
   -H 'Accept: */*'
 
@@ -24642,13 +24372,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24665,12 +24395,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /custom-list-types
+## GET /custom-list-types
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //custom-list-types \
   -H 'Accept: */*'
 
@@ -24768,13 +24498,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24791,12 +24521,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /banner-dimensions
+## GET /banner-dimensions
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //banner-dimensions \
   -H 'Accept: */*'
 
@@ -24894,13 +24624,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -24917,12 +24647,12 @@ data|[object]|false|No description
 This operation does not require authentication
 </aside>
 
-###GET /sites-apps
+## GET /sites-apps
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //sites-apps \
   -H 'Accept: */*'
 
@@ -25020,13 +24750,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25044,12 +24774,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /context/categories
+## GET /context/categories
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //context/categories \
   -H 'Accept: */*'
 
@@ -25147,13 +24877,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25171,12 +24901,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /context/categories/{id}/phrases
+## GET /context/categories/{id}/phrases
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //context/categories/{id}/phrases \
   -H 'Accept: */*'
 
@@ -25272,7 +25002,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -25281,14 +25011,14 @@ id|path|string|true|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25304,12 +25034,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /report
+## GET /report
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //report?range=string&interval=string&metrics=string&dimensions=string \
   -H 'Accept: */*'
 
@@ -25409,7 +25139,7 @@ in.close();
 System.out.println(response.toString());
 ```
 
-####Parameters
+### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
@@ -25424,14 +25154,14 @@ filters|query|string|false|No description
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25441,7 +25171,7 @@ status|string|false|No description
 
 
 
-####Response Schema
+### Response Schema
 
 Status Code **400**
 
@@ -25458,12 +25188,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /report/options/range
+## GET /report/options/range
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //report/options/range \
   -H 'Accept: */*'
 
@@ -25561,13 +25291,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25585,12 +25315,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /report/options/interval
+## GET /report/options/interval
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //report/options/interval \
   -H 'Accept: */*'
 
@@ -25688,13 +25418,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25712,12 +25442,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /report/options/metrics
+## GET /report/options/metrics
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //report/options/metrics \
   -H 'Accept: */*'
 
@@ -25815,13 +25545,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25839,12 +25569,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /report/options/dimensions
+## GET /report/options/dimensions
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //report/options/dimensions \
   -H 'Accept: */*'
 
@@ -25942,13 +25672,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -25966,12 +25696,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-###GET /report/options/filters
+## GET /report/options/filters
 
 > Code samples
 
 ```shell
-##You can also use wget
+# You can also use wget
 curl -X get //report/options/filters \
   -H 'Accept: */*'
 
@@ -26069,13 +25799,13 @@ System.out.println(response.toString());
 
 > Example responses
 
-####Responses
+### Responses
 
 Status|Meaning|Description|Schema
 ---|---|---|---|
 200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
 
-####Response Schema
+### Response Schema
 
 Status Code **200**
 
@@ -26093,9 +25823,1573 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-##Schemas
+## GET /audience/data-providers
 
-###creative-type-1
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/data-providers \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/data-providers HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/data-providers',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/data-providers',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/data-providers',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/data-providers', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/data-providers");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+meta|object|false|No description
+» totalItems|string|false|No description
+status|string|false|No description
+data|[object]|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience/data-providers/{id}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/data-providers/{id} \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/data-providers/{id} HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/data-providers/{id}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/data-providers/{id}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/data-providers/{id}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/data-providers/{id}', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/data-providers/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|integer|true|No description
+
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+status|string|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience/data-providers/{id}/categories
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/data-providers/{id}/categories \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/data-providers/{id}/categories HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/data-providers/{id}/categories',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/data-providers/{id}/categories',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/data-providers/{id}/categories',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/data-providers/{id}/categories', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/data-providers/{id}/categories");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|integer|true|No description
+
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+status|string|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience/data-providers/{id}/categories/{parentId}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/data-providers/{id}/categories/{parentId} \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/data-providers/{id}/categories/{parentId} HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/data-providers/{id}/categories/{parentId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/data-providers/{id}/categories/{parentId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/data-providers/{id}/categories/{parentId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/data-providers/{id}/categories/{parentId}', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/data-providers/{id}/categories/{parentId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|integer|true|No description
+parentId|path|integer|true|No description
+
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+status|string|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience/data-providers/categories
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/data-providers/categories \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/data-providers/categories HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/data-providers/categories',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/data-providers/categories',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/data-providers/categories',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/data-providers/categories', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/data-providers/categories");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+meta|object|false|No description
+» totalItems|string|false|No description
+status|string|false|No description
+data|[object]|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience/data-providers/categories/{parentId}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/data-providers/categories/{parentId} \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/data-providers/categories/{parentId} HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/data-providers/categories/{parentId}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/data-providers/categories/{parentId}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/data-providers/categories/{parentId}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/data-providers/categories/{parentId}', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/data-providers/categories/{parentId}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+parentId|path|integer|true|No description
+
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+status|string|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+meta|object|false|No description
+» totalItems|string|false|No description
+status|string|false|No description
+data|[object]|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## POST /audience
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X post //audience \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: */*'
+
+```
+
+```http
+POST //audience HTTP/1.1
+Host: null
+Content-Type: application/json
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience',
+  method: 'post',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+const inputBody = '{
+  "name": "string",
+  "recency": 1,
+  "segmentOperator": "AND",
+  "audienceSegments": {
+    "frequency": 1,
+    "categoryOperator": "AND",
+    "audienceSegmentCategories": {
+      "category": 0
+    }
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'*/*'
+
+};
+
+fetch('//audience',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => '*/*'
+}
+
+result = RestClient.post '//audience',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': '*/*'
+}
+
+r = requests.post('//audience', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+> Body parameter
+
+```json
+{
+  "name": "string",
+  "recency": 1,
+  "segmentOperator": "AND",
+  "audienceSegments": {
+    "frequency": 1,
+    "categoryOperator": "AND",
+    "audienceSegmentCategories": {
+      "category": 0
+    }
+  }
+}
+```
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+body|body|object|true|No description
+» name|body|string|false|length 1-500
+» recency|body|number(float)|false|length 1-3
+» segmentOperator|body|string|true|No description
+» audienceSegments|body|object|true|No description
+»» frequency|body|number(float)|false|length 1-3
+»» categoryOperator|body|string|true|No description
+»» audienceSegmentCategories|body|object|true|No description
+»»» category|body|integer|true|No description
+
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+» segmentOperator|AND|
+» segmentOperator|OR|
+»» categoryOperator|AND|
+»» categoryOperator|OR|
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Success|Inline
+400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
+
+### Response Schema
+
+Status Code **201**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+» id|integer|false|No description
+status|string|false|No description
+
+
+
+### Response Schema
+
+Status Code **400**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+» errors|[string]|false|No description
+status|string|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience/{id}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/{id} \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/{id} HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/{id}',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/{id}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/{id}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/{id}', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|integer|true|No description
+
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+status|string|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## PATCH /audience/{id}
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X patch //audience/{id} \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: */*'
+
+```
+
+```http
+PATCH //audience/{id} HTTP/1.1
+Host: null
+Content-Type: application/json
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Content-Type':'application/json',
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/{id}',
+  method: 'patch',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+const inputBody = '{
+  "name": "string",
+  "recency": 1,
+  "segmentOperator": "AND",
+  "audienceSegments": {
+    "frequency": 1,
+    "categoryOperator": "AND",
+    "audienceSegmentCategories": {
+      "category": 0
+    }
+  }
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/{id}',
+{
+  method: 'PATCH',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => '*/*'
+}
+
+result = RestClient.patch '//audience/{id}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': '*/*'
+}
+
+r = requests.patch('//audience/{id}', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/{id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("PATCH");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+> Body parameter
+
+```json
+{
+  "name": "string",
+  "recency": 1,
+  "segmentOperator": "AND",
+  "audienceSegments": {
+    "frequency": 1,
+    "categoryOperator": "AND",
+    "audienceSegmentCategories": {
+      "category": 0
+    }
+  }
+}
+```
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|integer|true|No description
+body|body|object|true|No description
+» name|body|string|false|length 1-500
+» recency|body|number(float)|false|length 1-3
+» segmentOperator|body|string|false|No description
+» audienceSegments|body|object|false|No description
+»» frequency|body|number(float)|false|length 1-3
+»» categoryOperator|body|string|true|No description
+»» audienceSegmentCategories|body|object|true|No description
+»»» category|body|integer|true|No description
+
+
+#### Enumerated Values
+
+|Parameter|Value|
+|---|---|
+» segmentOperator|AND|
+» segmentOperator|OR|
+»» categoryOperator|AND|
+»» categoryOperator|OR|
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Error|Inline
+404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|error|None
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+status|string|false|No description
+
+
+
+### Response Schema
+
+Status Code **400**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+data|object|false|No description
+» errors|[string]|false|No description
+status|string|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+## GET /audience/details
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X get //audience/details \
+  -H 'Accept: */*'
+
+```
+
+```http
+GET //audience/details HTTP/1.1
+Host: null
+
+Accept: */*
+
+```
+
+```javascript
+var headers = {
+  'Accept':'*/*'
+
+};
+
+$.ajax({
+  url: '//audience/details',
+  method: 'get',
+
+  headers: headers,
+  success: function(data) {
+    console.log(JSON.stringify(data));
+  }
+})
+```
+
+```javascript--nodejs
+const request = require('node-fetch');
+
+const headers = {
+  'Accept':'*/*'
+
+};
+
+fetch('//audience/details',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.get '//audience/details',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.get('//audience/details', params={
+
+}, headers = headers)
+
+print r.json()
+```
+
+```java
+URL obj = new URL("//audience/details");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+```
+
+> Example responses
+
+### Responses
+
+Status|Meaning|Description|Schema
+---|---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Success|Inline
+
+### Response Schema
+
+Status Code **200**
+
+Name|Type|Required|Description
+---|---|---|---|---|
+meta|object|false|No description
+» totalItems|string|false|No description
+status|string|false|No description
+data|[object]|false|No description
+
+
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+apiKey
+</aside>
+
+# Schemas
+
+## creative-type-1
 
 <a name="schemacreative-type-1"></a>
 
@@ -26147,7 +27441,7 @@ apiKey
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26167,7 +27461,7 @@ imgAssets|object|true|No description
 categories|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Property|Value|
 |---|---|
@@ -26175,7 +27469,7 @@ categories|[string]|false|No description
 » type|2|
 
 
-###creative-type-1.dataAssets.1.1
+## creative-type-1.dataAssets.1.1
 
 <a name="schemacreative-type-1.dataassets.1.1"></a>
 
@@ -26192,7 +27486,7 @@ categories|[string]|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26204,7 +27498,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.dataAssets.11.1
+## creative-type-1.dataAssets.11.1
 
 <a name="schemacreative-type-1.dataassets.11.1"></a>
 
@@ -26221,7 +27515,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26233,7 +27527,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.dataAssets.12.1
+## creative-type-1.dataAssets.12.1
 
 <a name="schemacreative-type-1.dataassets.12.1"></a>
 
@@ -26250,7 +27544,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26262,7 +27556,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.dataAssets.2.1
+## creative-type-1.dataAssets.2.1
 
 <a name="schemacreative-type-1.dataassets.2.1"></a>
 
@@ -26279,7 +27573,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26291,7 +27585,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.dataAssets.2.2
+## creative-type-1.dataAssets.2.2
 
 <a name="schemacreative-type-1.dataassets.2.2"></a>
 
@@ -26308,7 +27602,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26320,7 +27614,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.imgAssets.2.1
+## creative-type-1.imgAssets.2.1
 
 <a name="schemacreative-type-1.imgassets.2.1"></a>
 
@@ -26337,11 +27631,11 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
-image|integer|true|minWidth 200 minHeight 200
+image|integer|true|minWidth 100 minHeight 100 ratio 1:1
 link|object|false|No description
 » url|string|true|length 1-2000
 » fallbackUrl|string|false|length 1-2000
@@ -26349,7 +27643,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.imgAssets.3.1
+## creative-type-1.imgAssets.3.1
 
 <a name="schemacreative-type-1.imgassets.3.1"></a>
 
@@ -26366,7 +27660,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26378,7 +27672,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.imgAssets.3.2
+## creative-type-1.imgAssets.3.2
 
 <a name="schemacreative-type-1.imgassets.3.2"></a>
 
@@ -26395,7 +27689,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26407,7 +27701,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.titleAsset.1
+## creative-type-1.titleAsset.1
 
 <a name="schemacreative-type-1.titleasset.1"></a>
 
@@ -26424,7 +27718,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26436,7 +27730,7 @@ link|object|false|No description
 
 
 
-###creative-type-1.titleAsset.2
+## creative-type-1.titleAsset.2
 
 <a name="schemacreative-type-1.titleasset.2"></a>
 
@@ -26453,7 +27747,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26465,7 +27759,7 @@ link|object|false|No description
 
 
 
-###creative-type-2
+## creative-type-2
 
 <a name="schemacreative-type-2"></a>
 
@@ -26520,7 +27814,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26540,7 +27834,7 @@ imgAssets|object|true|No description
 categories|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Property|Value|
 |---|---|
@@ -26548,7 +27842,7 @@ categories|[string]|false|No description
 » type|2|
 
 
-###creative-type-2.dataAssets.1.1
+## creative-type-2.dataAssets.1.1
 
 <a name="schemacreative-type-2.dataassets.1.1"></a>
 
@@ -26565,7 +27859,7 @@ categories|[string]|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26577,7 +27871,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.dataAssets.11.1
+## creative-type-2.dataAssets.11.1
 
 <a name="schemacreative-type-2.dataassets.11.1"></a>
 
@@ -26594,7 +27888,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26606,7 +27900,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.dataAssets.12.1
+## creative-type-2.dataAssets.12.1
 
 <a name="schemacreative-type-2.dataassets.12.1"></a>
 
@@ -26623,7 +27917,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26635,7 +27929,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.dataAssets.2.1
+## creative-type-2.dataAssets.2.1
 
 <a name="schemacreative-type-2.dataassets.2.1"></a>
 
@@ -26652,7 +27946,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26664,7 +27958,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.dataAssets.2.2
+## creative-type-2.dataAssets.2.2
 
 <a name="schemacreative-type-2.dataassets.2.2"></a>
 
@@ -26681,7 +27975,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26693,7 +27987,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.dataAssets.6.1
+## creative-type-2.dataAssets.6.1
 
 <a name="schemacreative-type-2.dataassets.6.1"></a>
 
@@ -26710,7 +28004,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26722,7 +28016,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.imgAssets.2.1
+## creative-type-2.imgAssets.2.1
 
 <a name="schemacreative-type-2.imgassets.2.1"></a>
 
@@ -26739,11 +28033,11 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
-image|integer|true|minWidth 200 minHeight 200
+image|integer|true|minWidth 100 minHeight 100 ratio 1:1
 link|object|false|No description
 » url|string|true|length 1-2000
 » fallbackUrl|string|false|length 1-2000
@@ -26751,7 +28045,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.imgAssets.3.1
+## creative-type-2.imgAssets.3.1
 
 <a name="schemacreative-type-2.imgassets.3.1"></a>
 
@@ -26768,7 +28062,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26780,7 +28074,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.imgAssets.3.2
+## creative-type-2.imgAssets.3.2
 
 <a name="schemacreative-type-2.imgassets.3.2"></a>
 
@@ -26797,7 +28091,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26809,7 +28103,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.titleAsset.1
+## creative-type-2.titleAsset.1
 
 <a name="schemacreative-type-2.titleasset.1"></a>
 
@@ -26826,7 +28120,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26838,7 +28132,7 @@ link|object|false|No description
 
 
 
-###creative-type-2.titleAsset.2
+## creative-type-2.titleAsset.2
 
 <a name="schemacreative-type-2.titleasset.2"></a>
 
@@ -26855,7 +28149,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26867,7 +28161,7 @@ link|object|false|No description
 
 
 
-###creative-type-3
+## creative-type-3
 
 <a name="schemacreative-type-3"></a>
 
@@ -26919,7 +28213,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26939,7 +28233,7 @@ imgAssets|object|true|No description
 categories|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Property|Value|
 |---|---|
@@ -26947,7 +28241,7 @@ categories|[string]|false|No description
 » type|2|
 
 
-###creative-type-3.dataAssets.1.1
+## creative-type-3.dataAssets.1.1
 
 <a name="schemacreative-type-3.dataassets.1.1"></a>
 
@@ -26964,7 +28258,7 @@ categories|[string]|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -26976,7 +28270,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.dataAssets.11.1
+## creative-type-3.dataAssets.11.1
 
 <a name="schemacreative-type-3.dataassets.11.1"></a>
 
@@ -26993,7 +28287,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27005,7 +28299,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.dataAssets.12.1
+## creative-type-3.dataAssets.12.1
 
 <a name="schemacreative-type-3.dataassets.12.1"></a>
 
@@ -27022,7 +28316,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27034,7 +28328,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.dataAssets.2.1
+## creative-type-3.dataAssets.2.1
 
 <a name="schemacreative-type-3.dataassets.2.1"></a>
 
@@ -27051,7 +28345,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27063,7 +28357,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.dataAssets.2.2
+## creative-type-3.dataAssets.2.2
 
 <a name="schemacreative-type-3.dataassets.2.2"></a>
 
@@ -27080,7 +28374,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27092,7 +28386,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.imgAssets.2.1
+## creative-type-3.imgAssets.2.1
 
 <a name="schemacreative-type-3.imgassets.2.1"></a>
 
@@ -27109,11 +28403,11 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
-image|integer|true|minWidth 200 minHeight 200
+image|integer|true|minWidth 100 minHeight 100 ratio 1:1
 link|object|false|No description
 » url|string|true|length 1-2000
 » fallbackUrl|string|false|length 1-2000
@@ -27121,7 +28415,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.imgAssets.3.1
+## creative-type-3.imgAssets.3.1
 
 <a name="schemacreative-type-3.imgassets.3.1"></a>
 
@@ -27138,7 +28432,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27150,7 +28444,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.imgAssets.3.2
+## creative-type-3.imgAssets.3.2
 
 <a name="schemacreative-type-3.imgassets.3.2"></a>
 
@@ -27167,7 +28461,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27179,7 +28473,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.titleAsset.1
+## creative-type-3.titleAsset.1
 
 <a name="schemacreative-type-3.titleasset.1"></a>
 
@@ -27196,7 +28490,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27208,7 +28502,7 @@ link|object|false|No description
 
 
 
-###creative-type-3.titleAsset.2
+## creative-type-3.titleAsset.2
 
 <a name="schemacreative-type-3.titleasset.2"></a>
 
@@ -27225,7 +28519,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27237,7 +28531,7 @@ link|object|false|No description
 
 
 
-###creative-type-4
+## creative-type-4
 
 <a name="schemacreative-type-4"></a>
 
@@ -27295,7 +28589,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27315,7 +28609,7 @@ imgAssets|object|true|No description
 categories|[string]|false|No description
 
 
-#####Enumerated Values
+#### Enumerated Values
 
 |Property|Value|
 |---|---|
@@ -27323,7 +28617,7 @@ categories|[string]|false|No description
 » type|2|
 
 
-###creative-type-4.dataAssets.1.1
+## creative-type-4.dataAssets.1.1
 
 <a name="schemacreative-type-4.dataassets.1.1"></a>
 
@@ -27340,7 +28634,7 @@ categories|[string]|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27352,7 +28646,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.dataAssets.11.1
+## creative-type-4.dataAssets.11.1
 
 <a name="schemacreative-type-4.dataassets.11.1"></a>
 
@@ -27369,7 +28663,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27381,7 +28675,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.dataAssets.12.1
+## creative-type-4.dataAssets.12.1
 
 <a name="schemacreative-type-4.dataassets.12.1"></a>
 
@@ -27398,7 +28692,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27410,7 +28704,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.dataAssets.2.1
+## creative-type-4.dataAssets.2.1
 
 <a name="schemacreative-type-4.dataassets.2.1"></a>
 
@@ -27427,7 +28721,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27439,7 +28733,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.dataAssets.2.2
+## creative-type-4.dataAssets.2.2
 
 <a name="schemacreative-type-4.dataassets.2.2"></a>
 
@@ -27456,7 +28750,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27468,7 +28762,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.dataAssets.3.1
+## creative-type-4.dataAssets.3.1
 
 <a name="schemacreative-type-4.dataassets.3.1"></a>
 
@@ -27485,7 +28779,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27497,7 +28791,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.dataAssets.6.1
+## creative-type-4.dataAssets.6.1
 
 <a name="schemacreative-type-4.dataassets.6.1"></a>
 
@@ -27514,7 +28808,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27526,7 +28820,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.imgAssets.2.1
+## creative-type-4.imgAssets.2.1
 
 <a name="schemacreative-type-4.imgassets.2.1"></a>
 
@@ -27543,11 +28837,11 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
-image|integer|true|minWidth 200 minHeight 200
+image|integer|true|minWidth 100 minHeight 100 ratio 1:1
 link|object|false|No description
 » url|string|true|length 1-2000
 » fallbackUrl|string|false|length 1-2000
@@ -27555,7 +28849,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.imgAssets.3.1
+## creative-type-4.imgAssets.3.1
 
 <a name="schemacreative-type-4.imgassets.3.1"></a>
 
@@ -27572,7 +28866,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27584,7 +28878,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.imgAssets.3.2
+## creative-type-4.imgAssets.3.2
 
 <a name="schemacreative-type-4.imgassets.3.2"></a>
 
@@ -27601,7 +28895,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27613,7 +28907,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.titleAsset.1
+## creative-type-4.titleAsset.1
 
 <a name="schemacreative-type-4.titleasset.1"></a>
 
@@ -27630,7 +28924,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27642,7 +28936,7 @@ link|object|false|No description
 
 
 
-###creative-type-4.titleAsset.2
+## creative-type-4.titleAsset.2
 
 <a name="schemacreative-type-4.titleasset.2"></a>
 
@@ -27659,7 +28953,7 @@ link|object|false|No description
 } 
 ```
 
-####Properties
+### Properties
 
 Name|Type|Required|Description
 ---|---|---|---|
@@ -27668,3 +28962,8 @@ link|object|false|No description
 » url|string|true|length 1-2000
 » fallbackUrl|string|false|length 1-2000
 » clickTrackers|[string]|false|No description
+
+
+
+
+
