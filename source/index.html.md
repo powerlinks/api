@@ -11,7 +11,8 @@ includes:
   - sellsidespecs
   - buysidespecs
   - creativespecs
-  - infeedapi
+  - nonstandardnativeapi
+  - nonstandardbannerapi
   - dashboardapi
   - dfp
 
