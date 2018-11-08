@@ -2951,35 +2951,169 @@ of options to allow for the response to be made more contextual. The table below
 <td>Yes</td>
 <td>Native Ad Unit ID. Please find a list of Open RTB Native Ad Unit IDs below.</td>
 </tr>
+<tr>
+<td>uid</td>
+<td>string</td>
+<td>No</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>string</td>
+<td>No</td>
+<td>Placement count. The number of identical placements. This translates to a maximum number of possible ads in the response. Default is 1.</td>
+</tr>
+<tr>
+<td>fl</td>
+<td>float</td>
+<td>No</td>
+<td>Floor price, e.g. ’0.01’. Currency is USD.</td>
+</tr>
+<tr>
+<td>s</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>1 indicates this impression is for a secure page, 0 indicates insecure.</td>
+</tr>
+<tr>
+<td>t</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>This indicates that the impression supports a Title. 1 means a Title is required in the response, 0 means a Title is optional.</td>
+</tr>
+<tr>
+<td>d</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>This indicates that the impression supports a Description. 1 means a Description is required in the response, 0 means a Description is optional.</td>
+</tr>
+<tr>
+<td>sp</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>This indicates that the impression supports a Sponsor or Brand Name. 1 means a Sponsor or Brand Name is required in the response, 0 means a Sponsor or Brand Name is optional.</td>
+</tr>
+<tr>
+<td>du</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>This indicates that the impression supports a Display URL. 1 means a Display URL is required in the response, 0 means a Display URL is optional.</td>
+</tr>
+<tr>
+<td>cta</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>This indicates that the impression supports a CTA Text. 1 means a CTA Text is required in the response, 0 means a CTA Text is optional.</td>
+</tr>
+<tr>
+<td>tl</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Title is requested, this denotes a maximum character length of the Title text.</td>
+</tr>
+<tr>
+<td>dl</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Description is requested, this denotes a maximum character length of the Description text.</td>
+</tr>
+<tr>
+<td>spl</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Sponsor or Brand Name is requested, this denotes a maximum character length of the Sponsor or Brand Name text.</td>
+</tr>
+<tr>
+<td>dul</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Display URL is requested, this denotes a maximum character length of the Display URL text.</td>
+</tr>
+<tr>
+<td>ctal</td>
+<td>integer</td>
+<td>No</td>
+<td>If a CTA Text is requested, this denotes a maximum character length of the CTA Text text.</td>
+</tr>
+<tr>
+<td>m</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>This indicates that the impression supports a Main Image. 1 means a Main Image is required in the response, 0 means a Main Image is optional.</td>
+</tr>
+<tr>
+<td>l</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>This indicates that the impression supports a Logo Image. 1 means a Logo Image is required in the response, 0 means a Logo Image is optional.</td>
+</tr>
+<tr>
+<td>mw</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Main Image is requested, this denotes the exact desired width of the Main Image.</td>
+</tr>
+<tr>
+<td>mh</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Main Image is requested, this denotes the exact desired height of the Main Image.</td>
+</tr>
+<tr>
+<td>mmw</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Main Image is requested, this denotes the minimum desired width of the Main Image.</td>
+</tr>
+<tr>
+<td>mmh</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Main Image is requested, this denotes the minimum desired height of the Main Image.</td>
+</tr>
+<tr>
+<td>lw</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Logo Image is requested, this denotes the exact desired width of the Logo Image.</td>
+</tr>
+<tr>
+<td>lh</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Logo Image is requested, this denotes the exact desired height of the Logo Image.</td>
+</tr>
+<tr>
+<td>lmw</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Logo Image is requested, this denotes the minimum desired width of the Logo Image.</td>
+</tr>
+<tr>
+<td>lmh</td>
+<td>integer</td>
+<td>No</td>
+<td>If a Logo Image is requested, this denotes the minimum desired height of the Logo Image.</td>
+</tr>
+<tr>
+<td>subid</td>
+<td>string</td>
+<td>No</td>
+<td>An ID specified by you for extended identification in reporting.</td>
+</tr>
+<tr>
+<td>df</td>
+<td>string</td>
+<td>No</td>
+<td>The desired response format, XML, JSON, or JSONP. Default is XML.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>string</td>
+<td>No</td>
+<td>This is strictly for JSONP support. If this parameter is included, the response will be wrapped in the callback, and the format will be JSON, overriding the ‘df’ parameter if present.</td>
+</tr>
 </tbody></table>
-
-<p>uid | string | No | User ID
-pc | string | No | Placement count. The number of identical placements. This translates to a maximum number of possible ads in the response. Default is 1.
-fl | float | No | Floor price, e.g. ’0.01’. Currency is USD.
-s | enum (0,1) | No | 1 indicates this impression is for a secure page, 0 indicates insecure.
-t | enum (0,1) | No | This indicates that the impression supports a Title. 1 means a Title is required in the response, 0 means a Title is optional.
-d | enum (0,1) | No | This indicates that the impression supports a Description. 1 means a Description is required in the response, 0 means a Description is optional.
-sp | enum (0,1) | No | This indicates that the impression supports a Sponsor or Brand Name. 1 means a Sponsor or Brand Name is required in the response, 0 means a Sponsor or Brand Name is optional.
-du | enum (0,1) | No | This indicates that the impression supports a Display URL. 1 means a Display URL is required in the response, 0 means a Display URL is optional.
-cta | enum (0,1) | No | This indicates that the impression supports a CTA Text. 1 means a CTA Text is required in the response, 0 means a CTA Text is optional.
-tl | integer | No | If a Title is requested, this denotes a maximum character length of the Title text.
-dl | integer | No | If a Description is requested, this denotes a maximum character length of the Description text.
-spl | integer | No | If a Sponsor or Brand Name is requested, this denotes a maximum character length of the Sponsor or Brand Name text.
-dul | integer | No | If a Display URL is requested, this denotes a maximum character length of the Display URL text.
-ctal | integer | No | If a CTA Text is requested, this denotes a maximum character length of the CTA Text text.
-m | enum (0,1) | No | This indicates that the impression supports a Main Image. 1 means a Main Image is required in the response, 0 means a Main Image is optional.
-l | enum (0,1) | No | This indicates that the impression supports a Logo Image. 1 means a Logo Image is required in the response, 0 means a Logo Image is optional.
-mw | integer | No | If a Main Image is requested, this denotes the exact desired width of the Main Image.
-mh | integer | No | If a Main Image is requested, this denotes the exact desired height of the Main Image.
-mmw | integer | No | If a Main Image is requested, this denotes the minimum desired width of the Main Image.
-mmh | integer | No | If a Main Image is requested, this denotes the minimum desired height of the Main Image.
-lw | integer | No | If a Logo Image is requested, this denotes the exact desired width of the Logo Image.
-lh | integer | No | If a Logo Image is requested, this denotes the exact desired height of the Logo Image.
-lmw | integer | No | If a Logo Image is requested, this denotes the minimum desired width of the Logo Image.
-lmh | integer | No | If a Logo Image is requested, this denotes the minimum desired height of the Logo Image.
-subid | string | No | An ID specified by you for extended identification in reporting.
-df | string | No | The desired response format, XML, JSON, or JSONP. Default is XML.
-callback | string | No | This is strictly for JSONP support. If this parameter is included, the response will be wrapped in the callback, and the format will be JSON, overriding the ‘df’ parameter if present.</p>
 
 <h3 id="making-the-request">Making the request</h3>
 
@@ -3255,14 +3389,43 @@ of options to allow for the response to be made more contextual. The table below
 <td>Yes</td>
 <td>Exact height of the banner</td>
 </tr>
+<tr>
+<td>uid</td>
+<td>string</td>
+<td>No</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td>fl</td>
+<td>float</td>
+<td>No</td>
+<td>Floor price, e.g. ’0.01’. Currency is USD.</td>
+</tr>
+<tr>
+<td>s</td>
+<td>enum (0,1)</td>
+<td>No</td>
+<td>1 indicates this impression is for a secure page, 0 indicates insecure.</td>
+</tr>
+<tr>
+<td>subid</td>
+<td>string</td>
+<td>No</td>
+<td>An ID specified by you for extended identification in reporting.</td>
+</tr>
+<tr>
+<td>df</td>
+<td>string</td>
+<td>No</td>
+<td>The desired response format, XML, JSON, or JSONP. Default is XML.</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>string</td>
+<td>No</td>
+<td>This is strictly for JSONP support. If this parameter is included, the response will be wrapped in the callback, and the format will be JSON, overriding the ‘df’ parameter if present.</td>
+</tr>
 </tbody></table>
-
-<p>uid | string | No | User ID
-fl | float | No | Floor price, e.g. ’0.01’. Currency is USD.
-s | enum (0,1) | No | 1 indicates this impression is for a secure page, 0 indicates insecure.
-subid | string | No | An ID specified by you for extended identification in reporting.
-df | string | No | The desired response format, XML, JSON, or JSONP. Default is XML.
-callback | string | No | This is strictly for JSONP support. If this parameter is included, the response will be wrapped in the callback, and the format will be JSON, overriding the ‘df’ parameter if present.</p>
 
 <h3 id="making-the-request">Making the request</h3>
 
