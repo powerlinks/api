@@ -35,7 +35,6 @@ ip | string | Yes | IP (v.4) address of the end user, or the string ‘false’.
 ua | string | Yes | User agent of the end user
 r | string | Yes | URL-encoded HTTP referring URL
 au | string | Yes | Native Ad Unit ID. Please find a list of Open RTB Native Ad Unit IDs below.
-
 uid | string | No | User ID
 pc | string | No | Placement count. The number of identical placements. This translates to a maximum number of possible ads in the response. Default is 1.
 fl | float | No | Floor price, e.g. ’0.01’. Currency is USD.

@@ -36,7 +36,6 @@ ua | string | Yes | User agent of the end user
 r | string | Yes | URL-encoded HTTP referring URL
 w | string | Yes | Exact width of the banner
 h | string | Yes | Exact height of the banner
-
 uid | string | No | User ID
 fl | float | No | Floor price, e.g. ’0.01’. Currency is USD.
 s | enum (0,1) | No | 1 indicates this impression is for a secure page, 0 indicates insecure.
