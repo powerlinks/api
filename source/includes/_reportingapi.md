@@ -2,7 +2,9 @@
 
 ## Query string
 
-The route for the reporting is `GET /report`
+The route for the reporting is `GET /report/buyer` OR `GET /report/seller`
+
+Choose `buyer` or `seller` depending on the type of report you're wanting
 
 ### List of parameters
 
@@ -65,9 +67,9 @@ Format YYYY-MM-DD. Only required for range: "custom"
 }
 ```
 
-### Metrics
+### Buyer Metrics
 
-`GET /report/options/metrics`
+`GET /report/options/metrics/buyer`
 
 > Metrics - Example Response
 
@@ -87,6 +89,121 @@ Format YYYY-MM-DD. Only required for range: "custom"
         "net": "Net",
         "ecpc": "eCPC",
         "ecpm": "eCPM"
+    }
+}
+```
+
+### Seller Metrics
+
+`GET /report/options/metrics/seller`
+
+> Metrics - Example Response
+
+```json
+{
+    "status": "success",
+    "data": {
+        "impressions": "Impressions",
+        "clicks": "Clicks",
+        "ctr": "CTR",
+        "gross": "Gross",
+        "totalspend": "Total Spend",
+        "mediaspend": "Media Spend",
+        "buyerplatformfee": "Buyer Platform Fee",
+        "sellerrevenue": "Seller Revenue",
+        "sellerplatformfee": "Seller Platform Fee",
+        "net": "Net",
+        "ecpc": "eCPC",
+        "ecpm": "eCPM"
+    }
+}
+```
+
+### Metric Groups
+
+`GET /report/options/metrics/groups`
+
+> Groups - Example Response
+
+```json
+{
+    "status": "success",
+    "data": {
+        "core": "Core",
+        "revenue": "Revenue",
+        "video": "Video"
+    }
+}
+```
+
+### Buyer Metric Groups
+
+`GET /report/options/metrics/buyer/group-metrics`
+
+> Metrics - Example Response
+
+```json
+{
+    "status": "success",
+    "data": {
+        "impressions": "core",
+        "clicks": "core",
+        "postviewconversions": "core",
+        "postclickconversions": "core",
+        "conversions": "core",
+        "ctr": "core",
+        "videostart": "video",
+        "videofirstquartile": "video",
+        "videomidpoint": "video",
+        "videothirdquartile": "video",
+        "videocomplete": "video",
+        "ecpvstart": "video",
+        "ecpvfirstquartile": "video",
+        "ecpvmidpoint": "video",
+        "ecpvthirdquartile": "video",
+        "ecpvcomplete": "video",
+        "gross": "revenue",
+        "totalspend": "revenue",
+        "mediaspend": "revenue",
+        "buyerplatformfee": "revenue",
+        "datafee": "revenue",
+        "buyerecpm": "revenue",
+        "buyerecpc": "revenue"
+    }
+}
+```
+
+### Seller Metric Groups
+
+`GET /report/options/metrics/seller/group-metrics`
+
+> Metrics - Example Response
+
+```json
+{
+    "status": "success",
+    "data": {
+        "impressions": "core",
+        "clicks": "core",
+        "postviewconversions": "core",
+        "postclickconversions": "core",
+        "conversions": "core",
+        "ctr": "core",
+        "videostart": "video",
+        "videofirstquartile": "video",
+        "videomidpoint": "video",
+        "videothirdquartile": "video",
+        "videocomplete": "video",
+        "ecpvstart": "video",
+        "ecpvfirstquartile": "video",
+        "ecpvmidpoint": "video",
+        "ecpvthirdquartile": "video",
+        "ecpvcomplete": "video",
+        "net": "revenue",
+        "sellerrevenue": "revenue",
+        "sellerplatformfee": "revenue",
+        "sellerecpm": "revenue",
+        "sellerecpc": "revenue"
     }
 }
 ```
@@ -174,7 +291,6 @@ i.e. country
     "status": "success",
     "data": [
         "showall",
-        "sql",
         "total"
     ]
 }
