@@ -12,4 +12,4 @@ RUN bundle install
 
 COPY . .
 
-CMD ["bash","deploy.sh"]
+CMD ["bash","deploy.sh","--verbose"]
