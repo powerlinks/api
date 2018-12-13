@@ -48,7 +48,7 @@ Unless otherwise stated, authentication is require.
  
 Agency (Optional) -> Advertiser -> Order -> Line Item -> Creative 
 
-# Endpoints 
+### Endpoints 
 
 ## POST /users/login
 
@@ -27387,7 +27387,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 apiKey
 </aside>
 
-# Schemas
+### Schemas
 
 ## creative-type-1
 
