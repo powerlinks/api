@@ -45126,6 +45126,449 @@ apiKey
 </tr>
 </tbody></table>
 
+          <h1 id="reporting-api">Reporting API</h1>
+
+<h2 id="query-string">Query string</h2>
+
+<p>The route for the reporting is <code class="prettyprint">GET /report/buyer</code> OR <code class="prettyprint">GET /report/seller</code></p>
+
+<p>Choose <code class="prettyprint">buyer</code> or <code class="prettyprint">seller</code> depending on the type of report you&rsquo;re wanting</p>
+
+<h3 id="list-of-parameters">List of parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Format</th>
+<th>Options Available</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>string</td>
+<td>GET /report/options/range</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>from</td>
+<td>date</td>
+<td>YYYY-MM-DD</td>
+<td>No</td>
+</tr>
+<tr>
+<td>to</td>
+<td>date</td>
+<td>YYYY-MM-DD</td>
+<td>No</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>string</td>
+<td>GET /report/options/interval</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td>array</td>
+<td>GET /report/options/metrics</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>dimensions</td>
+<td>array</td>
+<td>GET /report/options/dimensions</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>filters</td>
+<td>array</td>
+<td>GET /report/options/filters</td>
+<td>No</td>
+</tr>
+<tr>
+<td>options</td>
+<td>array</td>
+<td>GET /report/options/options</td>
+<td>No</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>int</td>
+<td>(default: 10)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>int</td>
+<td>(default: 0)</td>
+<td>No</td>
+</tr>
+</tbody></table>
+
+<h3 id="range">Range</h3>
+
+<p><code class="prettyprint">GET report/options/range</code></p>
+
+<blockquote>
+<p>Range - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"today"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Today"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"yesterday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yesterday"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_7_days"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last 7 Days"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_48_hours"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last 48 Hours"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"month_to_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Month to Date"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"last_month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last Month"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Custom"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="from">From</h3>
+
+<p>Format YYYY-MM-DD. Only required for range: &ldquo;custom&rdquo;</p>
+
+<p>To</p>
+
+<p>Format YYYY-MM-DD. Only required for range: &ldquo;custom&rdquo;</p>
+
+<h3 id="interval">Interval</h3>
+
+<p><code class="prettyprint">GET /report/options/interval</code></p>
+
+<blockquote>
+<p>Interval - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"cumulative"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cumulative"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"day"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Day"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"month"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Month"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="buyer-metrics">Buyer Metrics</h3>
+
+<p><code class="prettyprint">GET /report/options/metrics/buyer</code></p>
+
+<blockquote>
+<p>Metrics - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impressions"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clicks"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ctr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gross"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gross"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Spend"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mediaspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Media Spend"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer Platform Fee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerrevenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Platform Fee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Net"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPM"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="seller-metrics">Seller Metrics</h3>
+
+<p><code class="prettyprint">GET /report/options/metrics/seller</code></p>
+
+<blockquote>
+<p>Metrics - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impressions"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clicks"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ctr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTR"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gross"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gross"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Total Spend"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mediaspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Media Spend"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer Platform Fee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerrevenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller Platform Fee"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Net"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPC"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eCPM"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="metric-groups">Metric Groups</h3>
+
+<p><code class="prettyprint">GET /report/options/metrics/groups</code></p>
+
+<blockquote>
+<p>Groups - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"core"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"revenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Video"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="buyer-metric-groups">Buyer Metric Groups</h3>
+
+<p><code class="prettyprint">GET /report/options/metrics/buyer/group-metrics</code></p>
+
+<blockquote>
+<p>Metrics - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postviewconversions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postclickconversions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"conversions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ctr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videostart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videofirstquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videomidpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videothirdquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videocomplete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvstart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvfirstquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvmidpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvthirdquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvcomplete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"gross"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mediaspend"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"datafee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyerecpm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyerecpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="seller-metric-groups">Seller Metric Groups</h3>
+
+<p><code class="prettyprint">GET /report/options/metrics/seller/group-metrics</code></p>
+
+<blockquote>
+<p>Metrics - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postviewconversions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"postclickconversions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"conversions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ctr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"core"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videostart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videofirstquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videomidpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videothirdquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"videocomplete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvstart"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvfirstquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvmidpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvthirdquartile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ecpvcomplete"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"net"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerrevenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerplatformfee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerecpm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sellerecpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="dimensions">Dimensions</h3>
+
+<p><code class="prettyprint">GET /report/options/dimensions</code></p>
+
+<blockquote>
+<p>Dimensions - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"seller_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyer_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Source"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device Type"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="filters">Filters</h3>
+
+<p><code class="prettyprint">GET /report/options/filters</code></p>
+
+<blockquote>
+<p>Filter - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"seller_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Seller"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"buyer_account_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Buyer"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Source"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>To list the option for each filter you can use the following API:</p>
+
+<p><code class="prettyprint">GET /report/options/filters/{filter}/values</code></p>
+
+<p>This API return paginated content. In order to use the pagination you can use two optional parameters: &ldquo;limit&rdquo; and &ldquo;offset&rdquo;.</p>
+
+<p>i.e. country</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"GBR"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United Kingdom"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"USA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"United States"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"DEU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Germany"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"FRA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"AFG"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Afghanistan"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ALB"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Albania"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"DZA"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Algeria"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"ASM"</span><span class="p">:</span><span class="w"> </span><span class="s2">"American Samoa"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"AND"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Andorra"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"AGO"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angola"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="options">Options</h3>
+
+<p><code class="prettyprint">GET /report/options/options</code></p>
+
+<blockquote>
+<p>Options - Example Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"showall"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="accounts">Accounts</h3>
+
+<p>This parameter is valid just if you are an admin. Accounts allows an array of values in this format:</p>
+
+<h3 id="query-string-structure">Query string structure</h3>
+
+<table><thead>
+<tr>
+<th>Parameter name</th>
+<th>Syntax</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>range</td>
+<td>range=today</td>
+</tr>
+<tr>
+<td>from</td>
+<td>[ range=custom&amp; ] from=2015-06-12 [ &amp;to=2015-06-30 ]</td>
+</tr>
+<tr>
+<td>to</td>
+<td>[ range=custom&amp;from=2015-06-12&amp; ] to=2015-06-30</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>interval=cumulative</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td>metrics=impressions,clicks [ ,{metrics},&hellip; ]</td>
+</tr>
+<tr>
+<td>dimensions</td>
+<td>dimensions=inventory_id,campaign_id [ ,{dimensions},&hellip; ]</td>
+</tr>
+<tr>
+<td>filters</td>
+<td>filters=country:GBR,USA,ITA;device_id:1,2,3 [ ;{keyword}:{value},{value};&hellip; ]</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>accounts=e661785d-4a04-450b-a050-23426a58d3e5,95f8e7ec-9aa7-11e5-8994-feff819cdc9f [ ,{uuid},&hellip; ]</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="se">\</span>
+    -H <span class="s2">"ApiKey: xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4="</span> <span class="se">\</span>
+    <span class="s2">"http://reporting.api.powerlinks.com/report?range=yesterday&amp;interval=cumulative&amp;metrics=impressions,clicks&amp;dimensions=inventory_id"</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Impressions"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clicks"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"inventory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inventory"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"recordset"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"impressions"</span><span class="p">:</span><span class="w"> </span><span class="mi">132336</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"clicks"</span><span class="p">:</span><span class="w"> </span><span class="mi">386</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"inventory_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"totalItems"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id="api-key">API Key</h2>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>The ApiKey is used to authenticate an external application.</p>
+
+<p>There will be an API in the dashboard which will be used to retrieve the API key.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST -d <span class="s2">"username=USERNAME&amp;password=PASSWORD"</span> https://dashboard.powerlinks.com/apikey/login
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="nv">xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4</span><span class="o">=</span>
+NB This is not definitive yet
+</code></pre>
+<h3 id="using-api-keys">Using API keys</h3>
+
+<p>The API Key will be added as a custom header &ldquo;ApiKey&rdquo; inside the HTTP request for each request to reporting API routes.</p>
+
           <h1 id="dfp-support">DFP Support</h1>
 
 <h2 id="powerlinks-support-for-dfp-ad-servers">Powerlinks Support for DFP Ad Servers</h2>
