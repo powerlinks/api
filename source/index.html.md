@@ -14,6 +14,7 @@ includes:
   - nonstandardnativeapi
   - nonstandardbannerapi
   - dashboardapi
+  - reportingapi
   - dfp
 
 search: true
