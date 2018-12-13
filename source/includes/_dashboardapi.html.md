@@ -33,7 +33,6 @@ We support cross origin resource sharing ([CORS](http://www.w3.org/TR/cors/)). A
     Access-Control-Allow-Methods: GET,POST,OPTIONS,PUT,PATCH,DELETE
     Access-Control-Allow-Headers: ApiKey,Content-Type,Keep-Alive,User-Agent,Cache-Control
 
-
 Authentication
 --------------
 
