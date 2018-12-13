@@ -34,15 +34,16 @@ We support cross origin resource sharing ([CORS](http://www.w3.org/TR/cors/)). A
     Access-Control-Allow-Headers: ApiKey,Content-Type,Keep-Alive,User-Agent,Cache-Control
 
 
-## Authentication
-
+Authentication
+--------------
 
 * API Key
     - Parameter Name: **apiKey**, in: header. 
 
 Unless otherwise stated, authentication is require.
 
-## Resource Hierarchy
+Resource Hierarchy
+------------------
 
 ### Buyside
  
