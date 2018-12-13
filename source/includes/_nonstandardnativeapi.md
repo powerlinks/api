@@ -69,7 +69,7 @@ All requests should be made using the following method
 
 ***Range Options***
 
-`GET http://serve.powerlinks.com/nativertb`
+`GET http://serve.powerlinks.com/rtb/native`
 
 ***Parameters***
 
@@ -79,7 +79,7 @@ See above table
 
 GET
 
-`http://serve.powerlinks.com/nativertb?a=1&c=IAB1,IAB2&ip=192.168.0.1&ua=Mozilla%2F5.0%20(Windows%20NT%206.3%3B%20WOW64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F39.0.2171.95%20Safari%2F537.36&r=http%3A%2F%2Fwww.examplepage.com%2Fsomepage&au=2&uid=uuid1234567890&pc=1&fl=.2&s=1&t=1&tl=100&d=0&dl=150&m=1&mw=300&mh=300&subid=1234567890&df=json`
+`http://serve.powerlinks.com/rtb/native?a=1&c=IAB1,IAB2&ip=192.168.0.1&ua=Mozilla%2F5.0%20(Windows%20NT%206.3%3B%20WOW64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F39.0.2171.95%20Safari%2F537.36&r=http%3A%2F%2Fwww.examplepage.com%2Fsomepage&au=2&uid=uuid1234567890&pc=1&fl=.2&s=1&t=1&tl=100&d=0&dl=150&m=1&mw=300&mh=300&subid=1234567890&df=json`
 
 ## Response
 
