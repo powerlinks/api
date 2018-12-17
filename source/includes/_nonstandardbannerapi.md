@@ -30,12 +30,12 @@ of options to allow for the response to be made more contextual. The table below
 Parameter|Type|Required|Description
 ---------|----|--------|-----------
 a | string | Yes | Your PowerLinks account ID
-c | string | Yes | The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your PowerLinks account manager.
 ip | string | Yes | IP (v.4) address of the end user, or the string ‘false’. NOTE: If this is a server-side implementation, please include the IPv4 address. If this is a client-side implementation, please provide a string value of ‘false’ for this parameter. This will tell us that we should be detecting the IP from the request headers.
 ua | string | Yes | User agent of the end user
 r | string | Yes | URL-encoded HTTP referring URL
 w | string | Yes | Exact width of the banner
 h | string | Yes | Exact height of the banner
+c | string | No | The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your PowerLinks account manager.
 uid | string | No | User ID
 fl | float | No | Floor price, e.g. ’0.01’. Currency is USD.
 s | enum (0,1) | No | 1 indicates this impression is for a secure page, 0 indicates insecure.
@@ -60,6 +60,34 @@ See above table
 GET
 
 `http://serve.powerlinks.com/rtb/banner?a=1&c=IAB1,IAB2&ip=192.168.0.1&ua=Mozilla%2F5.0%20(Windows%20NT%206.3%3B%20WOW64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F39.0.2171.95%20Safari%2F537.36&r=http%3A%2F%2Fwww.examplepage.com%2Fsomepage&uid=uuid1234567890&fl=.2&s=1&w=300&h=250&subid=1234567890&df=json`
+
+### Content Categories
+
+IAB Category|Description
+------------|-----------
+IAB1 | Arts & Entertainment
+IAB2 | Automotive
+IAB3 | Business
+IAB4 | Careers
+IAB5 | Education
+IAB6 | Family & Parenting
+IAB7 | Health & Fitness
+IAB8 | Food & Drink
+IAB9 | Hobbies & Interests
+IAB10 | Home & Garden
+IAB11 | Law, Government, & Politics
+IAB12 | News
+IAB13 | Personal Finance
+IAB14 | Society
+IAB15 | Science
+IAB16 | Pets
+IAB17 | Sports
+IAB18 | Style & Fashion
+IAB19 | Technology & Computing
+IAB20 | Travel
+IAB21 | Real Estate
+IAB22 | Shopping
+IAB23 | Religion & Sprituality
 
 ## Response
 
