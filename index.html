@@ -2922,12 +2922,6 @@ of options to allow for the response to be made more contextual. The table below
 <td>Your PowerLinks account ID</td>
 </tr>
 <tr>
-<td>c</td>
-<td>string</td>
-<td>Yes</td>
-<td>The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your PowerLinks account manager.</td>
-</tr>
-<tr>
 <td>ip</td>
 <td>string</td>
 <td>Yes</td>
@@ -2950,6 +2944,12 @@ of options to allow for the response to be made more contextual. The table below
 <td>string</td>
 <td>Yes</td>
 <td>Native Ad Unit ID. Please find a list of Open RTB Native Ad Unit IDs below.</td>
+</tr>
+<tr>
+<td>c</td>
+<td>string</td>
+<td>No</td>
+<td>The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your PowerLinks account manager.</td>
 </tr>
 <tr>
 <td>uid</td>
@@ -3132,6 +3132,138 @@ of options to allow for the response to be made more contextual. The table below
 <p>GET</p>
 
 <p><code class="prettyprint">http://serve.powerlinks.com/rtb/native?a=1&amp;c=IAB1,IAB2&amp;ip=192.168.0.1&amp;ua=Mozilla%2F5.0%20(Windows%20NT%206.3%3B%20WOW64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F39.0.2171.95%20Safari%2F537.36&amp;r=http%3A%2F%2Fwww.examplepage.com%2Fsomepage&amp;au=2&amp;uid=uuid1234567890&amp;pc=1&amp;fl=.2&amp;s=1&amp;t=1&amp;tl=100&amp;d=0&amp;dl=150&amp;m=1&amp;mw=300&amp;mh=300&amp;subid=1234567890&amp;df=json</code></p>
+
+<h3 id="native-ad-unit-ids">Native Ad Unit IDs</h3>
+
+<table><thead>
+<tr>
+<th>Ad Unit ID</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Paid Search Units</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Recommendation Widgets</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Promoted Listings</td>
+</tr>
+<tr>
+<td>4</td>
+<td>In-Ad (IAB Standard) with Native Element Units</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Custom / &ldquo;Can&rsquo;t be Contained&rdquo;</td>
+</tr>
+</tbody></table>
+
+<h3 id="content-categories">Content Categories</h3>
+
+<table><thead>
+<tr>
+<th>IAB Category</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IAB1</td>
+<td>Arts &amp; Entertainment</td>
+</tr>
+<tr>
+<td>IAB2</td>
+<td>Automotive</td>
+</tr>
+<tr>
+<td>IAB3</td>
+<td>Business</td>
+</tr>
+<tr>
+<td>IAB4</td>
+<td>Careers</td>
+</tr>
+<tr>
+<td>IAB5</td>
+<td>Education</td>
+</tr>
+<tr>
+<td>IAB6</td>
+<td>Family &amp; Parenting</td>
+</tr>
+<tr>
+<td>IAB7</td>
+<td>Health &amp; Fitness</td>
+</tr>
+<tr>
+<td>IAB8</td>
+<td>Food &amp; Drink</td>
+</tr>
+<tr>
+<td>IAB9</td>
+<td>Hobbies &amp; Interests</td>
+</tr>
+<tr>
+<td>IAB10</td>
+<td>Home &amp; Garden</td>
+</tr>
+<tr>
+<td>IAB11</td>
+<td>Law, Government, &amp; Politics</td>
+</tr>
+<tr>
+<td>IAB12</td>
+<td>News</td>
+</tr>
+<tr>
+<td>IAB13</td>
+<td>Personal Finance</td>
+</tr>
+<tr>
+<td>IAB14</td>
+<td>Society</td>
+</tr>
+<tr>
+<td>IAB15</td>
+<td>Science</td>
+</tr>
+<tr>
+<td>IAB16</td>
+<td>Pets</td>
+</tr>
+<tr>
+<td>IAB17</td>
+<td>Sports</td>
+</tr>
+<tr>
+<td>IAB18</td>
+<td>Style &amp; Fashion</td>
+</tr>
+<tr>
+<td>IAB19</td>
+<td>TEchnology &amp; Computing</td>
+</tr>
+<tr>
+<td>IAB20</td>
+<td>Travel</td>
+</tr>
+<tr>
+<td>IAB21</td>
+<td>Real Estate</td>
+</tr>
+<tr>
+<td>IAB22</td>
+<td>Shopping</td>
+</tr>
+<tr>
+<td>IAB23</td>
+<td>Religion &amp; Sprituality</td>
+</tr>
+</tbody></table>
 
 <h2 id="response">Response</h2>
 
@@ -3354,12 +3486,6 @@ of options to allow for the response to be made more contextual. The table below
 <td>Your PowerLinks account ID</td>
 </tr>
 <tr>
-<td>c</td>
-<td>string</td>
-<td>Yes</td>
-<td>The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your PowerLinks account manager.</td>
-</tr>
-<tr>
 <td>ip</td>
 <td>string</td>
 <td>Yes</td>
@@ -3388,6 +3514,12 @@ of options to allow for the response to be made more contextual. The table below
 <td>string</td>
 <td>Yes</td>
 <td>Exact height of the banner</td>
+</tr>
+<tr>
+<td>c</td>
+<td>string</td>
+<td>No</td>
+<td>The Category IDs of the site on which the ad will display, separated by comma. Please find a list of Top Level Categories below. For a more granular list, please ask your PowerLinks account manager.</td>
 </tr>
 <tr>
 <td>uid</td>
@@ -3444,6 +3576,108 @@ of options to allow for the response to be made more contextual. The table below
 <p>GET</p>
 
 <p><code class="prettyprint">http://serve.powerlinks.com/rtb/banner?a=1&amp;c=IAB1,IAB2&amp;ip=192.168.0.1&amp;ua=Mozilla%2F5.0%20(Windows%20NT%206.3%3B%20WOW64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F39.0.2171.95%20Safari%2F537.36&amp;r=http%3A%2F%2Fwww.examplepage.com%2Fsomepage&amp;uid=uuid1234567890&amp;fl=.2&amp;s=1&amp;w=300&amp;h=250&amp;subid=1234567890&amp;df=json</code></p>
+
+<h3 id="content-categories">Content Categories</h3>
+
+<table><thead>
+<tr>
+<th>IAB Category</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IAB1</td>
+<td>Arts &amp; Entertainment</td>
+</tr>
+<tr>
+<td>IAB2</td>
+<td>Automotive</td>
+</tr>
+<tr>
+<td>IAB3</td>
+<td>Business</td>
+</tr>
+<tr>
+<td>IAB4</td>
+<td>Careers</td>
+</tr>
+<tr>
+<td>IAB5</td>
+<td>Education</td>
+</tr>
+<tr>
+<td>IAB6</td>
+<td>Family &amp; Parenting</td>
+</tr>
+<tr>
+<td>IAB7</td>
+<td>Health &amp; Fitness</td>
+</tr>
+<tr>
+<td>IAB8</td>
+<td>Food &amp; Drink</td>
+</tr>
+<tr>
+<td>IAB9</td>
+<td>Hobbies &amp; Interests</td>
+</tr>
+<tr>
+<td>IAB10</td>
+<td>Home &amp; Garden</td>
+</tr>
+<tr>
+<td>IAB11</td>
+<td>Law, Government, &amp; Politics</td>
+</tr>
+<tr>
+<td>IAB12</td>
+<td>News</td>
+</tr>
+<tr>
+<td>IAB13</td>
+<td>Personal Finance</td>
+</tr>
+<tr>
+<td>IAB14</td>
+<td>Society</td>
+</tr>
+<tr>
+<td>IAB15</td>
+<td>Science</td>
+</tr>
+<tr>
+<td>IAB16</td>
+<td>Pets</td>
+</tr>
+<tr>
+<td>IAB17</td>
+<td>Sports</td>
+</tr>
+<tr>
+<td>IAB18</td>
+<td>Style &amp; Fashion</td>
+</tr>
+<tr>
+<td>IAB19</td>
+<td>TEchnology &amp; Computing</td>
+</tr>
+<tr>
+<td>IAB20</td>
+<td>Travel</td>
+</tr>
+<tr>
+<td>IAB21</td>
+<td>Real Estate</td>
+</tr>
+<tr>
+<td>IAB22</td>
+<td>Shopping</td>
+</tr>
+<tr>
+<td>IAB23</td>
+<td>Religion &amp; Sprituality</td>
+</tr>
+</tbody></table>
 
 <h2 id="response">Response</h2>
 
