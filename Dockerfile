@@ -9,7 +9,3 @@ RUN apt-get update
 RUN apt-get -y install nodejs
 
 RUN bundle install
-
-COPY . .
-
-CMD ["bash","deploy.sh","--verbose"]

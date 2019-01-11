@@ -1,0 +1,9 @@
+version: '2'
+services:
+  app:
+    build: .
+    volumes:
+      - .:/usr/share
+      - ~/.ssh:/root/tmp/.ssh
+      - ~/.gitconfig.:/root/tmp/.gitconfig
+    command: bash -c "cp -r /root/tmp/.ssh /root/.ssh && cp -r /root/tmp/.gitconfig /root/.gitconfig && chmod 400 /root/.ssh/* && chmod 400 /root/.gitconfig && bash deploy.sh --verbose"
