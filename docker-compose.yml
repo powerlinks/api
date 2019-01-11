@@ -5,5 +5,5 @@ services:
     volumes:
       - .:/usr/share
       - ~/.ssh:/root/tmp/.ssh
-      - ~/.gitconfig.:/root/tmp/.gitconfig
-    command: bash -c "cp -r /root/tmp/.ssh /root/.ssh && cp -r /root/tmp/.gitconfig /root/.gitconfig && chmod 400 /root/.ssh/* && chmod 400 /root/.gitconfig && bash deploy.sh --verbose"
+      - ~/.gitconfig:/root/tmp/.gitconfig
+    command: bash -c "cp -r /root/tmp/.ssh /root/.ssh && cp -r /root/tmp/.gitconfig /root/.gitconfig && chmod 400 /root/.ssh/* && chmod 400 /root/.gitconfig && GIT_DEPLOY_USERNAME=`git config user.name` GIT_DEPLOY_EMAIL=`git config user.email` bash deploy.sh --verbose"
