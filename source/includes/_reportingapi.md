@@ -354,7 +354,7 @@ curl \
 
 An API Key is used to temporarily authenticate an external application.
 
-An API Key can be retrieved with the following request:
+A POST is made to https://api.powerlinks.com/users/login with username and password in the body. This will return a temporary API Key.
 
 > Request
 
@@ -376,15 +376,17 @@ curl -X POST -d "username=USERNAME&password=PASSWORD" https://api.powerlinks.com
 
 ### Using API Keys
 
-The API Key will be added as a custom header "ApiKey" inside the HTTP request for each request to reporting API routes.
+The API Key will be added as a custom header "ApiKey" inside the HTTP request for each subsequent request to reporting API routes.
 
 ### Persistent API Keys
 
-In the case that a persistent API Key is required, a request is made as follows. The API Key is from the previous step, while the POST body's 'name' is a descriptive name for the persistent key.
+In the case that a persistent API Key is required, a POST request is sent to https://api.powerlinks.com/api-keys. 
+
+The API Key header is the temporary API Key from the previous step, while the POST body's 'name' is a descriptive name for the persistent key.
 
 ```shell
 curl -X POST \
-  http://api.powerlinks.com/api-keys \
+  https://api.powerlinks.com/api-keys \
   -H 'Content-Type: application/json' \
   -H 'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0' \
   -d '{
@@ -392,7 +394,7 @@ curl -X POST \
   }'
 ```
 
-This will return the following json response, where the ID is the numeric ID of the persistent key:
+This will return a json response, where the ID is the numeric ID of the persistent key.
 
 ```json
 {
@@ -403,16 +405,16 @@ This will return the following json response, where the ID is the numeric ID of 
 }
 ```
 
-Finally, the persistent API Key can be retrieved with the following call:
+Finally, the persistent API Key can be retrieved by issuing a GET request to https://api.powerlinks.com/api-keys/<API KEY NUMERIC ID>
 
 ```shell
 curl -X GET \
-  http://api.powerlinks.com/api-keys/1 \
+  https://api.powerlinks.com/api-keys/1 \
   -H 'Content-Type: application/json' \
   -H 'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0'
 ```
 
-Which will return the following json response:
+Which will return a json response that includes the persistent key.
 
 ```json
 {
