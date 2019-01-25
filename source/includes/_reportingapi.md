@@ -319,7 +319,7 @@ accounts| accounts=e661785d-4a04-450b-a050-23426a58d3e5,95f8e7ec-9aa7-11e5-8994-
 ```shell
 curl \
     -H "ApiKey: xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4=" \
-    "http://api.powerlinks.com/report?range=yesterday&interval=cumulative&metrics=impressions,clicks&dimensions=inventory_id"
+    "https://api.powerlinks.com/report?range=yesterday&interval=cumulative&metrics=impressions,clicks&dimensions=inventory_id"
 ```
 
 > Response
@@ -354,12 +354,21 @@ curl \
 
 An API Key is used to temporarily authenticate an external application.
 
-A POST is made to https://api.powerlinks.com/users/login with username and password in the body. This will return a temporary API Key.
+A POST is made to 
+
+`https://api.powerlinks.com/users/login`
+
+with email and password in the body. This will return a temporary API Key.
 
 > Request
 
 ```shell
-curl -X POST -d "username=USERNAME&password=PASSWORD" https://api.powerlinks.com/users/login
+curl -X POST \
+    https://api.powerlinks.com/users/login \
+    -d '{
+        "email"="EMAIL",
+        "password"="PASSWORD"
+    }'
 ```
 
 > Response
@@ -382,13 +391,13 @@ The API Key will be added as a custom header "ApiKey" inside the HTTP request fo
 
 In the case that a persistent API Key is required, a POST request is sent to 
 
-**https://api.powerlinks.com/api-keys**
+`https://api.powerlinks.com/api-keys`
 
 The API Key header is the temporary API Key from the previous step, while the POST body's 'name' is a descriptive name for the persistent key.
 
 This will return a json response, where the ID is the numeric ID of the persistent key. Then, the persistent API Key can be retrieved by issuing a GET request to 
 
-**https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;**
+`https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;`
 
 Which will return a json response that includes the persistent key.
 
