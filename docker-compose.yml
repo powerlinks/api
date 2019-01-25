@@ -3,7 +3,12 @@ services:
   app:
     build: .
     volumes:
-      - .:/usr/share
-      - ~/.ssh:/root/tmp/.ssh
+      - ./source:/root/tmp/source
+      - ./.gitignore:/root/tmp/.gitignore
+      - ./config.rb:/root/tmp/config.rb
+      - ./deploy.sh:/root/tmp/deploy.sh
+      - ./font-selection.json:/root/tmp/font-selection.json
+      - ./.git:/root/tmp/.git
+      - ./.github:/root/tmp/.github
       - ~/.gitconfig:/root/tmp/.gitconfig
-    command: bash -c "cp -r /root/tmp/.ssh /root/.ssh && cp -r /root/tmp/.gitconfig /root/.gitconfig && chmod 400 /root/.ssh/* && chmod 400 /root/.gitconfig && GIT_DEPLOY_USERNAME=`git config user.name` GIT_DEPLOY_EMAIL=`git config user.email` bash deploy.sh --verbose"
+    command: bash -c "cp /root/tmp/.gitconfig /root/.gitconfig && cp -a /root/tmp/. /usr/share/ && chmod 400 /root/.gitconfig && git remote set-url origin https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/powerlinks/api.git && GIT_DEPLOY_USERNAME=`git config user.name` GIT_DEPLOY_EMAIL=`git config user.email` bash deploy.sh --verbose"
