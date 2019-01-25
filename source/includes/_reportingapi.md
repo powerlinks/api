@@ -386,6 +386,16 @@ In the case that a persistent API Key is required, a POST request is sent to
 
 The API Key header is the temporary API Key from the previous step, while the POST body's 'name' is a descriptive name for the persistent key.
 
+This will return a json response, where the ID is the numeric ID of the persistent key.
+
+Finally, the persistent API Key can be retrieved by issuing a GET request to 
+
+**https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;**
+
+Which will return a json response that includes the persistent key.
+
+> Request
+
 ```shell
 curl -X POST \
   https://api.powerlinks.com/api-keys \
@@ -396,7 +406,7 @@ curl -X POST \
   }'
 ```
 
-This will return a json response, where the ID is the numeric ID of the persistent key.
+> Response
 
 ```json
 {
@@ -407,9 +417,7 @@ This will return a json response, where the ID is the numeric ID of the persiste
 }
 ```
 
-Finally, the persistent API Key can be retrieved by issuing a GET request to 
-
-**https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;**
+> Request
 
 ```shell
 curl -X GET \
@@ -418,7 +426,7 @@ curl -X GET \
   -H 'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0'
 ```
 
-Which will return a json response that includes the persistent key.
+> Response
 
 ```json
 {
