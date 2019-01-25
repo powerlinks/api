@@ -45810,7 +45810,9 @@ apiKey
 
 <h3 id="persistent-api-keys">Persistent API Keys</h3>
 
-<p>In the case that a persistent API Key is required, a POST request is sent to https://api.powerlinks.com/api-keys. </p>
+<p>In the case that a persistent API Key is required, a POST request is sent to </p>
+
+<pre><code>https://api.powerlinks.com/api-keys</code></pre>
 
 <p>The API Key header is the temporary API Key from the previous step, while the POST body&rsquo;s &lsquo;name&rsquo; is a descriptive name for the persistent key.</p>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
@@ -45829,7 +45831,9 @@ apiKey
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Finally, the persistent API Key can be retrieved by issuing a GET request to https://api.powerlinks.com/api-keys/<API KEY NUMERIC ID></p>
+<p>Finally, the persistent API Key can be retrieved by issuing a GET request to </p>
+
+<pre><code>https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;</code></pre>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
   https://api.powerlinks.com/api-keys/1 <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
