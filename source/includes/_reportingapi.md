@@ -382,7 +382,7 @@ The API Key will be added as a custom header "ApiKey" inside the HTTP request fo
 
 In the case that a persistent API Key is required, a POST request is sent to 
 
-<pre><code>https://api.powerlinks.com/api-keys</code></pre>
+**https://api.powerlinks.com/api-keys**
 
 The API Key header is the temporary API Key from the previous step, while the POST body's 'name' is a descriptive name for the persistent key.
 
@@ -409,7 +409,7 @@ This will return a json response, where the ID is the numeric ID of the persiste
 
 Finally, the persistent API Key can be retrieved by issuing a GET request to 
 
-<pre><code>https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;</code></pre>
+**https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;**
 
 ```shell
 curl -X GET \
