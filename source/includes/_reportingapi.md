@@ -397,7 +397,7 @@ The API Key header is the temporary API Key from the previous step, while the PO
 
 This will return a json response, where the ID is the numeric ID of the persistent key. Then, the persistent API Key can be retrieved by issuing a GET request to 
 
-`https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;`
+`https://api.powerlinks.com/api-keys/<API KEY NUMERIC ID>`
 
 Which will return a json response that includes the persistent key.
 
