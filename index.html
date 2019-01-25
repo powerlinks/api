@@ -45753,7 +45753,7 @@ apiKey
 </blockquote>
 <pre class="highlight shell"><code>curl <span class="se">\</span>
     -H <span class="s2">"ApiKey: xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4="</span> <span class="se">\</span>
-    <span class="s2">"http://api.powerlinks.com/report?range=yesterday&amp;interval=cumulative&amp;metrics=impressions,clicks&amp;dimensions=inventory_id"</span>
+    <span class="s2">"https://api.powerlinks.com/report?range=yesterday&amp;interval=cumulative&amp;metrics=impressions,clicks&amp;dimensions=inventory_id"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -45786,12 +45786,21 @@ apiKey
 
 <p>An API Key is used to temporarily authenticate an external application.</p>
 
-<p>A POST is made to https://api.powerlinks.com/users/login with username and password in the body. This will return a temporary API Key.</p>
+<p>A POST is made to </p>
+
+<p><code class="prettyprint">https://api.powerlinks.com/users/login</code></p>
+
+<p>with email and password in the body. This will return a temporary API Key.</p>
 
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST -d <span class="s2">"username=USERNAME&amp;password=PASSWORD"</span> https://api.powerlinks.com/users/login
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+    https://api.powerlinks.com/users/login <span class="se">\</span>
+    -d <span class="s1">'{
+        "email"="EMAIL",
+        "password"="PASSWORD"
+    }'</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -45812,13 +45821,13 @@ apiKey
 
 <p>In the case that a persistent API Key is required, a POST request is sent to </p>
 
-<p><strong>https://api.powerlinks.com/api-keys</strong></p>
+<p><code class="prettyprint">https://api.powerlinks.com/api-keys</code></p>
 
 <p>The API Key header is the temporary API Key from the previous step, while the POST body&rsquo;s &lsquo;name&rsquo; is a descriptive name for the persistent key.</p>
 
 <p>This will return a json response, where the ID is the numeric ID of the persistent key. Then, the persistent API Key can be retrieved by issuing a GET request to </p>
 
-<p><strong>https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;</strong></p>
+<p><code class="prettyprint">https://api.powerlinks.com/api-keys/&amp;lt;API KEY NUMERIC ID&amp;gt;</code></p>
 
 <p>Which will return a json response that includes the persistent key.</p>
 
