@@ -45815,6 +45815,18 @@ apiKey
 <p><strong>https://api.powerlinks.com/api-keys</strong></p>
 
 <p>The API Key header is the temporary API Key from the previous step, while the POST body&rsquo;s &lsquo;name&rsquo; is a descriptive name for the persistent key.</p>
+
+<p>This will return a json response, where the ID is the numeric ID of the persistent key.</p>
+
+<p>Finally, the persistent API Key can be retrieved by issuing a GET request to </p>
+
+<p><strong>https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;</strong></p>
+
+<p>Which will return a json response that includes the persistent key.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   https://api.powerlinks.com/api-keys <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -45823,7 +45835,9 @@ apiKey
     "name": "persistent-key-name"
   }'</span>
 </code></pre>
-<p>This will return a json response, where the ID is the numeric ID of the persistent key.</p>
+<blockquote>
+<p>Response</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -45831,15 +45845,17 @@ apiKey
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Finally, the persistent API Key can be retrieved by issuing a GET request to </p>
-
-<p><strong>https://api.powerlinks.com/api-keys/&lt;API KEY NUMERIC ID&gt;</strong></p>
+<blockquote>
+<p>Request</p>
+</blockquote>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
   https://api.powerlinks.com/api-keys/1 <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0'</span>
 </code></pre>
-<p>Which will return a json response that includes the persistent key.</p>
+<blockquote>
+<p>Response</p>
+</blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
