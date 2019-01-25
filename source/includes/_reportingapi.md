@@ -348,28 +348,82 @@ curl \
 }
 ```
 
-## API Key
+## API Keys
 
 ### Introduction
 
-The ApiKey is used to authenticate an external application.
+An API Key is used to temporarily authenticate an external application.
 
-
-There will be an API in the dashboard which will be used to retrieve the API key.
+An API Key can be retrieved with the following request:
 
 > Request
 
 ```shell
-curl -X POST -d "username=USERNAME&password=PASSWORD" https://dashboard.powerlinks.com/apikey/login
+curl -X POST -d "username=USERNAME&password=PASSWORD" https://api.powerlinks.com/users/login
 ```
 
 > Response
 
-```shell
-xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4=
-NB This is not definitive yet
+```json
+{
+  "status":"success",
+  "data":{
+    "apiKey":"gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0",
+    "expires":1548427228
+  }
+}
 ```
 
-### Using API keys
+### Using API Keys
 
 The API Key will be added as a custom header "ApiKey" inside the HTTP request for each request to reporting API routes.
+
+### Persistent API Keys
+
+In the case that a persistent API Key is required, a request is made as follows. The API Key is from the previous step, while the POST body's 'name' is a descriptive name for the persistent key.
+
+```shell
+curl -X POST \
+  http://api.powerlinks.com/api-keys \
+  -H 'Content-Type: application/json' \
+  -H 'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0' \
+  -d '{
+    "name": "persistent-key-name"
+  }'
+```
+
+This will return the following json response, where the ID is the numeric ID of the persistent key:
+
+```json
+{
+    "status": "success",
+    "data": {
+        "id": 1
+    }
+}
+```
+
+Finally, the persistent API Key can be retrieved with the following call:
+
+```shell
+curl -X GET \
+  http://api.powerlinks.com/api-keys/1 \
+  -H 'Content-Type: application/json' \
+  -H 'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0'
+```
+
+Which will return the following json response:
+
+```json
+{
+    "status": "success",
+    "data": {
+        "id": 1,
+        "key": "gJmil12lO5Vu7xM2mikK1TcYk4nGnpRfw0LVQK_dJfZ3VIXUcO4Chyis3XkTo3MW5N6lzRgRYeaYuy4MbrYf4IpQSdCiZv17UyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0",
+        "name": "persistent-key-name",
+        "createdAt": "2018-01-01",
+        "updatedAt": "2018-01-01",
+        "deletedAt": ""
+    }
+}
+```
