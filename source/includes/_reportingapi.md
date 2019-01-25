@@ -319,7 +319,7 @@ accounts| accounts=e661785d-4a04-450b-a050-23426a58d3e5,95f8e7ec-9aa7-11e5-8994-
 ```shell
 curl \
     -H "ApiKey: xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4=" \
-    "http://reporting.api.powerlinks.com/report?range=yesterday&interval=cumulative&metrics=impressions,clicks&dimensions=inventory_id"
+    "http://api.powerlinks.com/report?range=yesterday&interval=cumulative&metrics=impressions,clicks&dimensions=inventory_id"
 ```
 
 > Response
