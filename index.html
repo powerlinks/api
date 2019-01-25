@@ -45780,29 +45780,72 @@ apiKey
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id="api-key">API Key</h2>
+<h2 id="api-keys">API Keys</h2>
 
 <h3 id="introduction">Introduction</h3>
 
-<p>The ApiKey is used to authenticate an external application.</p>
+<p>An API Key is used to temporarily authenticate an external application.</p>
 
-<p>There will be an API in the dashboard which will be used to retrieve the API key.</p>
+<p>An API Key can be retrieved with the following request:</p>
 
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X POST -d <span class="s2">"username=USERNAME&amp;password=PASSWORD"</span> https://dashboard.powerlinks.com/apikey/login
+<pre class="highlight shell"><code>curl -X POST -d <span class="s2">"username=USERNAME&amp;password=PASSWORD"</span> https://api.powerlinks.com/users/login
 </code></pre>
 <blockquote>
 <p>Response</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="nv">xM6frL3y7ImCoZiDHKXRVMMkPB2v7PWvRJaPX7RY7n77IMpDwchlLUHSeYpkmqwNPFAbQLX6Cs33ug51rjJ7wrvScBkZUz9FbbbHETqaxW4</span><span class="o">=</span>
-NB This is not definitive yet
-</code></pre>
-<h3 id="using-api-keys">Using API keys</h3>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"apiKey"</span><span class="p">:</span><span class="s2">"gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires"</span><span class="p">:</span><span class="mi">1548427228</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="using-api-keys">Using API Keys</h3>
 
 <p>The API Key will be added as a custom header &ldquo;ApiKey&rdquo; inside the HTTP request for each request to reporting API routes.</p>
 
+<h3 id="persistent-api-keys">Persistent API Keys</h3>
+
+<p>In the case that a persistent API Key is required, a request is made as follows. The API Key is from the previous step, while the POST body&rsquo;s &lsquo;name&rsquo; is a descriptive name for the persistent key.</p>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+  http://api.powerlinks.com/api-keys <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+    "name": "persistent-key-name"
+  }'</span>
+</code></pre>
+<p>This will return the following json response, where the ID is the numeric ID of the persistent key:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Finally, the persistent API Key can be retrieved with the following call:</p>
+<pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
+  http://api.powerlinks.com/api-keys/1 <span class="se">\</span>
+  -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'apikey: gJmil12lO5WRSKHsZ1j46QUvNUM4kBjIOKpH7S9TLA6s0rsv1NZ4Aj7DDXhe5wKG5N6lzRgRYeaYuy4MbrYf4LUZgxa44K0QUyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0'</span>
+</code></pre>
+<p>Which will return the following json response:</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gJmil12lO5Vu7xM2mikK1TcYk4nGnpRfw0LVQK_dJfZ3VIXUcO4Chyis3XkTo3MW5N6lzRgRYeaYuy4MbrYf4IpQSdCiZv17UyYAXB0PNHMK59vx2tyEIWnXztyomWaL3DV-nwydm3A5vaqp_ghJjxRrfG2TbwJ00U0fRgyHva0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"persistent-key-name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
           <h1 id="dfp-support">DFP Support</h1>
 
 <h2 id="powerlinks-support-for-dfp-ad-servers">Powerlinks Support for DFP Ad Servers</h2>
